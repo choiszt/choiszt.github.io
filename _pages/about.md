@@ -35,7 +35,7 @@ Currently I am an [MEng (by Research)](https://www.ntu.edu.sg/education/graduate
 
 Prior to this, I obtained my bachelor’s degree in [Artificial Intelligence from BUPT](https://ai.bupt.edu.cn/) in 2024. Additionally, I had a wonderful time as an intern at the [Shanghai AI Laboratory](https://www.shlab.org.cn/) under the mentorship of [Dr. Ziwei Liu](https://liuziwei7.github.io/), and I also completed internships at [NLPR@CASIA](https://nlpr.ia.ac.cn/en) and [HAOMO.AI](https://haomo.ai/), supervised by [Dr. Yang Yang](https://scholar.google.com/citations?hl=zh-TW&user=YU-yRMsAAAAJ)  and [Dr. Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-TW).
 
-🔭 My current research focuses on Embodied Intelligence and understanding. 
+🔭 My current research focuses on Embodied Intelligence and multimodality. 
 As a member of  [<img src="assets/img/about/lmms_lab.jpg" width="3%"/> LMMs-Lab](https://lmms-lab.github.io/) , I am on an exciting journey towards LMMs and feeling the AGI.
 
 
