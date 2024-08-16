@@ -31,7 +31,7 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 
 <!-- <p>Hey, thanks for stopping by! &#128516;</p> -->
 
-I am an [MEng (by Research)](https://www.ntu.edu.sg/education/graduate-programme/ccds-master-of-engineering) student at [MMLab@NTU](https://www.mmlab-ntu.com/). I am fortunate and grateful to be advised by [Prof. Ziwei Liu](https://liuziwei7.github.io/) and to have received kind and valuable guidance from [Jingkang Yang](https://jingkang50.github.io/) and [Bo Li](https://brianboli.com/).
+Currently I am an [MEng (by Research)](https://www.ntu.edu.sg/education/graduate-programme/ccds-master-of-engineering) student at [MMLab@NTU](https://www.mmlab-ntu.com/). I am fortunate and grateful to be advised by [Prof. Ziwei Liu](https://liuziwei7.github.io/) and to have received kind and valuable guidance from [<img src="assets/img/about/jingkang.png" width="3%"/> Jingkang Yang](https://jingkang50.github.io/) and [<img src="assets/img/about/boli.png" width="3%"/> Bo Li](https://brianboli.com/).
 
 🔭 My current research focuses on Embodied Intelligence and understanding. 
 As a member of  [<img src="assets/img/about/lmms_lab.jpg" width="3%"/> LMMs-Lab](https://lmms-lab.github.io/) , I am on an exciting journey towards LMMs and feeling the AGI.
