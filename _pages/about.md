@@ -43,3 +43,4 @@ As a member of  [<img src="assets/img/about/lmms_lab.jpg" width="3%"/> LMMs-Lab]
 
 📧Email: **ls2001927@gmail.com**   | 📄Resume: [CV](assets/pdf/Liushuai.pdf)
 
+<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=yeMfAokBZdWpAQi14PW166Qrsiw-GSecTikyJ6xpNtc"></script>
