@@ -7,7 +7,7 @@ permalink: /
 
 profile:
   align: right
-  image: about/liushuai.jpg
+  # image: about/liushuai.jpg
   # address: >
   #   <p>555 your office number</p>
   #   <p>123 your address street</p>
@@ -31,7 +31,7 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 
 <!-- <p>Hey, thanks for stopping by! &#128516;</p> -->
 
-Currently I am an [MEng (by Research)](https://www.ntu.edu.sg/education/graduate-programme/ccds-master-of-engineering) student at [MMLab@NTU](https://www.mmlab-ntu.com/). I am fortunate and grateful to be advised by [Prof. Ziwei Liu](https://liuziwei7.github.io/) and to have received kind and valuable guidance from [<img src="assets/img/about/jingkang.png" width="3%"/> Jingkang Yang](https://jingkang50.github.io/), [<img src="assets/img/about/boli.png" width="3%"/> Bo Li](https://brianboli.com/) and [<img src="assets/img/about/yuanhan.jpeg" width="3%"/> Yuanhan zhang](https://zhangyuanhan-ai.github.io/).
+Currently I am an [MEng (by Research)](https://www.ntu.edu.sg/education/graduate-programme/ccds-master-of-engineering) student at [MMLab@NTU](https://www.mmlab-ntu.com/). I am fortunate to be advised by [Prof. Ziwei Liu](https://liuziwei7.github.io/) and to have received kind and valuable guidance from [<img src="assets/img/about/jingkang.png" width="3%"/> Jingkang Yang](https://jingkang50.github.io/), [<img src="assets/img/about/boli.png" width="3%"/> Bo Li](https://brianboli.com/) and [<img src="assets/img/about/yuanhan.jpeg" width="3%"/> Yuanhan Zhang](https://zhangyuanhan-ai.github.io/).
 
 Prior to this, I obtained my bachelor’s degree in [Artificial Intelligence from BUPT](https://ai.bupt.edu.cn/) in 2024. Additionally, I had a wonderful time as an intern at the [Shanghai AI Laboratory](https://www.shlab.org.cn/) under the mentorship of [Prof. Ziwei Liu](https://liuziwei7.github.io/), and I also completed internships at [NLPR@CASIA](https://nlpr.ia.ac.cn/en) and [HAOMO.AI](https://haomo.ai/), supervised by [Prof. Yang Yang](https://scholar.google.com/citations?hl=zh-TW&user=YU-yRMsAAAAJ)  and [Prof. Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-TW).
 
