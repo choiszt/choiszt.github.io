@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[PSG4D](https://arxiv.org/abs/2405.10305) is accepted as NeurIPS-23 Spotlight.🤖
+[PSG4D](https://arxiv.org/abs/2405.10305)🤖 is accepted as NeurIPS-23 Spotlight.
