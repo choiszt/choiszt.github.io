@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[Octopus](https://arxiv.org/abs/2310.08588) is accepted by ECCV-2024.🎉
+[Octopus](https://arxiv.org/abs/2310.08588) is accepted by ECCV-2024.🐙
