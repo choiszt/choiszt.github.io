@@ -6,7 +6,7 @@ I am a graduate student at [Nanyang Technological University](https://www.ntu.ed
 
 ## Research Interests
 
-My research primarily focuses on **Embodied Intelligence** and **Multimodality**. I am a member of the [LMMs-Lab](https://lmms-lab.github.io/) and am exploring cutting-edge topics related to LMMs.
+My research primarily focuses on **Large Multimodal System** and **Egocentric AI**. I am a member of the [LMMs-Lab](https://lmms-lab.github.io/) and am exploring cutting-edge topics related to LMMs.
 
 ## Contact Me
 
