@@ -1,5 +1,3 @@
-# Personal Website README
-
 Welcome to my personal website! This is a platform to showcase my research, projects, and personal experiences.
 
 ## About Me
@@ -18,4 +16,3 @@ If you are interested in my research or have any questions, feel free to reach o
 - 📄 Resume: [CV](assets/pdf/Liushuai.pdf)
 
 Thank you for visiting! I hope you find valuable information here.
-

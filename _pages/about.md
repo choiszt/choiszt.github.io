@@ -18,7 +18,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-<!-- 
+<!--
 
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
@@ -35,7 +35,7 @@ I am an [MEng (by Research)](https://www.ntu.edu.sg/education/graduate-programme
 
 Prior to this, I obtained my bachelor’s degree in [Artificial Intelligence from BUPT](https://ai.bupt.edu.cn/) in 2024. Additionally, I had a wonderful time as an intern at the [Shanghai AI Laboratory](https://www.shlab.org.cn/) under the mentorship of [Prof. Ziwei Liu](https://liuziwei7.github.io/), and I also completed internships at [NLPR@CASIA](https://nlpr.ia.ac.cn/en) and [HAOMO.AI](https://haomo.ai/), supervised by [Prof. Yang Yang](https://scholar.google.com/citations?hl=zh-TW&user=YU-yRMsAAAAJ)  and [Prof. Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-TW).
 
-🔭 My current research focuses on Embodied Intelligence and multimodality. 
+🔭 My current research focuses on Embodied Intelligence and multimodality.
 As a member of  [<img src="assets/img/about/lmms_lab.jpg" width="3%"/> LMMs-Lab](https://lmms-lab.github.io/) , I am on an exciting journey towards LMMs and feeling the AGI.
 
 
