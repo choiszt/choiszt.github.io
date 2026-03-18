@@ -2,7 +2,7 @@
 layout: page
 title: Cocoa Suite
 description: A local AI assistant that transforms files into actionable memory through semantic understanding. Fully private, on-device, zero cloud dependency.
-img: assets/img/project/local-cocoa.png
+img: assets/img/project/local-cocoa.jpg
 importance: 1
 category: work
 github: https://github.com/synvo-ai/local-cocoa

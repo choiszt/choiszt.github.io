@@ -2,7 +2,7 @@
 layout: page
 title: Engram Suite
 description: Privacy-first AI memory layer — "Signal for AI Memory." End-to-end encrypted memory system for AI assistants with zero-knowledge sync.
-img: assets/img/project/engram.png
+img: assets/img/project/engram.jpg
 importance: 2
 category: work
 github: https://github.com/EvolvingLMMs-Lab/engram
