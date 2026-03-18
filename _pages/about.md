@@ -15,27 +15,15 @@ profile:
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
+projects: true  # includes a list of projects
 social: true  # includes social icons at the bottom of the page
 ---
 
-<!--
-
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
-
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
- -->
-
-<!-- **About** -->
-
-<!-- <p>Hey, thanks for stopping by! &#128516;</p> -->
-
-I am currently a Founding Team Member at [Synvo AI](https://synvo.ai/). Previously, I was a Core Contributor at [<img src="assets/img/about/lmms_lab.jpg" width="3%"/> LMMs-Lab](https://lmms-lab.framer.ai/) (2024 - 2025.03), where I was on an exciting journey towards LMMs and feeling the AGI.
+I am currently a Founding Team Member at [<img src="assets/img/about/synvo.png" width="2.5%"/> Synvo AI](https://synvo.ai/). Previously, I was a Core Contributor at [<img src="assets/img/about/lmms_lab.jpg" width="3%"/> LMMs-Lab](https://lmms-lab.framer.ai/) (2024 - 2025.03), where I was on an exciting journey towards LMMs and feeling the AGI.
 
 Prior to this, I obtained my [MEng (by Research)](https://www.ntu.edu.sg/education/graduate-programme/ccds-master-of-engineering) degree at [MMLab@NTU](https://www.mmlab-ntu.com/), where I was fortunate to be advised by [Prof. Ziwei Liu](https://liuziwei7.github.io/) and to have received kind and valuable guidance from [<img src="assets/img/about/jingkang.png" width="3%"/> Jingkang Yang](https://jingkang50.github.io/) and [<img src="assets/img/about/boli.png" width="3%"/> Bo Li](https://brianboli.com/). I obtained my bachelor’s degree in [Artificial Intelligence from BUPT](https://ai.bupt.edu.cn/) in 2024. Additionally, I had a wonderful time as an intern at the [Shanghai AI Laboratory](https://www.shlab.org.cn/) under the mentorship of [Prof. Ziwei Liu](https://liuziwei7.github.io/), and I also completed internships at [NLPR@CASIA](https://nlpr.ia.ac.cn/en) and [HAOMO.AI](https://haomo.ai/), supervised by [Prof. Yang Yang](https://scholar.google.com/citations?hl=zh-TW&user=YU-yRMsAAAAJ)  and [Prof. Zhen Lei](https://scholar.google.com/citations?user=cuJ3QG8AAAAJ&hl=zh-TW).
 
-🔭 My current research focuses on Multimodality and Egocentric AI.
+🔭 My research lies in Multimodality, Egocentric AI, and Agentic Memory.
 
 
 <strong style="color:red;">Feel free to reach out to me for collaborations, questions, or just to chat!</strong>
