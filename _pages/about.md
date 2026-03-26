@@ -28,6 +28,6 @@ Prior to this, I obtained my [MEng (by Research)](https://www.ntu.edu.sg/educati
 
 <strong style="color:red;">Feel free to reach out to me for collaborations, questions, or just to chat!</strong>
 
-📧Email: **ls2001927@gmail.com**   | 📄Resume: [CV](assets/pdf/Liushuai.pdf)
+📧Email: **ls2001927@gmail.com**
 
 <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=yeMfAokBZdWpAQi14PW166Qrsiw-GSecTikyJ6xpNtc"></script>
