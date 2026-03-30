@@ -696,13 +696,3 @@ if (dogEl && newsFrame) {
 
 }
 
-// ── ClusterMaps ──
-
-const clustrmapsContainer = document.getElementById('clustrmaps-container')
-if (clustrmapsContainer) {
-  const script = document.createElement('script')
-  script.type = 'text/javascript'
-  script.id = 'clustrmaps'
-  script.src = '//clustrmaps.com/map_v2.js?d=yeMfAokBZdWpAQi14PW166Qrsiw-GSecTikyJ6xpNtc'
-  clustrmapsContainer.appendChild(script)
-}
