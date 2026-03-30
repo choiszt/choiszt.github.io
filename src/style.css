@@ -632,9 +632,10 @@ img { max-width: 100%; display: block; }
     var(--border) 0%,
     var(--border) 100%
   );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-  mask-composite: exclude;
   pointer-events: none;
   transition: background 0.4s;
   z-index: 2;
@@ -647,6 +648,19 @@ img { max-width: 100%; display: block; }
     var(--teal) 50%,
     var(--accent) 100%
   );
+}
+
+/* Fallback border for browsers without mask support */
+@supports not (mask-composite: exclude) {
+  .pub-card {
+    border: 1px solid var(--border);
+  }
+  .pub-card:hover {
+    border-color: var(--accent);
+  }
+  .pub-card::before {
+    display: none;
+  }
 }
 
 /* Spotlight glow */
