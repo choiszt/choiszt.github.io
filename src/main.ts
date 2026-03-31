@@ -32,42 +32,61 @@ interface AccentTheme {
 }
 
 const accents: Record<string, AccentTheme> = {
-  dawn: {
-    accent: '#f59e0b',
-    accentHover: '#fbbf24',
-    teal: '#fb923c',
-    accentDim: 'rgba(245, 158, 11, 0.2)',
-    gradient: 'linear-gradient(90deg, #f59e0b, #fb923c, #f59e0b)',
-  },
-  day: {
-    accent: '#10b981',
-    accentHover: '#34d399',
-    teal: '#06b6d4',
-    accentDim: 'rgba(16, 185, 129, 0.2)',
-    gradient: 'linear-gradient(90deg, #10b981, #06b6d4, #10b981)',
-  },
-  dusk: {
-    accent: '#8b5cf6',
-    accentHover: '#a78bfa',
-    teal: '#c084fc',
-    accentDim: 'rgba(139, 92, 246, 0.2)',
-    gradient: 'linear-gradient(90deg, #8b5cf6, #c084fc, #8b5cf6)',
-  },
-  night: {
-    accent: '#6c8aff',
-    accentHover: '#8aa3ff',
-    teal: '#4ecdc4',
+  indigo: {
+    accent: '#6c8aff', accentHover: '#8aa3ff', teal: '#4ecdc4',
     accentDim: 'rgba(108, 138, 255, 0.2)',
     gradient: 'linear-gradient(90deg, #6c8aff, #4ecdc4, #6c8aff)',
   },
+  amber: {
+    accent: '#f59e0b', accentHover: '#fbbf24', teal: '#fb923c',
+    accentDim: 'rgba(245, 158, 11, 0.2)',
+    gradient: 'linear-gradient(90deg, #f59e0b, #fb923c, #f59e0b)',
+  },
+  emerald: {
+    accent: '#10b981', accentHover: '#34d399', teal: '#06b6d4',
+    accentDim: 'rgba(16, 185, 129, 0.2)',
+    gradient: 'linear-gradient(90deg, #10b981, #06b6d4, #10b981)',
+  },
+  violet: {
+    accent: '#8b5cf6', accentHover: '#a78bfa', teal: '#c084fc',
+    accentDim: 'rgba(139, 92, 246, 0.2)',
+    gradient: 'linear-gradient(90deg, #8b5cf6, #c084fc, #8b5cf6)',
+  },
+  rose: {
+    accent: '#f43f5e', accentHover: '#fb7185', teal: '#e11d48',
+    accentDim: 'rgba(244, 63, 94, 0.2)',
+    gradient: 'linear-gradient(90deg, #f43f5e, #e11d48, #f43f5e)',
+  },
+  cyan: {
+    accent: '#06b6d4', accentHover: '#22d3ee', teal: '#0891b2',
+    accentDim: 'rgba(6, 182, 212, 0.2)',
+    gradient: 'linear-gradient(90deg, #06b6d4, #0891b2, #06b6d4)',
+  },
+  pink: {
+    accent: '#ec4899', accentHover: '#f472b6', teal: '#db2777',
+    accentDim: 'rgba(236, 72, 153, 0.2)',
+    gradient: 'linear-gradient(90deg, #ec4899, #db2777, #ec4899)',
+  },
+  lime: {
+    accent: '#84cc16', accentHover: '#a3e635', teal: '#65a30d',
+    accentDim: 'rgba(132, 204, 22, 0.2)',
+    gradient: 'linear-gradient(90deg, #84cc16, #65a30d, #84cc16)',
+  },
+  orange: {
+    accent: '#f97316', accentHover: '#fb923c', teal: '#ea580c',
+    accentDim: 'rgba(249, 115, 22, 0.2)',
+    gradient: 'linear-gradient(90deg, #f97316, #ea580c, #f97316)',
+  },
+  sky: {
+    accent: '#38bdf8', accentHover: '#7dd3fc', teal: '#0ea5e9',
+    accentDim: 'rgba(56, 189, 248, 0.2)',
+    gradient: 'linear-gradient(90deg, #38bdf8, #0ea5e9, #38bdf8)',
+  },
 }
 
-function getTimeAccent(): AccentTheme {
-  const hour = new Date().getHours()
-  if (hour >= 6 && hour < 11) return accents.dawn
-  if (hour >= 11 && hour < 16) return accents.day
-  if (hour >= 16 && hour < 21) return accents.dusk
-  return accents.night
+function getRandomAccent(): AccentTheme {
+  const keys = Object.keys(accents)
+  return accents[keys[Math.floor(Math.random() * keys.length)]!]!
 }
 
 function applyAccent(theme: AccentTheme) {
@@ -79,10 +98,8 @@ function applyAccent(theme: AccentTheme) {
   s.setProperty('--gradient-bar', theme.gradient)
 }
 
-applyAccent(getTimeAccent())
+applyAccent(getRandomAccent())
 
-// Re-check every 10 minutes
-setInterval(() => applyAccent(getTimeAccent()), 10 * 60 * 1000)
 
 // ── Last Updated ──
 
