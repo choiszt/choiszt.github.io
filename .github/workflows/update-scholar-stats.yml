@@ -2,7 +2,7 @@ name: Update Scholar Stats
 
 on:
   schedule:
-    - cron: "0 0 * * 1" # every Monday
+    - cron: "0 0 * * *" # every day at 00:00 UTC (08:00 Beijing)
   workflow_dispatch:
 
 permissions:
