@@ -316,7 +316,36 @@ function initCardGlow(selector: string) {
 
 initCardGlow('.pub-card')
 initCardGlow('.project-card')
-initCardGlow('.news-frame')
+// Skip glow on news-frame — mousemove + backdrop-filter causes jank during scroll
+
+// ── News Timeline: pre-warm GPU layers + expand on scroll ──
+const newsWrapper = document.querySelector<HTMLElement>('.news-scroll-wrapper')
+const newsTimelineEl = document.querySelector<HTMLElement>('.news-timeline')
+if (newsWrapper && newsTimelineEl) {
+  // Pre-warm: silently animate to 520px and back at load time.
+  // This forces the browser to rasterize the backdrop-filter compositing
+  // layer at both sizes so the real expansion later is instant from cache.
+  const warmUp = newsWrapper.animate(
+    [{ height: '300px' }, { height: '520px' }, { height: '300px' }],
+    { duration: 1, fill: 'none' }
+  )
+  warmUp.finished.then(() => warmUp.cancel())
+
+  let expanded = false
+  newsTimelineEl.addEventListener('scroll', () => {
+    if (expanded || newsTimelineEl.scrollTop <= 30) return
+    expanded = true
+
+    const anim = newsWrapper.animate(
+      [{ height: '300px' }, { height: '520px' }],
+      { duration: 500, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
+    )
+    anim.finished.then(() => {
+      newsWrapper.classList.add('expanded')
+      anim.cancel()
+    })
+  }, { passive: true })
+}
 
 // ── Animated Gradient Border Angle ──
 
@@ -527,22 +556,38 @@ if (dogEl && newsFrame) {
     buildPet(allPets[currentPetIdx]!)
   })
 
-  // ── Eye tracking ──
+  // ── Eye tracking (paused while news is scrolling to avoid backdrop-filter jank) ──
+  let eyePaused = false
+  let eyePauseTimer: ReturnType<typeof setTimeout> | null = null
+  const newsEl = document.querySelector('.news-timeline')
+  if (newsEl) {
+    newsEl.addEventListener('scroll', () => {
+      eyePaused = true
+      if (eyePauseTimer) clearTimeout(eyePauseTimer)
+      eyePauseTimer = setTimeout(() => { eyePaused = false }, 200)
+    }, { passive: true })
+  }
+
+  let eyeRaf: number | null = null
   document.addEventListener('mousemove', (e) => {
-    if (!pL || !pR) return
-    const rect = dogEl.getBoundingClientRect()
-    const dx = e.clientX - (rect.left + rect.width / 2)
-    const dy = e.clientY - (rect.top + rect.height * 0.4)
-    const dist = Math.sqrt(dx * dx + dy * dy)
-    let ox = 0, oy = 0
-    if (dist > 50) {
-      ox = Math.sign(dx) * P
-      oy = dy < 0 ? -P : 0
-    }
-    pL.setAttribute('x', `${pLHome.x + ox}`)
-    pL.setAttribute('y', `${pLHome.y + oy}`)
-    pR.setAttribute('x', `${pRHome.x + ox}`)
-    pR.setAttribute('y', `${pRHome.y + oy}`)
+    if (!pL || !pR || eyeRaf || eyePaused) return
+    eyeRaf = requestAnimationFrame(() => {
+      eyeRaf = null
+      if (eyePaused) return
+      const rect = dogEl.getBoundingClientRect()
+      const dx = e.clientX - (rect.left + rect.width / 2)
+      const dy = e.clientY - (rect.top + rect.height * 0.4)
+      const dist = Math.sqrt(dx * dx + dy * dy)
+      let ox = 0, oy = 0
+      if (dist > 50) {
+        ox = Math.sign(dx) * P
+        oy = dy < 0 ? -P : 0
+      }
+      pL!.setAttribute('x', `${pLHome.x + ox}`)
+      pL!.setAttribute('y', `${pLHome.y + oy}`)
+      pR!.setAttribute('x', `${pRHome.x + ox}`)
+      pR!.setAttribute('y', `${pRHome.y + oy}`)
+    })
   })
 
   // ── Blink ──
@@ -712,4 +757,3 @@ if (dogEl && newsFrame) {
   }, 4000)
 
 }
-
