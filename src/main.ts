@@ -1,6 +1,12 @@
 import './style.css'
 import { prepare, layout, type PreparedText } from '@chenglou/pretext'
 
+// ── Open all external links in new tab ──
+document.querySelectorAll<HTMLAnchorElement>('a[href^="http"]').forEach((a) => {
+  a.setAttribute('target', '_blank')
+  a.setAttribute('rel', 'noopener noreferrer')
+})
+
 // ── Theme Toggle ──
 
 const html = document.documentElement
