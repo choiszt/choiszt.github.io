@@ -10,6 +10,7 @@
 }
 
 /* ── Dark Theme (default) ── */
+:root,
 [data-theme="dark"] {
   --bg-0: #08080e;
   --bg-1: #0e0e17;
