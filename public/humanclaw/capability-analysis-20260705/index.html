@@ -92,7 +92,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <hr />
 <h2 id="0-tldr">0. TL;DR</h2>
 <p><strong>任务侧：</strong>
-- 难度指标彼此高度共线（path length ↔ choice points 相关 0.95），有效的独立难度轴只有三个：<strong>最短路径长度、转弯数、（极端）障碍密度</strong>；choice point 数不提供独立信号。
+- 难度指标彼此高度共线（path length ↔ choice points 相关 0.95），有效的独立难度轴只有三个：<strong>最短路径长度、转弯数、（极端）障碍密度</strong>；choice point 数不提供独立信号。障碍计数已用"剔除地毯等平铺物 + 行走高度带"过滤后复核（difficulty_r3），结论不变。
 - 类别难度不是同一回事：chair/plant 容易主要因为<strong>目标实例多</strong>（中位 14–17 个 vs 其他类 2 个）；<strong>tv 难主要因为判据物理性</strong>（92% 的 tv AABB 悬空 &gt;0.5m，到 1m 内的 episode 仅 20% 能满足 0.2m 身体接触）。</p>
 <p><strong>模型侧（low-thinking run 为主）：</strong>
 - 成功率随最短路径长度 28%→3%（四分位）陡降，回归 OR=0.41/SD，是最强难度因子；<strong>转弯数在控制路径长度后仍独立显著</strong>（同一路径分位内，有转弯 vs 无转弯成功率约减半）。
@@ -261,7 +261,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 </tbody>
 </table>
 <p><strong>共线性警告</strong>：path_length 与 choice_point_count / choice_entropy / corridor_area 的 Spearman 相关达 0.92–0.98——它们量的是同一个东西（"路远 = 决策点多 = 走廊面积大"）。paper 中不应把它们当独立难度轴并列；分层分析（§3.3）确认 choice point 在控制路径长度后无残余效应。<strong>建议 paper 报告三个弱相关的轴：路径长度、转弯数、障碍密度，外加目标多重性作为任务属性</strong>。</p>
-<p><strong>障碍物计数的测量 caveat（floor 类物体）</strong>：corridor 计数遍历的是 rigid + articulated object manager 里的实例物体——建筑意义上的地板/墙/天花板属于 stage mesh，<strong>不会</strong>被计入；但 <strong>rug/carpet/doormat 等平铺物、挂墙画/镜子、吊灯等不阻挡行走的物体会被算作"障碍物"</strong>（无类别过滤、无行走高度带过滤，直接用 XZ footprint 投影）。这可能是障碍物计数在前三个桶对成功率没有梯度、只有极端桶（&gt;42）才显现效应的原因之一。对比之下，<strong>碰撞指标是过滤过的</strong>：<code>static_collision_step_fraction</code> 已忽略脚/踝与 stage 地面及 carpet/rug/floor/mat 类低表面的接触（记入 <code>ignored_contact_points</code>），可放心使用。</p>
+<p><strong>障碍物计数的过滤（difficulty_r3，已验证）</strong>：原始（r2）corridor 计数没有语义过滤——建筑地板/墙属于 stage mesh 天然不计，但 <strong>rug/carpet/doormat 等平铺物、挂墙/吊顶装饰会被算作"障碍物"</strong>。我们重算了过滤版 r3：剔除 floor_covering 类（HSSD semantics 类别匹配）+ 行走高度带过滤（物体 Y 范围须与 [路径高度+0.1m, +1.9m] 相交），每 episode 平均剔除 ~34 个物体（类别中位 8 + 高度带中位 26），static 计数中位 26→21。<strong>结论不变</strong>：r2/r3 排序相关 0.963，过滤后障碍计数在前三个四分位对成功率依然无梯度、只有最密尾部才有效应（§3.2）——弱信号不是地毯噪声造成的，是真实现象。本报告障碍物相关数字均已更新为 r3 口径。对比之下，<strong>碰撞指标本来就过滤过</strong>：<code>static_collision_step_fraction</code> 已忽略脚/踝与 stage 地面及 carpet/rug/floor/mat 类低表面的接触。</p>
 <h3 id="23">2.3 类别差异的三个来源</h3>
 <ol>
 <li><strong>目标多重性</strong>：chair/plant 的实例数中位 14/17，其余类别 2。实例多 → 有效最短路径更短、任意方向探索更容易撞见。原始分桶：n_goal=1 成功率 10.6%、2–4 仅 7.3%、5–15 21.5%、&gt;15 25.5%。加类别固定效应后多重性不再显著——"chair/plant 容易"与"实例多"高度混同，paper 需二选一表述或明示混同。</li>
@@ -459,59 +459,59 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 </tbody>
 </table>
 <p>→ 转弯的独特之处：除了打击「看见→走到」，<strong>还打击「最后一米」</strong>（P(ct|1m) 0.72→0.31）和「接触→成功」。解释：转弯多 = 视线被打断 + 目标藏在拐角/家具后，末端逼近同样受限。这是与路径长度不同的独立信号。</p>
-<p><strong>2m 走廊障碍物</strong>（只有极端桶显著）：</p>
+<p><strong>2m 走廊障碍物</strong>（r3 过滤口径：已剔除地毯等平铺物与非行走高度带物体；只有极端桶显著）：</p>
 <table>
 <thead>
 <tr>
-<th>static objects</th>
+<th>static objects (r3)</th>
 <th style="text-align: right;">n</th>
+<th style="text-align: right;">claim</th>
+<th style="text-align: right;">到1m</th>
 <th style="text-align: right;">成功</th>
-<th></th>
-<th>dynamic objects</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">成功</th>
+<th style="text-align: right;">P(1m|claim)</th>
+<th style="text-align: right;">P(ct|1m)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>≤16</td>
-<td style="text-align: right;">322</td>
-<td style="text-align: right;">0.165</td>
-<td></td>
-<td>≤6</td>
-<td style="text-align: right;">355</td>
-<td style="text-align: right;">0.172</td>
+<td>≤12</td>
+<td style="text-align: right;">307</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.53</td>
+<td style="text-align: right;">0.160</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.70</td>
 </tr>
 <tr>
-<td>16–26.5</td>
-<td style="text-align: right;">279</td>
-<td style="text-align: right;">0.183</td>
-<td></td>
-<td>6–9</td>
-<td style="text-align: right;">286</td>
-<td style="text-align: right;">0.175</td>
+<td>12–21</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.53</td>
+<td style="text-align: right;">0.187</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.70</td>
 </tr>
 <tr>
-<td>26.5–42</td>
-<td style="text-align: right;">310</td>
-<td style="text-align: right;">0.148</td>
-<td></td>
-<td>9–14</td>
-<td style="text-align: right;">301</td>
-<td style="text-align: right;">0.136</td>
+<td>21–34</td>
+<td style="text-align: right;">294</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.146</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.67</td>
 </tr>
 <tr>
-<td>&gt;42</td>
-<td style="text-align: right;">291</td>
-<td style="text-align: right;"><strong>0.065</strong></td>
-<td></td>
-<td>&gt;14</td>
-<td style="text-align: right;">260</td>
-<td style="text-align: right;"><strong>0.065</strong></td>
+<td>&gt;34</td>
+<td style="text-align: right;">285</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;"><strong>0.063</strong></td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.57</td>
 </tr>
 </tbody>
 </table>
-<p>→ 前三桶基本持平，只有最密桶断崖（P(1m|claim) 与 P(ct|1m) 同时受损）。回归中 z 化后不显著（效应集中在尾部，非线性）。</p>
+<p>→ 前三桶基本持平，只有最密桶断崖（P(1m|claim) 与 P(ct|1m) 同时受损）。回归中 z 化后不显著（OR=0.94，p=0.50；效应集中在尾部，非线性）。未过滤的 r2 口径结论相同（排序相关 0.963）——<strong>弱信号不是地毯等测量噪声造成的</strong>。dynamic 物体同型（&gt;14 桶 6.5%，其余 13.6–17.5%）。</p>
 <p><strong>目标多重性</strong>：</p>
 <table>
 <thead>
@@ -564,8 +564,8 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <th style="text-align: right;">0 转弯</th>
 <th style="text-align: right;">≥1 转弯</th>
 <th></th>
-<th style="text-align: right;">低障碍(≤27)</th>
-<th style="text-align: right;">高障碍(&gt;27)</th>
+<th style="text-align: right;">低障碍(≤21, r3)</th>
+<th style="text-align: right;">高障碍(&gt;21, r3)</th>
 </tr>
 </thead>
 <tbody>
@@ -574,32 +574,32 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <td style="text-align: right;"><strong>0.325</strong></td>
 <td style="text-align: right;">0.181</td>
 <td></td>
-<td style="text-align: right;">0.284</td>
-<td style="text-align: right;">0.269</td>
+<td style="text-align: right;">0.278</td>
+<td style="text-align: right;">0.280</td>
 </tr>
 <tr>
 <td>Q2</td>
 <td style="text-align: right;"><strong>0.254</strong></td>
 <td style="text-align: right;">0.116</td>
 <td></td>
-<td style="text-align: right;">0.232</td>
-<td style="text-align: right;">0.108</td>
+<td style="text-align: right;">0.238</td>
+<td style="text-align: right;">0.104</td>
 </tr>
 <tr>
 <td>Q3</td>
 <td style="text-align: right;">0.093</td>
 <td style="text-align: right;">0.087</td>
 <td></td>
-<td style="text-align: right;">0.081</td>
-<td style="text-align: right;">0.096</td>
+<td style="text-align: right;">0.093</td>
+<td style="text-align: right;">0.084</td>
 </tr>
 <tr>
 <td>Q4（长）</td>
 <td style="text-align: right;">0.091</td>
 <td style="text-align: right;"><strong>0.020</strong></td>
 <td></td>
-<td style="text-align: right;">0.042</td>
-<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.040</td>
+<td style="text-align: right;">0.026</td>
 </tr>
 </tbody>
 </table>
@@ -635,18 +635,18 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <td style="text-align: right;">0.003</td>
 </tr>
 <tr>
-<td>static obj /SD</td>
+<td>static obj (r3) /SD</td>
 <td style="text-align: right;">0.94</td>
-<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.50</td>
 <td style="text-align: right;">0.89</td>
-<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.23</td>
 </tr>
 <tr>
-<td>dynamic obj /SD</td>
-<td style="text-align: right;">0.89</td>
-<td style="text-align: right;">0.46</td>
-<td style="text-align: right;">0.85</td>
-<td style="text-align: right;">0.15</td>
+<td>dynamic obj (r3) /SD</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.19</td>
 </tr>
 <tr>
 <td>log(goals) /SD</td>
@@ -886,7 +886,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 3. tv 阈值 0.2/0.5m 双口径离线重打分（无需重跑模拟）。
 4. render_find 打开的 ~200 episode 子集 run，标定感知错误率。
 5. step budget 150–200 的 directed-failure 子集重跑，验证"预算截断"占比。
-6. difficulty_r3：corridor 障碍物计数加类别过滤（剔除 rug/carpet/mat、挂墙/吊顶装饰）+ 行走高度带过滤（如 y∈[0.1, 1.9m] 与物体 Y 范围相交才计），离线重算即可，预期能让障碍密度轴的信号更干净。</p>
+6. ~~difficulty_r3：corridor 障碍物计数加类别+高度带过滤~~ <strong>已完成</strong>（<code>difficulty_r3/</code>，脚本 <code>run_difficulty_r3.py</code>）：结论不变——障碍密度除极端尾部外仍非独立难度因子，弱信号不是地毯噪声。</p>
 <hr />
 <h2 id="8">8. 复现与文件清单</h2>
 <pre><code>outputs/gpt5_capability_analysis_20260705/
@@ -896,6 +896,8 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 ├── followup_checks.py              # stop/sit 机制、tv 可达性、抽查
 ├── followup2_attribution.py        # proposed vs final 动作归因（全步扫描）
 ├── followup3_crossrun.py           # 三 run stop 归因 + 修正 taxonomy
+├── run_difficulty_r3.py            # 过滤版 corridor 障碍计数（地毯类+高度带）
+├── difficulty_r3/                  # 过滤后的 episode_difficulty.csv（1218 eps）
 ├── case_storylines.txt             # §4 的 13 个案例完整时间线
 ├── derived_{low,high,nothink}.csv  # episode 级全部派生指标（含 taxonomy2、lr_flip、circling）
 ├── steps_{low,high,nothink}.csv.gz # step 级紧凑表
