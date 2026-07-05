@@ -1,0 +1,1023 @@
+
+==========================================================================================
+[easy_contact_no_stop_sit类] couch scene=102344529 ep=19 | path=4.0m turns=0 choice=4 obst=23 | min_dist=0.00 travel=8.2m steps=100 tax=contact_no_stop
+  t=  0 d= 1.79 Turn<left><30>             SUB  Start scanning by turning left to search for the couch in the adjacent area.
+        VS: From left to right, I can see a large window and wall, about 1.5-2.5 meters from me; a tal
+  t=  1 d= 1.69 Turn<left><30>             SUB  Continue turning left to scan the adjacent living area for a couch.
+  t=  2 d= 1.61 Walk<forward><slow>        SUB  Move forward toward the opening to approach and better align with the likely couch.
+  t=  3 d= 1.79 Walk<forward><normal>      SUB  Advance through the opening to close distance to the couch and prepare to align with it.
+  t=  4 d= 1.90 Walk<forward><normal>      SUB  Proceed forward through the opening to reduce distance to the couch.
+  t=  5 d= 1.99 Turn<left><30>             SUB  Continue moving forward through the opening to reduce distance to the couch.
+  t=  6 d= 1.80 Turn<left><30>             SUB  Turn left to align with the open passage toward the couch.
+  t=  7 d= 1.81 Turn<right><40>            SUB  Walk forward toward the right-side opening to enter the living area and approach the couch.
+  t=  8 d= 1.76 Walk<forward><slow>        SUB  Advance through the opening to reduce distance to the couch.
+  t=  9 d= 1.68 Walk<forward><slow>        SUB  Advance through the opening to close distance to the couch.
+  t= 10 d= 1.62 Walk<forward><slow>        SUB  Move forward through the opening to close distance to the couch.
+  t= 11 d= 1.54 Walk<forward><slow>        SUB  Move forward through the opening to approach the couch.
+  t= 12 d= 1.46 Turn<left><30>             SUB  Advance forward into the room to reduce distance to the couch.
+  t= 13 d= 1.49 Turn<right><30>            SUB  Turn right to face into the living area opening where the couch is located.
+  t= 14 d= 1.42 Turn<right><20>            SUB  Slightly turn right to center the opening to the living area with the couch.
+  t= 15 d= 1.41 Turn<left><30>             SUB  Move forward through the doorway to approach the couch.
+  t= 16 d= 1.39 Turn<right><30>            SUB  Turn right to center the doorway into the living area with the couch.
+  t= 17 d= 1.39 Turn<right><20>            SUB  Slightly turn right to center the doorway opening for a safe entry toward the couch.
+  t= 18 d= 1.27 Walk<forward><slow>        SUB  Move forward through the doorway to approach the couch.
+  t= 19 d= 1.15 Walk<forward><slow>        SUB  Advance carefully through the doorway to get closer to the couch.
+  t= 20 d= 1.06 Walk<forward><slow>        SUB  Move forward cautiously over the threshold to get closer to the couch.
+        VS: From left to right, I can see the left door frame edge at the threshold, about 0.15-0.25 m
+  t= 21 d= 0.95 Walk<forward><slow>        SUB  Advance cautiously over the threshold to get closer to the couch.
+  t= 22 d= 1.00 Side step<left><0.25>      SUB  Side step left to clear the pouf and align with the open path toward the couch.
+  t= 23 d= 1.13 Side step<left><0.25>      SUB  Side step left to fully clear the couch corner and align with the open path onto the rug.
+  t= 24 d= 1.27 Side step<left><0.25>      SUB  Side step left to fully center on the open rug lane before advancing toward the couch.
+  t= 25 d= 1.43 Side step<left><0.25>      SUB  Side step left to fully center on the rug and clear the couch corner for a safe forward approach.
+  t= 26 d= 1.47 Turn<right><20>            SUB  Turn right to align with the open rug lane toward the couch.
+  t= 27 d= 1.48 Turn<right><30>            SUB  Move forward onto the rug to enter the room and approach the couch.
+  t= 28 d= 1.32 Walk<forward><slow>        SUB  Advance onto the rug to enter the room and approach the couch corner.
+  t= 29 d= 1.17 Walk<forward><slow>        SUB  Move forward slowly onto the circular rug to enter the room and close distance to the couch corner.
+  t= 30 d= 1.05 Walk<forward><slow>        SUB  Step forward onto the rug to close distance to the couch corner.
+  t= 31 d= 0.90 Walk<forward><slow>        SUB  Move forward onto the rug to reduce the distance to the couch corner.
+  t= 32 d= 0.75 Walk<forward><slow>        SUB  Advance carefully onto the rug to reach zero distance with the couch corner.
+  t= 33 d= 0.63 Walk<forward><slow>        SUB  Advance slowly onto the rug to reach zero distance with the couch corner.
+  t= 34 d= 0.61 Walk<forward><slow>        SUB  Close the final gap to make contact with the couch corner.
+  t= 35 d= 0.60 Walk<forward><slow>        SUB  Close the final few centimeters to make contact with the couch corner.
+  t= 36 d= 0.57 Walk<forward><slow>        SUB  Make gentle contact with the couch corner to reach zero distance.
+  t= 37 d= 0.55 Walk<forward><slow>        SUB  Gently close the last centimeters to make contact with the couch corner.
+  t= 38 d= 0.53 Walk<forward><slow>        SUB  Start the sit setup by turning right to align for sitting on the couch.
+  t= 39 d= 0.57 Turn<right><45>            SUB  Turn right to align with the open path along the couch and prepare to move around its right end.
+  t= 40 d= 0.56 Walk<forward><slow>        SUB  Advance along the right-side open lane to pass the couch’s right end.
+        VS: From left to right, I can see a white irregular rug on wood floor, about 0.1-0.2 meters fr
+  t= 41 d= 0.46 Turn<left><30>             SUB  Advance along the open lane to pass the couch’s right end onto the rugs.
+  t= 42 d= 0.28 Walk<forward><slow>        SUB  Gently close the remaining gap to make contact with the couch corner.
+  t= 43 d= 0.21 Turn<right><45>            SUB  Turn right to align with the open lane along the couch and prepare to move around its right end to the seating
+  t= 44 d= 0.19 Turn<right><30>            SUB  Align with the open right-side passage along the couch to move around its right end toward the seating side.
+  t= 45 d= 0.14 Turn<left><30>             SUB  Advance along the open right-side lane to pass the couch’s right end toward the seating side.
+  t= 46 d= 0.14 Turn<left><30>             SUB  Align my facing toward the couch seating edge to prepare for a gentle approach to contact.
+  t= 47 d= 0.14 Turn<right><30>            SUB  Turn right to align with the open right-side passage along the couch to move around its right end toward the s
+  t= 48 d= 0.01 Walk<forward><slow>        SUB  Gently close the remaining gap to make contact with the couch seating edge.
+  t= 49 d= 0.00 Walk<forward><normal>      SUB  Rotate so my back faces the couch to prepare for sitting.
+  t= 50 d= 0.00 Walk<forward><slow>        SUB  Gently close the remaining gap to make contact with the couch seating edge.
+  t= 51 d= 0.00 Walk<forward><normal>      SUB  Rotate in place to put my back toward the couch to prepare for sitting.
+  t= 52 d= 0.00 Side step<left><0.25>      SUB  Rotate in place to orient my back toward the couch for sitting.
+  t= 53 d= 0.00 Side step<left><0.20>      SUB  Gently close the tiny left gap to make contact with the couch seating edge.
+  t= 54 d= 0.00 Walk<forward><slow>        SUB  Rotate in place to orient my back toward the couch to prepare for sitting.
+  t= 55 d= 0.00 Walk<forward><slow>        SUB  Carefully move forward to establish gentle contact with the couch.
+  t= 56 d= 0.00 Turn<right><30>            SUB  Turn toward the right-side open passage to go around the couch’s near-right end toward the seating edge.
+  t= 57 d= 0.00 Turn<left><20>             SUB  Advance along the right-side passage to move around the couch’s near-right end toward the seating edge.
+  t= 58 d= 0.00 Turn<left><30>             SUB  Advance forward into the right-side open passage to move past the couch’s near-right end.
+  t= 59 d= 0.00 Turn<right><30>            SUB  Turn to face the open passage ahead-right to move around the couch’s right end toward the seating side.
+  t= 60 d= 0.00 Side step<left><0.20>      SUB  Gently move left to make contact with the couch seating edge.
+        VS: From left to right, I can see the seating side of a black sectional couch with pillows alo
+  t= 61 d= 0.00 Side step<left><0.25>      SUB  Rotate in place to orient my back toward the couch to prepare for sitting.
+  t= 62 d= 0.00 Side step<left><0.20>      SUB  Gently close the remaining left gap to make contact with the couch seating edge.
+  t= 63 d= 0.00 Side step<left><0.25>      SUB  Rotate to put my back toward the couch to prepare for sitting.
+  t= 64 d= 0.00 Side step<left><0.25>      SUB  Rotate in place to orient my back toward the couch to prepare for sitting.
+  t= 65 d= 0.00 Side step<left><0.10>      SUB  Make gentle left contact with the couch seating edge.
+  t= 66 d= 0.00 Side step<left><0.10>      SUB  Gently close the remaining left gap to make contact with the couch seating edge.
+  t= 67 d= 0.00 Side step<left><0.10>      SUB  Gently make left contact with the couch seating edge to ensure zero-distance.
+  t= 68 d= 0.00 Side step<left><0.25>      SUB  Turn to put my back toward the couch to prepare for sitting.
+  t= 69 d= 0.00 Side step<left><0.10>      SUB  Gently make left contact with the couch seating edge to ensure zero-distance.
+  t= 70 d= 0.00 Side step<left><0.10>      SUB  Gently make left contact with the couch to ensure zero-distance.
+  t= 71 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch seating edge to ensure zero-distance.
+  t= 72 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch seating edge to achieve zero-distance.
+  t= 73 d= 0.00 Side step<left><0.25>      SUB  Turn in place to orient my back toward the couch to prepare for sitting.
+  t= 74 d= 0.00 Side step<left><0.25>      SUB  Turn in place to align my back toward the couch to prepare for sitting.
+  t= 75 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch seating edge to achieve zero-distance.
+  t= 76 d= 0.00 Side step<left><0.10>      SUB  Gently close the remaining left gap to achieve definite contact with the couch.
+  t= 77 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch to achieve zero-distance.
+  t= 78 d= 0.00 Side step<left><0.10>      SUB  Gently close the remaining left gap to achieve definite contact with the couch.
+  t= 79 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch to achieve zero-distance.
+  t= 80 d= 0.00 Side step<left><0.10>           Gently make definite left contact with the couch to achieve zero-distance.
+        VS: From left to right, I can see the cushions and seating edge of a black sectional couch imm
+  t= 82 d= 0.00 Side step<left><0.10>      SUB  Gently close the remaining left gap to achieve definite contact with the couch.
+  t= 83 d= 0.00 Side step<left><0.50>      SUB  Turn in place to align my back toward the couch for sitting.
+  t= 84 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch to reach zero-distance.
+  t= 85 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch to achieve zero-distance.
+  t= 86 d= 0.00 Side step<left><0.10>      SUB  Gently close the remaining left gap to achieve definite contact with the couch.
+  t= 87 d= 0.00 Side step<left><0.10>      SUB  Gently press left to make definite contact with the couch to achieve zero-distance.
+  t= 88 d= 0.00 Side step<left><0.10>      SUB  Make definite contact with the couch on my left to achieve zero-distance.
+  t= 89 d= 0.00 Side step<left><0.25>      SUB  Turn in place to align my back toward the couch for sitting.
+  t= 90 d= 0.00 Side step<left><0.10>      SUB  Gently press left to achieve definite zero-distance contact with the couch.
+  t= 91 d= 0.00 Side step<left><0.10>      SUB  Make definite left contact with the couch to ensure zero-distance.
+  t= 92 d= 0.00 Side step<left><0.10>      SUB  Gently make definite left contact with the couch to ensure zero-distance before turning to sit.
+  t= 93 d= 0.00 Side step<left><0.25>      SUB  Begin sit setup by turning to put my back toward the couch.
+  t= 94 d= 0.00 Side step<left><0.25>      SUB  Slide left along the couch to reach its seating side and establish contact there.
+  t= 95 d= 0.00 Side step<left><0.25>      SUB  Continue sliding left along the couch to reach its seating side for proper contact.
+
+==========================================================================================
+[easy_contact_no_stop_chair] chair scene=102343992 ep=12 | path=4.4m turns=0 choice=4 obst=15 | min_dist=0.00 travel=10.2m steps=100 tax=contact_no_stop
+  t=  0 d= 2.26 Turn<left><50>             SUB  Rotate left to face the open kitchen walkway along the counter to begin searching for a chair.
+        VS: From left to right, I can see a kitchen countertop with a sink, about 1.0 meters from me; 
+  t=  1 d= 2.14 Turn<left><40>             SUB  Turn left to face the open kitchen passage along the counter.
+  t=  2 d= 2.09 Turn<left><40>             SUB  Turn left to face the open kitchen walkway along the counter and reveal the passage.
+  t=  3 d= 2.20 Turn<left><30>             SUB  Turn left to face the open passage along the counter toward the visible chair.
+  t=  4 d= 2.22 Turn<left><25>             SUB  Turn left to align with the open passage toward the visible chair.
+  t=  5 d= 1.99 Walk<forward><slow>        SUB  Enter the passage and advance toward the closest dining chair ahead-left.
+  t=  6 d= 1.73 Walk<forward><normal>      SUB  Proceed through the passage and approach the closest dining chair ahead-left.
+  t=  7 d= 1.44 Turn<left><20>             SUB  Slightly turn left to align with the open passage toward the nearest dining chair ahead-left.
+  t=  8 d= 0.97 Walk<forward><normal>      SUB  Advance through the passage and approach the nearest dining chair ahead-left until very close.
+  t=  9 d= 0.91 Walk<forward><slow>        SUB  Advance through the passage toward the nearest chair ahead-left to reach touching distance.
+  t= 10 d= 0.73 Walk<forward><slow>        SUB  Close the remaining gap to the nearest chair ahead-left until my body touches it.
+  t= 11 d= 0.49 Walk<forward><slow>        SUB  Close the remaining gap and make body contact with the nearest chair ahead-left.
+  t= 12 d= 0.40 Walk<forward><slow>        SUB  Close the final gap and touch the nearest dining chair ahead-left.
+  t= 13 d= 0.14 Walk<forward><slow>        SUB  Close the final centimeters and make body contact with the nearest chair ahead-left.
+  t= 14 d= 0.00 Turn<right><30>            SUB  Make gentle contact with the nearest dining chair ahead-left.
+  t= 15 d= 0.00 Walk<forward><slow>        SUB  Advance through the clear lane and approach the upright dining chair ahead-center until very close.
+  t= 16 d= 0.00 Walk<forward><slow>        SUB  Advance carefully toward the upright chair ahead-center until almost touching distance.
+  t= 17 d= 0.00 Walk<forward><slow>        SUB  Advance carefully to make gentle body contact with the nearer upright chair ahead-right.
+  t= 18 d= 0.00 Walk<forward><slow>        SUB  Close the remaining gap and make gentle body contact with the nearest upright chair ahead-center.
+  t= 19 d= 0.00 Walk<forward><slow>        SUB  Close the final gap to touch the nearest upright chair ahead-center.
+  t= 20 d= 0.00 Walk<forward><slow>        SUB  Close the last few decimeters to touch the upright chair directly ahead-center.
+        VS: From left to right, I can see a round dining table with place settings, about 0.3-0.5 mete
+  t= 21 d= 0.00 Walk<forward><slow>        SUB  Close the final gap and make gentle body contact with the upright chair ahead-center.
+  t= 22 d= 0.00 Turn<right><30>            SUB  Close the final centimeters and make gentle body contact with the upright chair ahead-center.
+  t= 23 d= 0.00 Turn<left><20>             SUB  Align slightly left to center the nearest chair for a controlled contact approach.
+  t= 24 d= 0.00 Turn<left><15>             SUB  Finish aligning slightly left so the nearest chair is centered for a controlled contact approach.
+  t= 25 d= 0.00 Walk<forward><slow>        SUB  Close the final small gap and make gentle body contact with the centered upright chair.
+  t= 26 d= 0.00 Walk<forward><slow>        SUB  Close the final centimeters to make gentle body contact with the nearest upright chair ahead-left.
+  t= 27 d= 0.00 Walk<forward><slow>        SUB  Close the final centimeters to make gentle body contact with the nearest chair ahead-left.
+  t= 28 d= 0.00 Turn<left><12>             SUB  Slightly turn left to center the nearest chair for a controlled contact approach.
+  t= 29 d= 0.00 Walk<forward><slow>        SUB  Close the final centimeters to make gentle body contact with the nearest upright chair ahead-center.
+  t= 30 d= 0.00 Walk<forward><slow>        SUB  Close the final centimeters to make gentle body contact with the nearest chair ahead.
+  t= 31 d= 0.00 Walk<forward><slow>        SUB  Close the final centimeters to gently make contact with the nearest upright chair ahead-right.
+  t= 32 d= 0.00 Turn<right><12>            SUB  Slightly align right to center the nearest chair for a controlled gentle contact approach.
+  t= 33 d= 0.00 Turn<left><30>             SUB  Close the final centimeters and make gentle body contact with the nearest chair ahead.
+  t= 34 d= 0.00 Turn<left><12>             SUB  Slightly turn left to center the nearest chair back for a controlled contact approach.
+  t= 35 d= 0.00 Turn<left><10>             SUB  Make a small left alignment to precisely center the nearest chair for a safe gentle contact approach.
+  t= 36 d= 0.01 Turn<right><10>            SUB  Make a small right alignment to center the nearest chair for a controlled gentle contact.
+  t= 37 d= 0.00 Turn<right><10>            SUB  Make a small right alignment to center the nearest chair for a safe minimal contact approach.
+  t= 38 d= 0.00 Side step<left><0.15>      SUB  Side-step left slightly to gently touch the nearby left chair.
+  t= 39 d= 0.00 Side step<left><0.10>      SUB  Side-step slightly left to make gentle contact with the nearby left chair.
+  t= 40 d= 0.02 Side step<left><0.10>      SUB  Side-step slightly left to make gentle body contact with the left chair.
+        VS: From left to right, I can see the rounded edge of a dining table at the far left, about 0.
+  t= 41 d= 0.05 Side step<left><0.10>      SUB  Side-step slightly left to make gentle contact with the left chair.
+  t= 43 d= 0.10 Side step<left><0.10>      SUB  Side-step slightly left to make gentle body contact with the left chair.
+  t= 46 d= 0.11 Side step<left><0.10>      SUB  Side-step slightly left to achieve gentle body contact with the left chair.
+  t= 47 d= 0.11 Side step<left><0.10>      SUB  Make gentle contact with the left chair by a small left sidestep.
+  t= 48 d= 0.10 Side step<left><0.10>      SUB  Make gentle body contact with the left chair by a small left sidestep.
+  t= 50 d= 0.09 Side step<left><0.10>           Make gentle body contact with the left chair by a small left sidestep.
+  t= 53 d= 0.13 Side step<left><0.10>      SUB  Close the remaining small lateral gap to the left chair by a gentle left sidestep to achieve contact.
+  t= 54 d= 0.13 Side step<left><0.10>      SUB  Make gentle body contact with the left chair by a small left sidestep.
+  t= 55 d= 0.12 Side step<left><0.10>      SUB  Close the tiny lateral gap and make gentle body contact with the left chair.
+  t= 56 d= 0.07 Side step<right><0.10>     SUB  Make gentle body contact with the nearest right-side chair via a small right sidestep.
+  t= 57 d= 0.03 Side step<right><0.10>     SUB  Close the tiny lateral gap and make gentle body contact with the nearest right-side chair.
+  t= 58 d= 0.01 Side step<right><0.10>     SUB  Close the tiny lateral gap to the nearest right-side chair to achieve gentle body contact.
+  t= 59 d= 0.00 Side step<right><0.10>     SUB  Close the tiny lateral gap and make gentle body contact with the nearest right-side chair.
+  t= 60 d= 0.00 Side step<right><0.10>          Close the tiny lateral gap and make gentle body contact with the nearest right-side chair.
+        VS: From left to right, I can see the round dining table edge with place settings about 0.25 m
+  t= 61 d= 0.00 Side step<right><0.10>     SUB  Make gentle body contact with the nearest right-side chair by closing the tiny lateral gap.
+  t= 63 d= 0.00 Side step<right><0.10>     SUB  Close the tiny lateral gap and make gentle body contact with the nearest right-side chair.
+  t= 64 d= 0.00 Side step<right><0.10>     SUB  Close the tiny lateral gap to the nearest right-side chair and make gentle body contact.
+  t= 66 d= 0.00 Side step<right><0.10>     SUB  Close the tiny lateral gap and make gentle body contact with the nearest right-side chair.
+  t= 68 d= 0.00 Side step<right><0.10>     SUB  Close the tiny lateral gap to the nearest right-side chair and make gentle body contact.
+  t= 70 d= 0.00 Side step<left><0.10>      SUB  Close the tiny lateral gap to the nearest ahead-left chair and make gentle body contact.
+  t= 71 d= 0.00 Side step<left><0.10>      SUB  Close the tiny leftward gap to the nearest chair and make gentle body contact.
+  t= 72 d= 0.00 Side step<left><0.10>      SUB  Close the tiny leftward gap and make gentle body contact with the nearest ahead-left chair.
+  t= 74 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to the nearest ahead-right chair to make gentle body contact.
+  t= 75 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to the nearest ahead-right chair to achieve gentle body contact.
+  t= 77 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to the nearest ahead-right chair to reach zero distance.
+  t= 78 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to make gentle body contact with the nearest chair.
+  t= 79 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap and make gentle body contact with the nearest chair.
+  t= 80 d= 0.00 Side step<right><0.10>          Close the tiny rightward gap and make gentle body contact with the nearest chair.
+        VS: From left to right, I can see the round dining table edge about 0.30 meters from me; a tig
+  t= 82 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to gently make body contact with the nearest chair.
+  t= 84 d= 0.00 Side step<left><0.10>      SUB  Close the tiny leftward gap to gently make body contact with the nearest chair.
+  t= 86 d= 0.00 Side step<left><0.10>      SUB  Close the tiny leftward gap to make gentle body contact with the nearest chair.
+  t= 87 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to make gentle body contact with the nearest chair.
+  t= 88 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to gently make body contact with the nearest chair.
+  t= 89 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to gently touch the nearest chair.
+  t= 90 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to make gentle body contact with the nearest chair.
+  t= 93 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to gently make body contact with the nearest chair.
+  t= 95 d= 0.00 Side step<left><0.10>      SUB  Close the tiny leftward gap to gently make body contact with the nearest chair.
+  t= 96 d= 0.00 Side step<left><0.10>      SUB  Close the tiny leftward gap to make gentle body contact with the nearest chair.
+  t= 98 d= 0.00 Side step<right><0.10>     SUB  Close the tiny rightward gap to make gentle body contact with the nearest chair.
+  t= 99 d= 0.00 Side step<left><0.10>      SUB  Close the tiny leftward gap to gently make body contact with the nearest chair.
+
+==========================================================================================
+[easy_last_mile_plant] potted_plant scene=102344094 ep=14 | path=4.4m turns=0 choice=3 obst=22 | min_dist=0.29 travel=11.1m steps=100 tax=last_mile_failure
+  t=  0 d= 2.71 Turn<left><20>             SUB  Align toward the left-side open doorway and prepare to walk through it.
+        VS: From left to right, I can see a dresser with a TV about 1.0 meters from me; an open doorwa
+  t=  1 d= 2.76 Turn<right><30>            SUB  Advance toward and enter the left-side open doorway through the clear gap.
+  t=  2 d= 2.47 Side step<left><0.30>      SUB  Side-step left to clear the bed corner and align with the open doorway ahead-left.
+  t=  3 d= 2.29 Side step<left><0.25>      SUB  Create clearance from the bed by side-stepping left to line up a safe approach to the left doorway.
+  t=  4 d= 2.15 Turn<left><30>             SUB  Advance cautiously toward and through the left-side open doorway.
+  t=  5 d= 2.14 Turn<right><25>            SUB  Rotate to align with the open doorway on the right while keeping clear of the bed corner.
+  t=  6 d= 2.19 Turn<right><20>            SUB  Finish aligning to the right-side doorway to open a clear path, then advance through it.
+  t=  7 d= 2.23 Turn<left><20>             SUB  Slightly turn left to center the clear path to the doorway, preparing to walk through it.
+  t=  8 d= 2.02 Side step<left><0.25>      SUB  Side-step left to clear the bed corner and open a safe forward path to the doorway.
+  t=  9 d= 1.89 Walk<forward><slow>        SUB  Advance carefully toward and through the centered open doorway.
+  t= 10 d= 1.96 Walk<forward><slow>        SUB  Move forward through the centered open doorway into the next space.
+  t= 11 d= 1.91 Walk<forward><slow>        SUB  Proceed forward through the centered open doorway into the next space.
+  t= 12 d= 1.89 Turn<left><20>             SUB  Advance carefully through the centered open doorway into the next space.
+  t= 13 d= 1.91 Walk<forward><slow>        SUB  Advance carefully toward the open doorway ahead-right while avoiding the close bed edge.
+  t= 14 d= 1.82 Turn<right><15>            SUB  Slightly turn right to center the clear gap toward the open doorway.
+  t= 15 d= 1.75 Walk<forward><slow>        SUB  Advance carefully through the centered gap toward and into the open doorway.
+  t= 16 d= 1.81 Walk<forward><slow>        SUB  Move forward carefully through the narrow gap toward and into the open doorway.
+  t= 18 d= 1.66 Side step<left><0.25>      SUB  Side-step left to clear the bed corner and open a safe forward path to the doorway ahead-left.
+  t= 19 d= 1.68 Walk<forward><slow>        SUB  Move forward carefully toward and into the open doorway ahead-left.
+  t= 20 d= 1.75 Walk<forward><slow>        SUB  Proceed carefully forward-left through the open doorway into the next space.
+        VS: From left to right, I can see a tall mirror on the left wall about 0.8-1.0 meters from me;
+  t= 21 d= 1.78 Walk<forward><slow>        SUB  Advance carefully toward and through the open doorway ahead-left into the next space.
+  t= 22 d= 1.85 Walk<forward><slow>        SUB  Advance carefully toward and through the open doorway ahead-left.
+  t= 23 d= 1.90 Walk<forward><slow>        SUB  Advance carefully toward and through the open doorway ahead-left into the next space.
+  t= 24 d= 2.00 Walk<forward><slow>        SUB  Proceed carefully toward and through the open doorway ahead-left into the hall.
+  t= 25 d= 2.01 Turn<left><30>             SUB  Proceed carefully forward-left through the open doorway into the hall.
+  t= 26 d= 1.75 Side step<left><0.25>      SUB  Side-step left to clear the bed corner, then proceed toward the doorway into the hall.
+  t= 27 d= 1.73 Walk<forward><slow>        SUB  Move forward carefully toward and through the open doorway into the next room.
+  t= 28 d= 1.93 Turn<right><30>            SUB  Turn right to align with the open doorway, preparing to move into the next room.
+  t= 29 d= 2.02 Walk<forward><slow>        SUB  Move forward carefully toward and through the open doorway into the next room.
+  t= 30 d= 2.07 Turn<right><30>            SUB  Advance carefully through the open doorway into the next room.
+  t= 31 d= 1.94 Walk<forward><slow>        SUB  Advance carefully through the open doorway into the hall.
+  t= 32 d= 1.81 Walk<forward><slow>        SUB  Proceed carefully forward through the doorway into the hall.
+  t= 33 d= 1.67 Walk<forward><slow>        SUB  Move forward carefully through the doorway into the hall/laundry area.
+  t= 34 d= 1.57 Turn<right><20>            SUB  Advance carefully forward through the doorway into the hall/laundry area.
+  t= 36 d= 1.56 Turn<left><30>             SUB  Move forward carefully through the doorway into the hall/laundry area.
+  t= 37 d= 1.52 Turn<right><30>            SUB  Turn right to align with the doorway opening, setting up a safe forward move through it.
+  t= 38 d= 1.55 Turn<right><40>            SUB  Advance carefully forward through the doorway into the hall/laundry area.
+  t= 39 d= 1.55 Turn<right><25>            SUB  Turn right to align with the open doorway, setting up a safe forward move through it.
+  t= 40 d= 1.53 Turn<left><30>             SUB  Turn left to align with the open doorway for a safe forward move through it.
+        VS: From left to right, I can see an open doorway leading to a laundry nook with a stacked was
+  t= 41 d= 1.40 Walk<forward><slow>        SUB  Move forward carefully through the doorway into the hall/laundry area.
+  t= 42 d= 1.29 Walk<forward><slow>        SUB  Advance carefully forward through the doorway into the hall/laundry area.
+  t= 43 d= 1.22 Turn<left><35>             SUB  Turn left to align with the open hallway beside the laundry nook.
+  t= 44 d= 1.22 Turn<left><20>             SUB  Finish aligning with the open hallway by turning slightly left to center the clear path.
+  t= 45 d= 1.18 Turn<right><25>            SUB  Turn slightly right to center the open hallway and create a safe forward lane.
+  t= 46 d= 1.16 Turn<right><20>            SUB  Turn slightly right to fully align with the open hallway for a safe forward advance.
+  t= 48 d= 1.12 Turn<left><25>             SUB  Turn left to align with the open hallway on the left for a safe forward move.
+  t= 49 d= 1.11 Turn<left><20>             SUB  Turn left to fully align with the open hallway on the left for a safe forward move.
+  t= 50 d= 1.06 Turn<right><20>            SUB  Turn slightly right to center the open hallway for a safe forward advance.
+  t= 51 d= 1.04 Turn<left><30>             SUB  Move forward carefully through the doorway into the open hallway.
+  t= 52 d= 0.99 Turn<right><20>            SUB  Turn slightly right to center the open hallway for a safe forward move.
+  t= 53 d= 0.98 Turn<right><20>            SUB  Turn slightly right to center the open hallway for a safe forward advance.
+  t= 54 d= 0.98 Turn<left><20>             SUB  Turn slightly left to center the clear hallway and create a safe forward lane.
+  t= 55 d= 1.01 Turn<right><40>            SUB  Advance slowly forward to exit the doorway into the open hallway.
+  t= 56 d= 1.00 Turn<left><20>             SUB  Turn slightly left to center the open hallway and create a safe forward lane.
+  t= 57 d= 0.99 Turn<left><20>             SUB  Turn slightly left to center the open hallway for a safe forward advance.
+  t= 58 d= 0.97 Walk<forward><slow>        SUB  Advance carefully forward to clear the doorway into the open carpeted area.
+  t= 59 d= 1.00 Turn<right><40>            SUB  Proceed forward carefully to clear the doorway into the open carpeted area.
+  t= 60 d= 1.01 Turn<left><20>             SUB  Turn slightly left to center the open carpeted lane for a safe forward advance.
+        VS: From left to right, I can see a very close left wall/doorframe, about 0.1 meters from me; 
+  t= 61 d= 0.91 Walk<forward><slow>        SUB  Move forward carefully to clear the doorway into the open carpeted area.
+  t= 62 d= 0.79 Walk<forward><slow>        SUB  Advance carefully into the open carpeted area ahead-left to clear the doorway.
+  t= 64 d= 0.58 Walk<forward><slow>        SUB  Advance carefully into the open carpeted area ahead-left to fully clear the doorway.
+  t= 65 d= 0.46 Walk<forward><slow>        SUB  Move carefully forward into the open carpeted area ahead-left to fully clear the doorway.
+  t= 69 d= 0.47 Walk<forward><normal>      SUB  Move forward into the open carpeted area to fully clear the doorway and center in open space.
+  t= 70 d= 0.61 Turn<left><30>                  Move forward into the open carpeted area to fully clear the doorway and center in open space.
+  t= 71 d= 0.87 Turn<right><45>            SUB  Carefully move forward into the open carpeted space ahead-left to clear the shelf and doorway.
+  t= 72 d= 0.90 Turn<right><30>            SUB  Finish orienting to the right to face the open passage beside the shelf.
+  t= 73 d= 0.94 Turn<right><30>            SUB  Finish orienting to the right to face and center the open passage beside the shelf.
+  t= 74 d= 0.89 Turn<right><30>            SUB  Finish orienting right to face the open passage beside the shelf toward the laundry area.
+  t= 75 d= 0.83 Turn<right><30>            SUB  Finish turning right to face the open passage fully.
+  t= 76 d= 0.92 Turn<right><30>            SUB  Finish orienting right to directly face the open doorway/passage.
+  t= 77 d= 0.84 Walk<forward><slow>        SUB  Carefully walk forward through the doorway into the bedroom to gain scanning space.
+  t= 80 d= 0.37 Turn<left><20>             SUB  Proceed carefully forward through the doorway into the bedroom to gain scanning space.
+        VS: From left to right, I can see the fronts of a washer and dryer recessed on the left, about
+  t= 81 d= 0.29 Turn<left><15>             SUB  Slightly adjust left to center the open doorway for a safe entry path.
+  t= 82 d= 0.35 Turn<left><15>             SUB  Finish a small left turn to center the open doorway for a safe entry path.
+  t= 83 d= 0.43 Turn<left><15>             SUB  Finish a small left turn to center the open doorway and create safe clearance.
+  t= 84 d= 0.44 Turn<right><20>            SUB  Turn slightly right to face the open passage and clear space away from the close right frame.
+  t= 85 d= 0.46 Turn<left><25>             SUB  Turn left to face the open doorway on the left for a safe entry path.
+  t= 86 d= 0.44 Turn<left><25>             SUB  Turn left to face and center the open doorway on the left for a safe entry path.
+  t= 87 d= 0.47 Turn<left><20>             SUB  Turn slightly left to center the open forward-left passage for a safe entry path.
+  t= 88 d= 0.41 Turn<left><15>             SUB  Slightly turn left to center the open forward-left passage for a safe entry path.
+  t= 90 d= 0.45 Walk<forward><slow>        SUB  Advance slowly into the open forward-left floor to clear the tight doorway and gain scanning space.
+  t= 91 d= 0.53 Walk<forward><slow>        SUB  Advance cautiously into the center of the open floor to clear the tight doorway and gain scanning space.
+  t= 92 d= 0.62 Walk<forward><slow>        SUB  Advance slightly into the open floor to clear the tight shelf and set up a scan.
+  t= 93 d= 0.75 Turn<left><25>             SUB  Turn left to face the benches and scan that side for the plant.
+  t= 94 d= 0.71 Turn<left><20>             SUB  Slightly turn left to center the benches/back-left corner for a focused scan.
+  t= 95 d= 0.73 Turn<right><20>            SUB  Turn right to center the bench/back area for a better scan for the plant.
+  t= 96 d= 0.85 Turn<right><20>            SUB  Turn right to center the benches and open floor for a focused scan.
+  t= 97 d= 0.88 Turn<right><20>            SUB  Turn right to center the benches and the clear forward-right floor for scanning.
+  t= 98 d= 0.94 Turn<right><20>            SUB  Slightly turn right to center the benches and clear forward-right floor for scanning.
+  t= 99 d= 1.08 Walk<forward><slow>        SUB  Move a short step into the center of the open floor to improve scanning angles on the shelf and benches.
+
+==========================================================================================
+[easy_last_mile_tv] tv scene=102344094 ep=8 | path=2.9m turns=1 choice=3 obst=23 | min_dist=0.43 travel=10.2m steps=100 tax=last_mile_failure
+  t=  0 d= 1.64 Turn<right><30>            SUB  Turn right to face the open living area and prepare to enter it to search for the TV.
+        VS: From left to right, I can see a bed and nightstand in a bedroom alcove, about 1.0 meters f
+  t=  1 d= 1.59 Turn<right><25>            SUB  Finish turning right to face the open living area for entry and TV search.
+  t=  2 d= 1.40 Walk<forward><slow>        SUB  Proceed forward into the living area along the clear path past the cactus to continue searching for the TV.
+  t=  3 d= 1.44 Walk<forward><normal>      SUB  Proceed forward into the living area toward the rug and coffee table to improve view and search for the TV.
+  t=  4 d= 1.25 Walk<forward><normal>      SUB  Move forward into the living area toward the open space between the cactus and coffee table to improve the vie
+  t=  5 d= 1.10 Turn<right><30>            SUB  Advance into the open area on the rug between the cactus and coffee table to gain a better view for locating t
+  t=  6 d= 1.07 Walk<forward><slow>        SUB  Step forward onto the rug into the open space between the cactus and coffee table to gain a better vantage to 
+  t=  7 d= 0.97 Walk<forward><normal>      SUB  Advance forward onto the rug to the central open space between the coffee table and sofa to improve the view f
+  t=  8 d= 1.08 Turn<left><30>             SUB  Turn left to face the left/front-left wall and console area to search for the TV.
+  t=  9 d= 1.05 Turn<left><25>             SUB  Continue turning left to scan more of the left wall and console area for the TV.
+  t= 10 d= 0.96 Turn<right><40>            SUB  Carefully advance forward to make body contact with the console/wall directly beneath the TV while avoiding th
+  t= 11 d= 0.79 Side step<left><0.25>      SUB  Shift left to clear the coffee table and align with the console under the TV for a safe approach.
+  t= 12 d= 0.68 Side step<left><0.25>      SUB  Continue shifting left to clear the coffee table and align with the console for a safe approach to touch.
+  t= 13 d= 0.71 Turn<left><20>             SUB  Turn slightly left to face the console under the TV to set up a safe forward touch.
+  t= 14 d= 0.66 Turn<right><45>            SUB  Advance slowly to make body contact with the console/wall directly beneath the TV.
+  t= 15 d= 0.66 Side step<left><0.20>      SUB  Side-step left to make body contact with the console/wall beneath the TV.
+  t= 16 d= 0.68 Side step<left><0.20>      SUB  Complete the left sidestep to make body contact with the console/wall beneath the TV.
+  t= 17 d= 0.67 Side step<left><0.15>      SUB  Finish closing the gap by sidestepping left to make body contact with the console/wall beneath the TV.
+  t= 19 d= 0.70 Side step<left><0.10>      SUB  Finish closing the small gap by sidestepping left to make body contact with the console/wall beneath the TV.
+  t= 20 d= 0.69 Side step<left><0.10>      SUB  Finish closing the gap by sidestepping left to make body contact with the console/wall beneath the TV.
+        VS: From left to right, I can see a low console with plants and a record player along the left
+  t= 21 d= 0.71 Side step<left><0.10>      SUB  Complete the leftward approach to make body contact with the console/wall beneath the TV.
+  t= 23 d= 0.72 Side step<left><0.10>      SUB  Finish closing the small gap by sidestepping left to make body contact with the console/wall beneath the TV.
+  t= 24 d= 0.71 Side step<left><0.10>      SUB  Finish closing the tiny left-front gap to make body contact with the console/wall beneath the TV.
+  t= 25 d= 0.72 Side step<left><0.10>      SUB  Close the tiny left-front gap to make body contact with the console/wall beneath the TV.
+  t= 26 d= 0.72 Side step<left><0.10>      SUB  Finish closing the tiny left gap to make body contact with the console/wall beneath the TV.
+  t= 27 d= 0.71 Side step<left><0.10>      SUB  Make body contact with the console/wall beneath the TV by a short left sidestep.
+  t= 29 d= 0.74 Side step<left><0.10>      SUB  Make body contact with the console/wall beneath the TV by a final small left sidestep.
+  t= 30 d= 0.74 Side step<left><0.10>      SUB  Finish closing the tiny left gap to make body contact with the console/wall beneath the TV.
+  t= 31 d= 0.76 Side step<left><0.10>      SUB  Make body contact with the console/wall beneath the TV by closing the tiny left gap.
+  t= 32 d= 0.76 Side step<left><0.10>      SUB  Close the tiny left gap to make body contact with the console/wall beneath the TV.
+  t= 33 d= 0.77 Side step<left><0.10>      SUB  Close the final centimeters leftward to make body contact with the console/wall beneath the TV.
+  t= 35 d= 0.80 Side step<left><0.10>      SUB  Close the last few centimeters leftward to make body contact with the console/wall beneath the TV.
+  t= 36 d= 0.81 Side step<left><0.10>      SUB  Close the final centimeters leftward to make body contact with the console/wall beneath the TV.
+  t= 38 d= 0.81 Side step<left><0.10>      SUB  Close the final centimeters to make body contact with the console/wall beneath the TV by moving slightly left.
+  t= 39 d= 0.81 Side step<left><0.10>      SUB  Close the final centimeters leftward to make body contact with the console/wall beneath the TV.
+  t= 40 d= 0.79 Side step<left><0.10>           Close the final centimeters leftward to make body contact with the console/wall beneath the TV.
+        VS: From left to right, I can see a wall-mounted black TV at the upper left; a low wood consol
+  t= 44 d= 0.74 Side step<left><0.10>      SUB  Shift slightly left to make body contact with the console/wall beneath the TV.
+  t= 45 d= 0.77 Side step<left><0.10>      SUB  Make body contact with the console/wall beneath the TV by shifting slightly left.
+  t= 46 d= 0.74 Side step<left><0.10>      SUB  Close the final centimeters leftward to make body contact with the console/wall beneath the TV.
+  t= 47 d= 0.71 Turn<left><45>             SUB  Scan by turning to the left to locate the TV or an open path out of the tight gap.
+  t= 48 d= 0.73 Turn<left><60>             SUB  Continue turning left to find an open path out of the corner and reorient toward the living area.
+  t= 49 d= 0.65 Turn<left><30>             SUB  Turn left to face and align with the open doorway to exit the tight corner.
+  t= 50 d= 0.61 Turn<left><20>             SUB  Finish aligning to the doorway by turning slightly left so the open path is centered.
+  t= 51 d= 0.60 Turn<right><20>            SUB  Slightly turn right to center the open doorway, preparing to walk through to the carpeted area.
+  t= 52 d= 0.55 Walk<forward><slow>        SUB  Walk forward through the doorway onto the carpet to enter the open room.
+  t= 53 d= 0.43 Walk<forward><normal>      SUB  Proceed forward through the doorway onto the carpet to enter the open room/hallway.
+  t= 54 d= 0.50 Turn<right><45>            SUB  Continue walking forward through the doorway onto the carpet to enter the open area.
+  t= 55 d= 0.47 Walk<forward><slow>        SUB  Move a short step forward into the open carpeted area to gain space before scanning for the TV.
+  t= 56 d= 0.50 Walk<forward><slow>        SUB  Take a short cautious step forward into the open carpeted corridor to create space for a safe scan.
+  t= 57 d= 0.54 Walk<forward><slow>        SUB  Advance slightly forward along the corridor to get a clearer view of the black panel and approach it.
+  t= 58 d= 0.63 Walk<forward><slow>        SUB  Advance a short distance forward along the corridor to get closer to the black panel on the left wall.
+  t= 59 d= 0.77 Turn<left><30>             SUB  Turn left to face and align with the TV on the left wall.
+  t= 60 d= 1.00 Walk<forward><slow>        SUB  Advance slowly toward the TV to close distance for contact.
+        VS: From left to right, I can see a large wall mirror very close on the left, about 0.15-0.25 
+  t= 61 d= 1.17 Turn<left><20>             SUB  Turn slightly left to bring the left-wall niche with the TV back into view and center the approach.
+  t= 62 d= 1.22 Turn<right><20>            SUB  Turn slightly right to face the open corridor and bring the left-wall niche back into view.
+  t= 63 d= 1.12 Turn<right><25>            SUB  Turn right to face the open corridor and bring the left-wall niche/TV area back into view.
+  t= 64 d= 1.07 Turn<right><20>            SUB  Finish turning right to face the open corridor for a safe approach and better view to locate the TV.
+  t= 65 d= 1.10 Turn<left><40>             SUB  Advance slightly into the open corridor to gain clearance from the doorway post while closing distance toward 
+  t= 66 d= 1.12 Turn<right><20>            SUB  Turn right to face the open corridor and center the TV for a safe approach.
+  t= 67 d= 1.05 Turn<right><20>            SUB  Turn slightly right to fully face the open corridor and center the TV edge for approach.
+  t= 68 d= 1.01 Turn<right><20>            SUB  Turn slightly right to fully face the open corridor toward the TV niche.
+  t= 69 d= 1.09 Walk<forward><slow>        SUB  Advance slightly into the open corridor to clear the doorway post while closing distance toward the TV niche.
+  t= 70 d= 1.23 Side step<left><0.20>      SUB  Side-step left to bring my body into contact with the TV surface.
+  t= 71 d= 1.27 Walk<forward><slow>        SUB  Move slightly forward along the clear carpeted lane toward the opening that leads to the TV.
+  t= 72 d= 1.42 Walk<forward><slow>        SUB  Advance slightly forward along the clear lane to clear the left post and close distance toward the TV opening.
+  t= 73 d= 1.57 Walk<forward><slow>        SUB  Advance slightly forward to clear the left post and create room to turn toward the TV niche.
+  t= 74 d= 1.68 Walk<forward><slow>        SUB  Advance slightly forward to clear the left post and set up a safe left turn toward the TV niche.
+  t= 75 d= 1.85 Walk<forward><slow>        SUB  Advance slightly forward to clear the left post and set up a left turn toward the TV niche.
+  t= 77 d= 1.86 Turn<left><60>             SUB  Turn left to scan for and reacquire the TV niche/opening.
+  t= 78 d= 1.96 Turn<left><40>             SUB  Turn further left to face back toward the opening where the TV niche should be.
+  t= 79 d= 2.19 Turn<left><30>             SUB  Finish turning left to face into the opening and reacquire the TV niche.
+  t= 80 d= 2.12 Turn<left><30>             SUB  Finish turning left to face into the opening and locate the TV niche.
+        VS: From left to right, I can see an opening with two circular laundry machines, about 1.0-1.2
+  t= 81 d= 2.18 Walk<forward><slow>        SUB  Advance into the corridor toward the TV to reduce distance while staying centered in the clear lane.
+  t= 82 d= 2.46 Walk<forward><slow>        SUB  Advance a bit farther down the corridor to reacquire and close distance to the TV on the left wall.
+  t= 83 d= 2.43 Turn<left><40>             SUB  Turn left to bring the TV on the left wall back into view and face it.
+  t= 84 d= 2.46 Turn<right><30>            SUB  Advance carefully along the corridor to get closer to the TV on the right wall.
+  t= 85 d= 2.61 Turn<right><60>            SUB  Advance carefully down the corridor to get very close to the TV on the right wall.
+  t= 86 d= 2.62 Side step<right><0.25>     SUB  Side step right to close the remaining gap and contact the TV on the right wall.
+  t= 87 d= 2.67 Side step<right><0.25>     SUB  Side step right to reach and touch the TV on the right wall.
+  t= 88 d= 2.55 Turn<left><40>             SUB  Turn left to face back toward the corridor wall and bring the TV into view.
+  t= 89 d= 2.44 Turn<left><30>             SUB  Finish turning left to face into the corridor and reacquire the TV on the right wall.
+  t= 90 d= 2.51 Walk<forward><slow>        SUB  Advance cautiously along the corridor to get alongside the TV for final contact.
+  t= 91 d= 2.62 Walk<forward><slow>        SUB  Advance a small step along the corridor to get directly alongside the TV for final contact.
+  t= 92 d= 2.74 Side step<right><0.25>     SUB  Side step right to close the remaining gap and make contact with the TV.
+  t= 93 d= 2.95 Side step<right><0.25>     SUB  Side step right to close the last lateral gap and make contact with the TV.
+  t= 94 d= 3.08 Side step<right><0.25>     SUB  Side step right to close the remaining lateral gap and make contact with the TV.
+  t= 95 d= 3.25 Turn<right><30>            SUB  Turn right to face the right wall and bring the TV back into view for final approach.
+  t= 96 d= 3.23 Turn<left><30>             SUB  Turn left to bring the right-wall TV back into view for a safe lateral approach.
+  t= 97 d= 3.21 Turn<right><30>            SUB  Turn slightly right to reacquire the TV on the right wall for a safe final approach.
+  t= 98 d= 3.15 Side step<left><0.25>      SUB  Side step left to center in the corridor and gain clearance from the right appliances.
+  t= 99 d= 2.94 Side step<left><0.25>      SUB  Side step left to gain clearance from the right appliances and center in the corridor.
+
+==========================================================================================
+[easy_claimed_not_approached] toilet scene=102344094 ep=21 | path=3.5m turns=1 choice=4 obst=21 | min_dist=1.16 travel=13.2m steps=100 tax=claimed_not_approached
+  t=  0 d= 3.05 Turn<right><30>            SUB  Turn to face the open doorway on the right to enter the next room.
+        VS: From left to right, I can see a kitchen counter with a bowl and lamp about 1.5 meters from
+  t=  1 d= 3.03 Turn<left><30>             SUB  Move forward carefully to pass through the open doorway into the next room/hall.
+  t=  2 d= 3.07 Turn<right><30>            SUB  Turn to face the open doorway on the right to prepare a safe entry path.
+  t=  3 d= 3.00 Turn<right><30>            SUB  Finish orienting to face through the doorway on the right to prepare a safe entry.
+  t=  4 d= 2.92 Turn<right><30>            SUB  Finish orienting to face and center the open doorway to the right for a safe entry.
+  t=  5 d= 2.85 Turn<right><20>            SUB  Finish turning right to center the open doorway for a safe entry.
+  t=  6 d= 2.79 Walk<forward><slow>        SUB  Move forward carefully through the doorway into the bedroom to continue the search.
+  t=  7 d= 2.74 Walk<forward><slow>        SUB  Move forward cautiously into the bedroom’s open carpet area, keeping slightly left to clear the dresser corner
+  t=  8 d= 2.68 Walk<forward><slow>        SUB  Move forward cautiously into the bedroom toward the possible doorway ahead-left.
+  t=  9 d= 2.74 Turn<left><30>             SUB  Advance carefully toward the open lane ahead-left leading to the possible doorway.
+  t= 10 d= 2.60 Walk<forward><slow>        SUB  Advance carefully through the narrow passage toward the doorway with the light-colored floor.
+  t= 11 d= 2.42 Turn<right><30>            SUB  Advance carefully toward and through the doorway with the light-colored floor.
+  t= 12 d= 2.37 Walk<forward><slow>        SUB  Advance carefully toward and into the doorway with the light-colored floor.
+  t= 14 d= 2.31 Turn<left><20>             SUB  Slightly turn left to center the doorway in my forward lane for a safe entry.
+  t= 15 d= 2.39 Turn<left><30>             SUB  Advance carefully toward and into the doorway with the light-colored floor.
+  t= 16 d= 2.37 Turn<right><20>            SUB  Slightly turn right to center the doorway in my forward lane for a safe entry.
+  t= 17 d= 2.31 Turn<left><45>             SUB  Carefully advance into the light-floored doorway to enter the adjacent room.
+  t= 18 d= 2.28 Turn<right><30>            SUB  Turn right to align with the open doorway for a safe entry.
+  t= 19 d= 2.20 Turn<right><20>            SUB  Slightly turn right to center the open doorway in my forward lane for safe entry.
+  t= 20 d= 2.20 Turn<left><20>             SUB  Carefully advance into the light-floored doorway to enter the adjacent room.
+        VS: From left to right, I can see a wall/doorframe edge very close on the left, about 0.1–0.2 
+  t= 21 d= 2.20 Turn<right><30>            SUB  Turn right to center the open doorway in my forward lane for a safe entry.
+  t= 22 d= 2.18 Turn<right><20>            SUB  Slightly turn right to center the open doorway for a safe entry.
+  t= 23 d= 2.26 Turn<left><20>             SUB  Slightly turn left to center the open doorway for a safe entry.
+  t= 25 d= 2.21 Turn<right><20>            SUB  Slightly turn right to center the open doorway for a safe entry.
+  t= 26 d= 2.21 Turn<left><20>             SUB  Slightly turn left to center the open doorway for a safe entry.
+  t= 27 d= 2.19 Turn<left><15>             SUB  Slightly turn left to align the open doorway centered for a safe entry.
+  t= 28 d= 2.10 Turn<right><20>            SUB  Turn right to center the open doorway for a safe entry.
+  t= 29 d= 2.12 Turn<right><20>            SUB  Slightly turn right to center the open doorway for a safe entry.
+  t= 30 d= 2.14 Turn<left><20>             SUB  Slightly turn left to center the open doorway for a safe entry.
+  t= 31 d= 2.11 Turn<right><40>            SUB  Carefully move forward through the doorway into the light-floored room while staying centered between the fram
+  t= 32 d= 2.11 Turn<left><20>             SUB  Slightly turn left to center the open passage and avoid the close pillar.
+  t= 33 d= 2.17 Turn<left><15>             SUB  Slightly turn left to center the open doorway and clear the close pillar.
+  t= 35 d= 2.01 Walk<forward><slow>        SUB  Move forward carefully through the doorway into the light-floored room, staying centered to avoid the frames.
+  t= 36 d= 2.02 Turn<left><30>             SUB  Move forward into the open area slightly left of center to clear the doorway and gain space to scan for the to
+  t= 37 d= 1.97 Turn<right><45>            SUB  Advance into the open light-floored area slightly left to clear the doorway and gain room to scan.
+  t= 38 d= 2.02 Turn<left><20>             SUB  Slightly turn left to center the open passage for a safe entry.
+  t= 39 d= 2.03 Turn<left><15>             SUB  Slightly turn left to center the open passage before advancing.
+  t= 40 d= 1.91 Walk<forward><slow>        SUB  Move forward slowly into the open passage ahead-left to clear the doorway and gain space to scan.
+        VS: From left to right, I can see a close left wall/doorframe about 0.1–0.2 meters from me; an
+  t= 41 d= 1.74 Walk<forward><slow>        SUB  Move forward slowly into the open passage ahead-left to clear the doorway and gain room to scan.
+  t= 42 d= 1.72 Turn<left><30>             SUB  Advance slowly into the open passage ahead-left to clear the doorway and gain room to scan.
+  t= 43 d= 1.67 Turn<right><45>            SUB  Turn right to face the open passage by the orange shelving and washer area.
+  t= 44 d= 1.65 Turn<left><20>             SUB  Slightly turn left to center the open lane ahead-left past the orange shelving.
+  t= 45 d= 1.65 Turn<left><15>             SUB  Slightly turn left to center the open passage ahead-left for a safe advance.
+  t= 46 d= 1.61 Turn<right><45>            SUB  Turn right to face the open passage by the washer/shelving.
+  t= 47 d= 1.61 Turn<left><40>             SUB  Move forward slowly to the corner by the washer to set up a right turn into the passage.
+  t= 48 d= 1.45 Walk<forward><slow>        SUB  Advance slowly along the narrow corridor to the corner by the shelving to set up a right turn/scan.
+  t= 49 d= 1.16 Walk<forward><slow>        SUB  Advance slowly toward the corner by the shelving to set up a right turn/scan.
+  t= 50 d= 1.26 Turn<right><45>            SUB  Turn right to align with the open passage beside the washer and proceed into it.
+  t= 51 d= 1.24 Turn<right><35>            SUB  Turn further right to align with the open passage beside the washer.
+  t= 52 d= 1.33 Turn<right><30>            SUB  Turn further right to face the open passage running along the right side of the machines.
+  t= 53 d= 1.35 Turn<right><25>            SUB  Finish aligning to the right-hand passage beside the machines.
+  t= 54 d= 1.37 Turn<right><60>            SUB  Advance slowly into the narrow passage beside the machines.
+  t= 55 d= 1.48 Walk<forward><slow>        SUB  Advance slowly through the doorway into the bedroom to set up a scan for a bathroom entrance.
+  t= 56 d= 1.58 Turn<left><30>             SUB  Enter the bedroom through the doorway to set up a scan for the bathroom entrance.
+  t= 57 d= 1.61 Turn<right><25>            SUB  Turn slightly right to align with the open bedroom floor through the doorway.
+  t= 58 d= 1.75 Walk<forward><slow>        SUB  Carefully move forward through the doorway into the bedroom.
+  t= 59 d= 1.85 Walk<forward><slow>        SUB  Advance carefully into the bedroom to clear the doorway and set up a scan for a bathroom entrance.
+  t= 60 d= 1.86 Turn<right><25>            SUB  Turn slightly right to face the open bedroom floor beside the bed.
+        VS: From left to right, I can see a close left wall/doorframe and the corner of a dresser with
+  t= 61 d= 1.85 Walk<forward><slow>        SUB  Advance carefully into the bedroom to clear the doorway and get room to scan for the bathroom entrance.
+  t= 62 d= 1.83 Walk<forward><slow>        SUB  Advance carefully into the bedroom to clear the doorway and reach the open floor for a scan.
+  t= 63 d= 1.84 Turn<right><30>            SUB  Move forward into the open bedroom floor to fully clear the doorway and set up a scan for a bathroom entrance.
+  t= 64 d= 1.81 Walk<forward><slow>        SUB  Advance slowly into the open aisle of the bedroom to clear the doorway and approach the right-side opening.
+  t= 65 d= 1.82 Walk<forward><slow>        SUB  Move slowly forward into the open bedroom aisle toward the right-side opening.
+  t= 66 d= 1.98 Walk<forward><normal>      SUB  Move forward along the open aisle toward the right-side doorway.
+  t= 67 d= 2.21 Walk<forward><normal>      SUB  Move forward through the open aisle toward and into the right-side doorway.
+  t= 68 d= 2.47 Walk<forward><normal>      SUB  Move forward through the open aisle into the right-side doorway.
+  t= 70 d= 2.85 Turn<right><30>            SUB  Advance into the open aisle toward the right-side doorway out of the bedroom.
+  t= 71 d= 2.85 Turn<right><30>            SUB  Align with the right-side doorway to exit the bedroom into the adjacent area.
+  t= 72 d= 2.74 Walk<forward><slow>        SUB  Move forward through the doorway into the hall to prepare for a scan for the bathroom.
+  t= 73 d= 2.67 Walk<forward><slow>        SUB  Step forward through the doorway onto the wood-floored hall to clear the doorway.
+  t= 75 d= 2.56 Walk<forward><slow>        SUB  Move forward through the doorway onto the wood floor to clear the doorway.
+  t= 76 d= 2.49 Walk<forward><slow>        SUB  Step forward through the doorway onto the wood floor to clear the doorway.
+  t= 77 d= 2.43 Walk<forward><slow>        SUB  Move forward through the doorway onto the wood floor to clear the doorway.
+  t= 78 d= 2.36 Turn<left><20>             SUB  Align slightly left to center the doorway opening before stepping through onto the wood floor.
+  t= 79 d= 2.39 Walk<forward><slow>        SUB  Move forward through the doorway onto the wood floor to clear the doorway.
+  t= 80 d= 2.42 Walk<forward><slow>             Move forward through the doorway onto the wood floor to clear the doorway.
+        VS: From left to right, I can see a small dresser tight to the left frame, about 0.2–0.4 meter
+  t= 81 d= 2.44 Walk<forward><slow>        SUB  Step forward through the doorway onto the wood floor to clear the frames and gain a wider view.
+  t= 82 d= 2.49 Walk<forward><slow>        SUB  Move forward through the doorway onto the wood floor to clear the doorway.
+  t= 83 d= 2.57 Walk<forward><slow>        SUB  Step forward onto the wood floor to clear the doorway and gain a broader view.
+  t= 84 d= 2.70 Walk<forward><normal>      SUB  Move forward into the living/kitchen area to clear the doorway and improve the view for spotting an open bathr
+  t= 85 d= 2.90 Walk<forward><normal>      SUB  Move forward into the center of the living/kitchen area to set up a wider scan for an open bathroom entrance.
+  t= 86 d= 3.14 Walk<forward><normal>      SUB  Advance into the center of the living/kitchen area to set up a wider scan for an open bathroom entrance.
+  t= 88 d= 3.50 Turn<right><30>            SUB  Turn right to scan the kitchen/dining side passage for an open bathroom entrance.
+  t= 89 d= 3.64 Turn<right><30>            SUB  Turn further right to scan for an open bathroom entrance beyond the kitchen island/dining area.
+  t= 90 d= 3.61 Walk<forward><slow>        SUB  Advance slightly toward the open space between the island and dining area to improve the view for a bathroom e
+  t= 91 d= 3.52 Turn<right><20>            SUB  Turn slightly right to face the open lane along the island and bypass the bar stool.
+  t= 92 d= 3.53 Walk<forward><slow>        SUB  Move forward along the right side of the island to pass the stool and gain a better vantage near the door.
+  t= 93 d= 3.53 Turn<right><20>            SUB  Turn slightly right to face the clear passage along the right side of the island.
+  t= 94 d= 3.47 Turn<left><45>             SUB  Proceed forward through the forward-right passage along the island to reach a broader vantage.
+  t= 95 d= 3.60 Side step<left><0.30>      SUB  Side-step left to clear the bar stool and align with the open floor near the dining table.
+  t= 96 d= 3.93 Side step<left><0.30>      SUB  Side-step left to clear the stool and align with the open floor by the dining table.
+  t= 97 d= 4.09 Side step<left><0.30>      SUB  Side-step left to clear the bar stool and align with the open floor by the dining table.
+  t= 98 d= 4.45 Side step<left><0.30>      SUB  Side-step left to fully clear the bar stool and align with the open floor by the dining table.
+  t= 99 d= 4.54 Walk<forward><slow>        SUB  Move forward into the dining area to improve the view and continue scanning for an open bathroom entrance.
+
+==========================================================================================
+[long_path_wander_1] chair scene=106878858_174886965 ep=15 | path=28.6m turns=4 choice=36 obst=35 | min_dist=9.88 travel=32.9m steps=100 tax=never_found
+  t=  0 d=19.18 Turn<right><60>            SUB  Turn right to scan away from the corner and locate an open passage or the chair.
+        VS: From left to right, I can see a dark wooden wall on the left, about 0.6-0.8 meters from me
+  t=  1 d=19.21 Turn<right><60>            SUB  Turn right to scan for an open passage away from the corner.
+  t=  2 d=19.17 Turn<right><45>            SUB  Turn right to face an open passage away from the wall.
+  t=  3 d=19.12 Turn<right><30>            SUB  Turn a bit more right to face the open grassy area away from the wall.
+  t=  4 d=19.02 Walk<forward><slow>        SUB  Move forward into the open corridor to advance the search.
+  t=  5 d=18.82 Walk<forward><normal>      SUB  Proceed forward down the clear corridor to continue the search.
+  t=  6 d=18.64 Walk<forward><normal>      SUB  Proceed forward down the clear corridor to continue the search for the chair.
+  t=  8 d=18.26 Walk<forward><normal>      SUB  Proceed forward down the clear corridor toward the upcoming right-side opening.
+  t=  9 d=18.12 Walk<forward><normal>      SUB  Proceed forward down the corridor toward the upcoming right-side opening.
+  t= 10 d=17.94 Walk<forward><normal>      SUB  Proceed forward down the corridor toward the upcoming opening to expand the view for the chair.
+  t= 11 d=17.80 Walk<forward><normal>      SUB  Proceed forward down the corridor toward the upcoming right-side opening.
+  t= 12 d=17.64 Walk<forward><normal>      SUB  Proceed forward to reach the upcoming right-side opening.
+  t= 13 d=17.47 Walk<forward><normal>      SUB  Advance forward down the corridor toward the far end to expand the view.
+  t= 14 d=17.33 Walk<forward><normal>      SUB  Proceed forward down the corridor to continue the search and expand the view.
+  t= 15 d=17.16 Walk<forward><normal>      SUB  Proceed forward down the corridor to expand the view and continue the search.
+  t= 16 d=17.01 Walk<forward><normal>      SUB  Proceed forward to reach the upcoming right-side opening and expand the view.
+  t= 18 d=16.74 Walk<forward><normal>      SUB  Proceed forward down the corridor to reach the far end/opening and expand the view.
+  t= 19 d=16.62 Walk<forward><normal>      SUB  Proceed forward to reach the nearby right-side opening and expand the view.
+  t= 20 d=16.49 Walk<forward><normal>           Proceed forward to reach the nearby right-side opening and expand the view.
+        VS: From left to right, I can see a dark wooden wall very close on the left, about 0.25-0.3 me
+  t= 22 d=16.38 Turn<right><30>            SUB  Turn right to look into the nearby right-side opening and expand the view.
+  t= 23 d=16.27 Walk<forward><slow>        SUB  Advance into the right-side passage to expand the view.
+  t= 24 d=16.06 Walk<forward><normal>      SUB  Proceed forward into the open area of the passage to expand the view.
+  t= 25 d=15.83 Walk<forward><normal>      SUB  Proceed forward into the open area to expand the view for finding the chair.
+  t= 26 d=15.60 Walk<forward><normal>      SUB  Proceed forward into the open area while keeping a safe margin from the right wall.
+  t= 27 d=15.41 Walk<forward><normal>      SUB  Proceed forward into the open area to expand the view and search for the chair.
+  t= 30 d=14.79 Walk<forward><normal>           Proceed forward into the open area to expand the view and search for the chair.
+  t= 31 d=14.60 Turn<left><45>             SUB  Proceed forward into the open area ahead to expand the view for locating the chair.
+  t= 32 d=14.64 Walk<forward><slow>        SUB  Move forward into the open area ahead to expand the view for locating the chair.
+  t= 33 d=14.75 Walk<forward><normal>      SUB  Proceed forward into the open area ahead to expand the view for locating the chair.
+  t= 34 d=14.87 Walk<forward><normal>      SUB  Proceed forward into the open area to expand the view for locating the chair.
+  t= 35 d=15.03 Walk<forward><normal>      SUB  Proceed forward into the open area ahead while keeping a safe margin from the left wall to search for the chai
+  t= 36 d=15.17 Walk<forward><normal>      SUB  Proceed forward into the open area while keeping a safe margin from the left wall to expand the view for locat
+  t= 37 d=15.32 Walk<forward><normal>      SUB  Proceed forward into the open area ahead to expand the view for locating the chair.
+  t= 40 d=15.50 Walk<forward><slow>        SUB  Move forward into the open area ahead to expand the view for locating the chair.
+        VS: From left to right, I can see a dark wooden wall running closely along my left, about 0.2-
+  t= 41 d=15.43 Walk<forward><normal>      SUB  Proceed forward into the open area ahead to expand the view for locating the chair.
+  t= 42 d=15.37 Walk<forward><normal>      SUB  Proceed forward toward the brighter open area to expand the view for locating the chair.
+  t= 44 d=15.36 Walk<forward><normal>      SUB  Proceed forward toward the brighter open gray-floored area to expand the view for locating the chair.
+  t= 45 d=15.40 Walk<forward><normal>      SUB  Proceed forward toward the brighter gray-floored area to expand the view for locating the chair.
+  t= 46 d=15.49 Walk<forward><normal>      SUB  Proceed forward into the open area to expand the view and look for the chair.
+  t= 47 d=15.56 Walk<forward><normal>      SUB  Proceed forward into the brighter open area to expand the view for locating the chair.
+  t= 48 d=15.67 Walk<forward><normal>      SUB  Proceed forward into the open area ahead to expand the view for locating the chair.
+  t= 50 d=15.92 Walk<forward><normal>      SUB  Proceed forward toward the brighter open area to expand the view and look for the chair.
+  t= 51 d=16.08 Walk<forward><normal>      SUB  Proceed forward into the open area ahead to expand the view for locating the chair.
+  t= 52 d=16.24 Walk<forward><normal>      SUB  Proceed forward toward the corner to reveal more of the adjacent open area and look for the chair.
+  t= 53 d=16.41 Walk<forward><normal>      SUB  Proceed forward toward the corner/open area to expand the view and look for the chair.
+  t= 54 d=16.63 Walk<forward><normal>      SUB  Proceed forward into the open area past the corner to expand the view for locating the chair.
+  t= 56 d=16.66 Walk<forward><normal>      SUB  Advance forward into the open area to expand the view toward the right-side structure and look for the chair.
+  t= 57 d=16.62 Walk<forward><normal>      SUB  Advance forward into the open area toward the right-side structure to expand the view for locating the chair.
+  t= 58 d=16.60 Walk<forward><normal>      SUB  Advance forward toward the patio/doorway to expand the view and look for the chair.
+  t= 60 d=16.48 Walk<forward><normal>      SUB  Proceed forward toward the patio/doorway to expand the view for locating the chair.
+        VS: From left to right, I can see open grassy floor extending ahead, about 0-6 meters from me;
+  t= 61 d=16.19 Walk<forward><normal>      SUB  Proceed forward toward the patio to expand the view near the wall/doorway area for the chair.
+  t= 62 d=16.06 Walk<forward><normal>      SUB  Proceed forward toward the patio to expand the view near the wall/doorway for the chair.
+  t= 63 d=15.84 Walk<forward><normal>      SUB  Advance forward toward the patio to expand the view near the wall/doorway for the chair.
+  t= 66 d=15.26 Walk<forward><normal>      SUB  Proceed forward toward the patio to expand the view near the wall/doorway for the chair.
+  t= 67 d=15.14 Walk<forward><normal>      SUB  Advance toward the patio edge to expand the view on and near the patio for the chair.
+  t= 69 d=14.80 Walk<forward><normal>      SUB  Move forward toward the patio edge to improve the view of the patio for locating the chair.
+  t= 70 d=14.70 Walk<forward><normal>      SUB  Advance toward the patio edge to improve the view of the patio area for locating the chair.
+  t= 71 d=14.52 Walk<forward><normal>      SUB  Move forward toward the patio edge to improve the view of the patio and wall area for the chair.
+  t= 72 d=14.21 Walk<forward><normal>      SUB  Advance toward the patio edge to expand the view on and near the patio for the chair.
+  t= 73 d=13.91 Walk<forward><normal>      SUB  Move forward to the patio edge to expand the view for the chair.
+  t= 74 d=13.63 Walk<forward><normal>      SUB  Advance straight to the patio edge to expand the view for the chair.
+  t= 76 d=13.05 Walk<forward><normal>      SUB  Move forward onto the patio to expand the view near the wall for the chair.
+  t= 77 d=12.75 Walk<forward><normal>      SUB  Step forward onto the patio to expand the view along the wall for the chair.
+  t= 78 d=12.49 Walk<forward><normal>      SUB  Step forward onto the patio to expand the view along the walls for the chair.
+  t= 79 d=12.22 Walk<forward><normal>      SUB  Step forward onto the patio to expand the view along the wall for the chair.
+  t= 80 d=11.96 Walk<forward><normal>           Step forward onto the patio to expand the view along the wall for the chair.
+        VS: From left to right, I can see a dark wooden exterior wall on the left, about 2-4 meters fr
+  t= 83 d=11.25 Walk<forward><normal>      SUB  Move forward onto the patio to expand the view and search for the chair.
+  t= 86 d=10.69 Walk<forward><normal>      SUB  Step forward onto the patio to expand the view along the walls for the chair.
+  t= 87 d=10.51 Walk<forward><normal>      SUB  Move forward onto the patio to expand the view and search for the chair.
+  t= 88 d=10.39 Walk<forward><normal>      SUB  Step forward onto the patio to expand the view along the walls for the chair.
+  t= 90 d=10.13 Walk<forward><normal>      SUB  Move forward onto the patio to expand the view and search along the walls for the chair.
+  t= 93 d= 9.95 Walk<forward><normal>      SUB  Step forward onto the patio to expand the view and search for the chair along the walls.
+  t= 94 d= 9.90 Walk<forward><normal>      SUB  Move forward onto the center of the patio to expand the view for the chair.
+  t= 95 d= 9.88 Walk<forward><normal>      SUB  Advance forward onto the patio toward its center to expand the view for the chair.
+  t= 96 d= 9.90 Walk<forward><normal>      SUB  Advance forward toward the center/front of the patio to expand the view for the chair.
+  t= 97 d= 9.95 Walk<forward><normal>      SUB  Advance straight forward onto the patio toward its center/front to expand the view for the chair.
+  t= 99 d=10.02 Turn<right><30>            SUB  Turn right to scan under the overhang and reveal potential chair locations.
+
+==========================================================================================
+[long_path_wander_2] chair scene=106878858_174886965 ep=14 | path=28.6m turns=4 choice=36 obst=32 | min_dist=10.49 travel=32.1m steps=100 tax=never_found
+  t=  0 d=18.24 Walk<forward><slow>        SUB  Advance slowly down the clear corridor ahead to get out of the narrow passage and continue the search.
+        VS: From left to right, I can see a wooden wall very close along my left side, about 0.1-0.2 m
+  t=  1 d=18.17 Walk<forward><normal>      SUB  Proceed forward along the clear corridor to get out of the narrow passage and continue the search.
+  t=  2 d=18.13 Turn<right><60>            SUB  Continue forward along the clear corridor to advance toward a more open area for searching.
+  t=  3 d=17.98 Walk<forward><slow>        SUB  Advance carefully forward into the corridor to reach a more open area for searching.
+  t=  4 d=17.62 Walk<forward><normal>      SUB  Proceed forward along the clear corridor to reach a more open area for searching.
+  t=  5 d=17.36 Walk<forward><normal>      SUB  Proceed forward down the clear corridor to reach a more open area for searching.
+  t=  7 d=16.69 Walk<forward><normal>      SUB  Proceed forward along the clear corridor to reach a more open area for searching.
+  t=  9 d=16.05 Walk<forward><normal>      SUB  Move forward along the center of the clear corridor, maintaining distance from the right wall to continue the 
+  t= 10 d=15.75 Walk<forward><normal>      SUB  Proceed forward along the clear corridor, keeping centered away from the right wall to continue searching.
+  t= 12 d=15.25 Turn<left><40>             SUB  Turn left to face the open floor and clear passage away from the blocking wall.
+  t= 13 d=15.15 Walk<forward><slow>        SUB  Advance forward along the clear corridor toward the open area while keeping centered away from the right wall.
+  t= 14 d=14.97 Walk<forward><normal>      SUB  Proceed forward along the center of the clear corridor toward the open area ahead.
+  t= 20 d=14.02 Walk<forward><normal>           Proceed forward along the center of the clear corridor toward the open area ahead.
+        VS: From left to right, I can see open grassy floor, about 1-2 meters from me; open grassy flo
+  t= 22 d=13.82 Walk<forward><normal>      SUB  Proceed forward along the center of the clear corridor toward the open area ahead while staying away from the 
+  t= 24 d=13.69 Walk<forward><normal>      SUB  Proceed forward along the center of the clear corridor toward the open area ahead while staying slightly left 
+  t= 26 d=13.69 Walk<forward><normal>      SUB  Proceed forward along the center of the corridor toward the open area ahead while keeping slightly left of the
+  t= 27 d=13.72 Walk<forward><normal>      SUB  Proceed forward along the center of the corridor toward the open area ahead while staying slightly left of the
+  t= 28 d=13.80 Walk<forward><normal>      SUB  Proceed forward along the corridor toward the open area ahead while staying slightly left of the close right w
+  t= 30 d=13.94 Walk<forward><normal>           Proceed forward along the corridor toward the open area ahead while staying slightly left of the close right w
+  t= 31 d=14.06 Walk<forward><normal>      SUB  Proceed forward along the open grassy floor while keeping some distance from the left wall.
+  t= 32 d=14.19 Walk<forward><normal>      SUB  Proceed forward along the open floor toward the brighter open area ahead while staying slightly away from the 
+  t= 33 d=14.37 Walk<forward><normal>      SUB  Proceed forward along the open floor toward the brighter open area ahead while keeping some distance from the 
+  t= 34 d=14.56 Walk<forward><normal>      SUB  Proceed forward along the open floor toward the brighter area ahead while keeping some distance from the left 
+  t= 35 d=14.71 Turn<right><30>            SUB  Proceed forward along the open floor toward the brighter open area while keeping some distance from the left w
+  t= 36 d=14.85 Turn<right><30>            SUB  Turn right to align with the open grassy area, then advance along that clear lane.
+  t= 37 d=14.81 Walk<forward><slow>        SUB  Proceed forward along the center of the open grassy lane while keeping a bit of distance from the right edge o
+  t= 38 d=14.72 Walk<forward><normal>      SUB  Proceed forward toward the paved area while staying centered in the open grassy lane.
+  t= 39 d=14.65 Walk<forward><normal>      SUB  Proceed forward toward the paved area while staying centered on the open grassy lane.
+  t= 40 d=14.61 Walk<forward><normal>           Proceed forward toward the paved area while staying centered on the open grassy lane.
+        VS: From left to right, I can see a dark wooden overhang along the upper-left edge, about 1.0-
+  t= 50 d=14.88 Walk<forward><normal>           Proceed forward toward the paved area while staying centered on the open grassy lane.
+  t= 53 d=15.13 Walk<forward><normal>      SUB  Continue moving forward toward the paved area while staying centered on the open grassy lane.
+  t= 54 d=15.22 Walk<forward><normal>      SUB  Proceed forward toward the paved area while staying centered on the open grassy lane.
+  t= 60 d=15.77 Walk<forward><normal>           Proceed forward toward the paved area while staying centered on the open grassy lane.
+        VS: From left to right, I can see a dark wooden overhang along the upper edge about 1.5 meters
+  t= 62 d=15.78 Walk<forward><normal>      SUB  Proceed forward toward the paved spot while staying centered on the open grassy lane.
+  t= 63 d=15.84 Walk<forward><normal>      SUB  Proceed forward across the open grass toward the broader open area to expand visibility for spotting the chair
+  t= 64 d=15.91 Walk<forward><normal>      SUB  Proceed forward across the open grass to gain a wider view for spotting the chair.
+  t= 65 d=16.04 Turn<right><45>            SUB  Proceed forward across the open grass to expand the viewpoint for spotting the chair.
+  t= 66 d=15.93 Walk<forward><normal>      SUB  Proceed forward toward the paved area to expand the viewpoint for locating the chair.
+  t= 67 d=15.84 Walk<forward><normal>      SUB  Proceed forward toward the paved area while staying centered on the open grassy lane.
+  t= 68 d=15.76 Walk<forward><normal>      SUB  Proceed forward toward the paved area to broaden the viewpoint for spotting the chair.
+  t= 69 d=15.69 Walk<forward><normal>      SUB  Proceed forward toward the paved area to broaden the view and search for the chair.
+  t= 70 d=15.68 Walk<forward><normal>      SUB  Proceed forward toward the paved area to expand the viewpoint for spotting the chair.
+  t= 71 d=15.64 Walk<forward><normal>      SUB  Proceed forward toward the paved area to broaden the viewpoint for spotting the chair.
+  t= 73 d=15.72 Turn<right><30>            SUB  Turn right to scan and re-acquire the open paved area or the chair.
+  t= 74 d=15.66 Turn<right><25>            SUB  Slightly turn right to center the paved slab, then advance toward it.
+  t= 75 d=15.48 Walk<forward><normal>      SUB  Proceed forward toward the paved slab to broaden the viewpoint for spotting the chair.
+  t= 76 d=15.28 Walk<forward><normal>      SUB  Advance toward the paved slab ahead-right to broaden the viewpoint for spotting the chair.
+  t= 77 d=15.10 Walk<forward><normal>      SUB  Advance toward the paved slab ahead-right to broaden the view for locating the chair.
+  t= 80 d=14.49 Walk<forward><normal>      SUB  Proceed forward toward the paved slab ahead-right to broaden the view for spotting the chair.
+        VS: From left to right, I can see a dark wooden wall running along the left side about 1.5-2.0
+  t= 81 d=14.29 Walk<forward><normal>      SUB  Advance toward the paved slab ahead-right to broaden the viewpoint for spotting the chair.
+  t= 83 d=13.83 Walk<forward><normal>      SUB  Move forward toward the paved slab ahead-right to broaden the viewpoint for spotting the chair.
+  t= 84 d=13.66 Turn<right><20>            SUB  Slightly turn right to center the paved slab ahead, preparing to move onto it.
+  t= 85 d=13.42 Walk<forward><normal>      SUB  Move forward onto the paved slab to expand the viewpoint for spotting the chair.
+  t= 86 d=13.17 Walk<forward><normal>      SUB  Proceed forward onto the paved slab to gain a better vantage toward the open passage.
+  t= 87 d=12.95 Walk<forward><normal>      SUB  Proceed forward onto the paved slab toward the passage to broaden the viewpoint for locating the chair.
+  t= 88 d=12.70 Walk<forward><normal>      SUB  Proceed forward onto the paved slab toward the open passage to broaden the view.
+  t= 89 d=12.46 Walk<forward><normal>      SUB  Move forward onto the paved slab to gain a better vantage toward the passage.
+  t= 90 d=12.24 Walk<forward><normal>      SUB  Move forward onto the paved slab to gain a broader vantage for locating the chair.
+  t= 91 d=12.01 Walk<forward><normal>      SUB  Move forward onto the paved slab toward the open passage to broaden the viewpoint.
+  t= 92 d=11.80 Walk<forward><normal>      SUB  Advance onto the paved slab ahead-right to broaden the viewpoint toward the passage.
+  t= 93 d=11.60 Walk<forward><normal>      SUB  Move forward onto the paved slab to broaden the viewpoint toward the passage.
+  t= 94 d=11.40 Walk<forward><normal>      SUB  Move forward onto the paved slab toward the open passage to broaden the view for locating the chair.
+  t= 95 d=11.23 Walk<forward><normal>      SUB  Advance forward onto the paved slab toward the passage to broaden the view for locating the chair.
+  t= 96 d=11.04 Walk<forward><normal>      SUB  Proceed forward onto the paved slab toward the open passage to broaden the viewpoint.
+  t= 97 d=10.85 Walk<forward><normal>      SUB  Proceed forward onto the paved slab to broaden the view toward the passage to locate the chair.
+  t= 98 d=10.70 Walk<forward><normal>      SUB  Proceed forward onto the paved slab toward the passage to widen the viewpoint for locating the chair.
+  t= 99 d=10.49 Walk<forward><normal>      SUB  Move forward along the clear path onto the paved slab toward the brighter passage to expand visibility.
+
+==========================================================================================
+[high_turn_fail] tv scene=107734254_176000121 ep=19 | path=16.4m turns=6 choice=21 obst=46 | min_dist=3.15 travel=11.4m steps=100 tax=claimed_not_approached
+  t=  0 d= 4.61 Turn<left><25>             SUB  Turn left to face the bedroom doorway and begin entering to scan for a TV.
+        VS: From left to right, I can see an open doorway leading to a bedroom with a desk, plant, rug
+  t=  1 d= 4.78 Walk<forward><slow>        SUB  Enter the bedroom through the doorway and begin scanning for a TV.
+  t=  2 d= 4.97 Walk<forward><slow>        SUB  Carefully enter the bedroom through the doorway to gain a wider view for a TV.
+  t=  3 d= 5.13 Walk<forward><slow>        SUB  Move forward into the bedroom to fully clear the doorway and expand the view for a TV.
+  t=  4 d= 5.29 Walk<forward><slow>        SUB  Finish clearing the doorway by moving a bit farther into the bedroom to widen the field of view for a TV.
+  t=  5 d= 5.62 Walk<forward><normal>      SUB  Move forward into the bedroom to fully clear the doorway and reach a central position for scanning.
+  t=  6 d= 5.97 Walk<forward><normal>      SUB  Advance to a central position in the bedroom to improve visibility and scan for a TV.
+  t=  7 d= 6.27 Turn<right><30>            SUB  Advance into the center of the bedroom to widen the field of view for scanning for the TV.
+  t=  8 d= 6.12 Step back<0.30>            SUB  Create space by stepping back from the plant and bed to reach a clearer position for scanning.
+  t=  9 d= 5.88 Step back<0.30>            SUB  Back up a bit more to gain clearance from the plant and furniture before turning to scan.
+  t= 10 d= 5.72 Step back<0.30>            SUB  Back up further to gain clear space before turning to scan for the TV.
+  t= 11 d= 5.57 Step back<0.30>            SUB  Back up a bit more toward the doorway to gain clear space for a safe turn and scan.
+  t= 12 d= 5.39 Step back<0.30>            SUB  Back up into the doorway to create clear turning space for a scan toward the hall.
+  t= 13 d= 5.28 Turn<right><60>            SUB  Turn right in the doorway to start scanning toward the bathroom/hall for the TV.
+  t= 14 d= 5.13 Turn<right><40>            SUB  Turn right to face the open room area and expand the view to look for a TV.
+  t= 15 d= 5.12 Turn<right><40>            SUB  Turn right to face the open room beyond the bathroom to expand the view for the TV.
+  t= 16 d= 5.12 Turn<right><40>            SUB  Turn right to fully face the open room beyond the bathroom for a better view of a potential TV.
+  t= 17 d= 5.08 Turn<right><30>            SUB  Move forward into the open room to widen the view and look for the TV.
+  t= 18 d= 4.93 Walk<forward><slow>        SUB  Advance into the open room to gain a broader view and look for the TV.
+  t= 19 d= 4.65 Walk<forward><normal>      SUB  Advance into the center of the open room to widen the view for spotting the TV.
+  t= 20 d= 4.37 Walk<forward><normal>           Advance into the center of the open room to widen the view for spotting the TV.
+        VS: From left to right, I can see a reflective glass panel or door very close at the left edge
+  t= 21 d= 4.12 Turn<left><30>             SUB  Move forward into the open area beyond the doorway to broaden the view for the TV.
+  t= 22 d= 3.96 Turn<left><40>             SUB  Turn left to face the open area adjacent to the hallway to expand the view for the TV.
+  t= 23 d= 3.83 Turn<right><30>            SUB  Advance into the open room via the clear forward-right lane to broaden the view for the TV.
+  t= 24 d= 3.81 Turn<right><30>            SUB  Turn right to fully face the open floor area away from the glass and prepare to move into the room.
+  t= 25 d= 3.78 Turn<right><30>            SUB  Turn right to fully face the open room away from the narrow hallway and the close glass.
+  t= 26 d= 3.69 Turn<right><30>            SUB  Turn right to fully face the open room and clear the wall corner before advancing.
+  t= 27 d= 3.69 Turn<right><30>            SUB  Turn right to fully face the open room by the rug and clear the wall corner before moving forward.
+  t= 28 d= 3.77 Turn<right><30>            SUB  Turn right to fully face the clearest open area beside the rug and away from the bench.
+  t= 29 d= 3.76 Turn<left><30>             SUB  Turn left to face the bright doorway/open area ahead-left to set up a safe approach.
+  t= 30 d= 3.78 Walk<forward><slow>        SUB  Advance through the center of the rug toward the doorway to reach the next room.
+  t= 31 d= 3.78 Walk<forward><slow>        SUB  Move forward through the center of the rug toward the doorway to enter the next room.
+  t= 32 d= 3.77 Walk<forward><slow>        SUB  Advance through the center of the rug toward the doorway to enter the next room.
+  t= 33 d= 3.79 Walk<forward><slow>        SUB  Move forward through the center of the rug toward the doorway to enter the next room.
+  t= 34 d= 4.00 Side step<right><0.25>     SUB  Side-step right to create clearance around the ottoman and align with the doorway gap.
+  t= 35 d= 4.19 Side step<right><0.25>     SUB  Continue shifting right to clear the ottoman and align with the doorway passage.
+  t= 36 d= 4.42 Side step<right><0.25>     SUB  Side-step right to open a clear path past the ottoman toward the doorway.
+  t= 37 d= 4.65 Side step<right><0.25>     SUB  Side-step right to further clear the ottoman and align with the doorway gap.
+  t= 38 d= 4.87 Side step<right><0.25>     SUB  Side-step right to further clear the ottoman and align with the doorway passage.
+  t= 39 d= 5.07 Side step<right><0.25>     SUB  Side-step right to create more clearance past the ottoman toward the doorway passage.
+  t= 40 d= 5.17 Turn<left><20>             SUB  Turn slightly left to align with the gap left of the ottoman toward the doorway.
+        VS: From left to right, I can see a black piano along the left wall, about 0.2-0.4 meters from
+  t= 41 d= 5.16 Turn<right><30>            SUB  Advance carefully through the left gap past the ottoman toward the doorway.
+  t= 42 d= 5.18 Turn<left><25>             SUB  Turn slightly left to align with the left gap past the ottoman toward the doorway.
+  t= 43 d= 5.16 Turn<left><20>             SUB  Turn slightly left to center the narrow gap left of the ottoman toward the doorway.
+  t= 44 d= 5.09 Turn<right><15>            SUB  Turn slightly right to center the gap between the piano and the ottoman toward the doorway.
+  t= 45 d= 5.10 Turn<right><30>            SUB  Advance carefully through the gap between the piano and ottoman toward the doorway.
+  t= 46 d= 5.11 Turn<left><20>             SUB  Turn slightly left to align with the clearer gap toward the doorway.
+  t= 47 d= 5.06 Turn<left><15>             SUB  Turn slightly left to center the passable gap left of the stool toward the doorway.
+  t= 48 d= 5.08 Turn<left><40>             SUB  Advance carefully through the left gap toward the doorway to enter the next room.
+  t= 49 d= 5.07 Turn<left><20>             SUB  Turn slightly left to align directly with the open doorway passage.
+  t= 50 d= 5.01 Turn<left><30>             SUB  Advance carefully through the doorway into the next room.
+  t= 51 d= 4.93 Turn<left><15>             SUB  Align slightly left to center the doorway opening, then proceed into the next room.
+  t= 52 d= 4.91 Turn<right><20>            SUB  Turn slightly right to scan and align with the opening into the living room beyond the glass panel.
+  t= 53 d= 4.91 Turn<right><20>            SUB  Turn right to align the forward axis with the open passage into the living room.
+  t= 54 d= 4.81 Turn<right><15>            SUB  Turn a bit more right to center the open passage into the living area.
+  t= 55 d= 4.64 Walk<forward><slow>        SUB  Advance carefully into the open passage ahead-right toward the living area.
+  t= 56 d= 4.45 Walk<forward><slow>        SUB  Advance carefully through the doorway into the next room.
+  t= 59 d= 3.92 Walk<forward><slow>        SUB  Move forward carefully into the room to clear the doorway and approach the open floor before the ottoman.
+  t= 60 d= 3.74 Walk<forward><slow>        SUB  Advance carefully into the room to fully clear the doorway and reach the open floor before the ottoman.
+        VS: From left to right, I can see a black-framed glass panel very close on the left, about 0.2
+  t= 61 d= 3.55 Walk<forward><slow>        SUB  Move forward carefully to clear the doorway and reach the open floor before the ottoman.
+  t= 62 d= 3.43 Turn<right><30>            SUB  Move forward cautiously to finish clearing the doorway and reach the open floor before the ottoman.
+  t= 63 d= 3.38 Turn<right><20>            SUB  Turn right to align with the open passage into the living area to the right.
+  t= 64 d= 3.32 Turn<right><15>            SUB  Turn right to fully align with the open passage into the living area.
+  t= 65 d= 3.21 Turn<right><20>            SUB  Finish aligning to the open passage to the right by turning right.
+  t= 66 d= 3.18 Turn<right><15>            SUB  Turn right to center the open path toward the TV.
+  t= 67 d= 3.21 Turn<right><15>            SUB  Turn right to fully center the open path toward the TV.
+  t= 68 d= 3.15 Turn<right><20>            SUB  Turn right to align with the open path into the living area toward the TV.
+  t= 69 d= 3.15 Turn<right><20>            SUB  Turn right to align with the open rug path directly toward the TV.
+  t= 70 d= 3.21 Turn<left><20>             SUB  Turn left to align my facing with the TV for a close, controlled approach.
+  t= 71 d= 3.18 Turn<left><15>             SUB  Turn slightly left to center the TV for a controlled, close approach.
+  t= 72 d= 3.21 Turn<right><15>            SUB  Turn right to center the TV and clear the corner for a slow, close approach.
+  t= 73 d= 3.21 Turn<right><30>            SUB  Advance slowly straight toward the TV to reach zero distance.
+  t= 74 d= 3.22 Turn<right><20>            SUB  Turn right to fully center the clear passage into the living area toward the TV.
+  t= 75 d= 3.29 Turn<right><15>            SUB  Turn right to center the open passage and scan for the TV along the right wall.
+  t= 76 d= 3.41 Turn<right><20>            SUB  Turn right to center the open passage and bring the TV into view.
+  t= 77 d= 3.49 Turn<right><15>            SUB  Turn right to center the TV in front of me for a close, controlled approach.
+  t= 78 d= 3.58 Turn<right><15>            SUB  Turn right to bring the TV into view and center the clear approach path.
+  t= 79 d= 3.72 Turn<right><15>            SUB  Turn right to center the TV for a close, controlled approach.
+  t= 80 d= 3.82 Turn<right><15>            SUB  Turn right to center the TV in front of me for a controlled final approach.
+        VS: From left to right, I can see a dark wall/panel and a sharp doorway corner very close on t
+  t= 81 d= 3.84 Turn<right><15>            SUB  Turn right to center the TV directly ahead for a safe, close approach.
+  t= 82 d= 3.95 Turn<right><10>            SUB  Turn slightly right to center the TV directly in front for a controlled final approach.
+  t= 83 d= 4.00 Turn<left><40>             SUB  Advance slowly straight toward the TV to reach zero distance.
+  t= 84 d= 4.00 Turn<right><10>            SUB  Turn slightly right to center the TV directly ahead for a controlled final approach.
+  t= 85 d= 4.07 Turn<right><10>            SUB  Turn slightly right to bring the TV to the center for a controlled final approach.
+  t= 86 d= 4.10 Turn<right><15>            SUB  Turn right to center the TV directly ahead, away from the blocking frame, to set up a careful forward contact.
+  t= 87 d= 4.13 Turn<right><10>            SUB  Turn slightly right to center the TV directly ahead to set up a careful forward touch.
+  t= 88 d= 4.21 Walk<forward><slow>        SUB  Advance slowly straight to make gentle contact with the TV and reach zero distance.
+  t= 89 d= 4.26 Turn<right><40>            SUB  Stop because I have reached the TV and achieved zero distance.
+  t= 90 d= 4.31 Turn<left><20>             SUB  Stop because the TV is reached and zero distance is achieved.
+  t= 91 d= 4.34 Walk<forward><slow>        SUB  Gently advance to make clear contact with the TV and reach zero distance.
+  t= 92 d= 4.35 Walk<forward><slow>        SUB  Stop because I have reached the TV and achieved zero distance contact.
+  t= 93 d= 4.40 Walk<forward><slow>        SUB  Gently advance straight to make firm contact with the TV and reach zero distance.
+  t= 94 d= 4.45 Turn<right><60>            SUB  Stop because I have reached the TV and achieved zero-distance contact.
+  t= 95 d= 4.44 Walk<forward><slow>        SUB  Stop because contact with the TV has been achieved at zero distance.
+  t= 96 d= 4.38 Turn<left><30>             SUB  Stop because I have reached the TV and achieved zero-distance contact.
+  t= 97 d= 4.38 Walk<forward><slow>        SUB  Make a slow, controlled micro-advance to ensure firm contact with the TV at zero distance.
+  t= 98 d= 4.38 Walk<forward><slow>        SUB  Stop because I have reached the TV and achieved zero-distance contact.
+  t= 99 d= 4.39 Walk<forward><slow>        SUB  Make a gentle micro-advance straight ahead to ensure firm contact with the TV at zero distance.
+
+==========================================================================================
+[dense_obstacle_fail] tv scene=104862501_172226556 ep=25 | path=10.3m turns=2 choice=13 obst=166 | min_dist=7.92 travel=4.1m steps=100 tax=claimed_not_approached
+  t=  0 d= 8.64 Turn<right><25>            SUB  Turn toward the open aisle on the right and start moving into it to explore the room for a TV.
+        VS: From left to right, I can see the side of a bed with blue bedding about 0.4-0.6 meters fro
+  t=  1 d= 8.65 Walk<forward><slow>        SUB  Start moving forward into the open aisle on the right to explore for the TV.
+  t=  2 d= 8.66 Turn<left><40>             SUB  Proceed forward into the open aisle along the right wall to explore for the TV.
+  t=  3 d= 8.60 Turn<right><35>            SUB  Turn to face the open aisle on the right to prepare to move into it and continue the search.
+  t=  4 d= 8.61 Walk<forward><slow>        SUB  Start moving forward into the open aisle along the right wall to continue the search for the TV.
+  t=  5 d= 8.61 Turn<right><20>            SUB  Slightly turn right to align with the open aisle along the right wall, then proceed into it.
+  t=  6 d= 8.59 Walk<forward><slow>        SUB  Move forward into the open aisle along the right wall to continue the search for the TV.
+  t=  7 d= 8.62 Walk<forward><slow>        SUB  Proceed forward into the open aisle along the right wall to continue the search for the TV.
+  t= 10 d= 8.58 Walk<forward><slow>        SUB  Proceed forward into the open aisle along the right wall to continue searching for the TV.
+  t= 13 d= 8.63 Turn<left><40>             SUB  Continue moving forward into the open aisle along the right wall.
+  t= 14 d= 8.62 Turn<right><30>            SUB  Orient toward the right-side aisle and the TV on the right wall to prepare to approach it.
+  t= 15 d= 8.46 Side step<right><0.25>     SUB  Shift into the right-side aisle and begin approaching the TV on the right wall.
+  t= 16 d= 8.41 Turn<right><30>            SUB  Turn right to align with the right-side aisle and reacquire the TV on the right wall.
+  t= 17 d= 8.39 Turn<left><30>             SUB  Advance forward into the right-side aisle to approach the TV on the right wall.
+  t= 18 d= 8.41 Turn<right><30>            SUB  Turn right to align with the right-side aisle to reacquire and approach the TV.
+  t= 19 d= 8.41 Turn<right><30>            SUB  Turn right to fully align with the right-side aisle and bring the TV on the right wall into view.
+  t= 20 d= 8.37 Turn<right><20>            SUB  Turn slightly right to face the TV and prepare for a short forward approach to touch it.
+        VS: From left to right, I can see a window with a shade and a nightstand with a small lamp nea
+  t= 21 d= 8.41 Turn<left><30>             SUB  Take a short careful step forward to make contact with the TV.
+  t= 22 d= 8.26 Side step<right><0.25>     SUB  Side step right a short distance to touch the TV on the right wall.
+  t= 23 d= 8.14 Side step<right><0.15>     SUB  Make a short right lateral move to bring my body into contact with the TV.
+  t= 24 d= 8.04 Side step<right><0.15>     SUB  Make a short right side step to bring my body into contact with the TV on the right wall.
+  t= 26 d= 8.01 Side step<right><0.15>     SUB  Make a very short right side step to bring my body into contact with the TV.
+  t= 27 d= 8.00 Side step<right><0.10>     SUB  Make a very short right side step to bring my body into contact with the TV on the right wall.
+  t= 29 d= 7.99 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the TV on the right wall.
+  t= 30 d= 7.98 Side step<right><0.10>          Make a tiny right side step to bring my body into contact with the TV on the right wall.
+  t= 35 d= 7.96 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the TV/wall-mounted panel.
+  t= 37 d= 7.95 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the right wall where the TV is mounted.
+  t= 38 d= 7.96 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the TV on the right wall.
+  t= 40 d= 7.95 Side step<right><0.10>          Make a tiny right side step to bring my body into contact with the TV on the right wall.
+        VS: From left to right, I can see the side of a bed with blue bedding and pillows, about 0.3-0
+  t= 42 d= 7.95 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the TV/right wall panel.
+  t= 43 d= 7.95 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the right wall where the TV is mounted.
+  t= 50 d= 7.92 Side step<right><0.10>          Make a tiny right side step to bring my body into contact with the right wall where the TV is mounted.
+  t= 60 d= 7.95 Side step<right><0.10>          Make a tiny right side step to bring my body into contact with the right wall where the TV is mounted.
+        VS: From left to right, I can see the side of a bed with blue bedding and pillows, about 0.3-0
+  t= 66 d= 7.97 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the right wall/TV area.
+  t= 68 d= 7.98 Side step<right><0.10>     SUB  Make a tiny right side step to achieve body contact with the right wall/TV area.
+  t= 69 d= 7.98 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the right wall where the TV is mounted.
+  t= 70 d= 7.98 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the right wall/TV area.
+  t= 76 d= 7.98 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the TV on the right wall.
+  t= 77 d= 7.98 Side step<right><0.10>     SUB  Make a tiny right side step to bring my body into contact with the right wall/TV area.
+  t= 80 d= 8.00 Side step<right><0.10>          Make a tiny right side step to bring my body into contact with the right wall/TV area.
+        VS: From left to right, I can see a floor lamp and a pet bed near the far-left wall, about 1.2
+  t= 83 d= 8.06 Turn<right><30>            SUB  Turn right to bring the right wall into view and locate the TV.
+  t= 84 d= 8.10 Turn<right><30>            SUB  Turn right to fully bring the right wall into view and locate the TV.
+  t= 85 d= 8.09 Turn<right><30>            SUB  Continue turning right to bring the right wall fully into view and locate the TV.
+  t= 87 d= 8.07 Turn<right><30>            SUB  Continue turning right to fully reveal the right wall and locate the TV.
+  t= 88 d= 8.10 Turn<right><30>            SUB  Continue turning right to reveal more of the right wall and locate the TV.
+  t= 89 d= 8.07 Turn<right><30>            SUB  Turn right to further reveal the right wall/area and locate the TV.
+  t= 90 d= 8.13 Turn<right><30>            SUB  Turn right to align with the open passage and expand the view toward the next room.
+  t= 91 d= 8.25 Side step<right><0.25>     SUB  Side step right to clear the chair and align with the open passage.
+  t= 92 d= 8.37 Side step<right><0.25>     SUB  Side step right to bypass the chair and align with the clearer passage.
+  t= 93 d= 8.52 Side step<right><0.25>     SUB  Side step right to bypass the chair and align with the open passage.
+  t= 94 d= 8.62 Side step<right><0.25>     SUB  Side step right to clear the chair and align with the open passage.
+  t= 95 d= 8.48 Walk<forward><slow>        SUB  Move forward into the open passage ahead-right to progress toward rooms where the TV may be located.
+  t= 96 d= 8.23 Turn<right><30>            SUB  Advance forward through the doorway into the next room to continue searching for the TV.
+  t= 97 d= 8.11 Turn<left><30>             SUB  Move forward into the open doorway to progress toward rooms where the TV may be located.
+  t= 98 d= 8.03 Walk downstairs<normal>    SUB  Safely descend the step into the bright hallway through the doorway to continue the search.
+  t= 99 d= 7.92 Walk downstairs<normal>    SUB  Descend the step into the bright hallway through the doorway to continue the search.
+
+==========================================================================================
+[hard_success_near_instance] chair scene=104862501_172226556 ep=18 | path=10.1m turns=1 choice=10 obst=35 | min_dist=0.00 travel=11.6m steps=77 tax=success
+  t=  0 d= 2.61 Turn<left><30>             SUB  Rotate left to face the open aisle along the pool table to scan for a chair and prepare to move through it.
+        VS: From left to right, I can see bookshelves along the back wall, about 2.5 meters from me; a
+  t=  1 d= 2.59 Turn<left><20>             SUB  Rotate slightly left to align with the open aisle along the pool table, preparing to approach the chair on the
+  t=  2 d= 2.58 Turn<left><30>             SUB  Start moving forward into the left aisle to approach the bench/chair safely.
+  t=  3 d= 2.66 Turn<left><20>             SUB  Rotate slightly left to center the clear left aisle and avoid the pool table corner.
+  t=  4 d= 2.72 Walk<forward><slow>        SUB  Enter the left aisle and begin approaching the chair/bench area safely.
+  t=  5 d= 2.80 Walk<forward><normal>      SUB  Move forward along the left aisle to reduce distance to the chair.
+  t=  6 d= 2.84 Turn<left><30>             SUB  Continue forward along the left aisle to get closer to the seating area and regain view of the standalone chai
+  t=  7 d= 2.92 Walk<forward><slow>        SUB  Move forward into the left aisle to approach the chair safely.
+  t=  8 d= 3.00 Turn<right><30>            SUB  Advance carefully toward the standalone chair to reduce distance for contact.
+  t=  9 d= 3.18 Walk<forward><slow>        SUB  Move forward toward the piano bench/chair to reach contact.
+  t= 10 d= 3.35 Walk<forward><slow>        SUB  Advance slowly straight toward the piano bench to reach contact.
+  t= 11 d= 3.52 Walk<forward><slow>        SUB  Advance slowly straight toward the bench to reach contact.
+  t= 12 d= 3.68 Walk<forward><slow>        SUB  Close the final short distance straight ahead to make body contact with the bench.
+  t= 13 d= 3.85 Walk<forward><slow>        SUB  Advance very slightly forward to make gentle body contact with the bench.
+  t= 14 d= 3.98 Turn<right><30>            SUB  Make gentle contact with the bench by closing the last few centimeters straight ahead.
+  t= 15 d= 4.15 Walk<forward><slow>        SUB  Make gentle body contact with the piano bench directly ahead-left.
+  t= 20 d= 4.90 Walk<forward><slow>        SUB  Close the last few centimeters ahead-left to make gentle body contact with the piano bench.
+        VS: From left to right, I can see a white grand piano on the left, about 0.8-1.2 meters from m
+  t= 21 d= 4.80 Walk<forward><slow>        SUB  Close the final few centimeters ahead-left to make gentle body contact with the piano bench.
+  t= 22 d= 4.83 Walk<forward><slow>        SUB  Close the last few centimeters ahead-left to make gentle body contact with the piano bench.
+  t= 24 d= 4.73 Walk<forward><slow>        SUB  Close the last few centimeters to make gentle contact with the small chair ahead-left.
+  t= 25 d= 4.73 Walk<forward><slow>        SUB  Make gentle body contact with the small chair slightly ahead-left.
+  t= 26 d= 4.72 Walk<forward><slow>        SUB  Close the last few centimeters to make gentle body contact with the small chair ahead-left.
+  t= 29 d= 4.63 Walk<forward><slow>        SUB  Advance through the doorway toward the small chair ahead-left to close distance safely.
+  t= 30 d= 4.61 Walk<forward><normal>      SUB  Advance straight through the doorway toward the visible chair to close distance safely.
+  t= 31 d= 4.29 Walk<forward><normal>      SUB  Advance straight through the doorway toward the blue chair to safely close distance.
+  t= 32 d= 4.23 Walk<forward><slow>        SUB  Move through the doorway toward the blue chair, beginning to close distance while keeping slightly left of the
+  t= 33 d= 4.19 Walk<forward><slow>        SUB  Proceed through the doorway toward the blue chair, staying slightly left of the ottoman to close distance safe
+  t= 34 d= 4.04 Walk<forward><slow>        SUB  Proceed through the doorway toward the visible chair, staying slightly left of the ottoman to close distance s
+  t= 35 d= 3.88 Walk<forward><slow>        SUB  Proceed through the doorway toward the visible chair, staying slightly left of the ottoman to safely close dis
+  t= 36 d= 3.72 Turn<right><30>            SUB  Proceed through the doorway, staying slightly left of the ottoman, to close distance toward the visible chair.
+  t= 37 d= 3.55 Turn<right><40>            SUB  Move forward through the doorway, keeping slightly left of the ottoman, to close distance toward the visible c
+  t= 38 d= 3.60 Turn<left><30>             SUB  Turn left to align with the doorway opening toward the visible chair for a safe approach.
+  t= 39 d= 3.41 Walk<forward><slow>        SUB  Move forward through the doorway toward the chair, keeping slightly left of the ottoman to close distance safe
+  t= 40 d= 3.08 Turn<right><25>            SUB  Turn slightly right to align with the doorway opening for a clear approach toward the visible chair.
+        VS: From left to right, I can see a dark bookshelf wall very close on the left, about 0.1-0.3 
+  t= 41 d= 3.00 Walk<forward><slow>        SUB  Move forward through the doorway toward the visible chair, keeping clear of the ottoman.
+  t= 42 d= 2.84 Walk<forward><slow>        SUB  Proceed forward through the doorway toward the visible chair, keeping slightly left of the ottoman.
+  t= 43 d= 2.59 Walk<forward><slow>        SUB  Advance through the doorway slightly left of the ottoman to close distance toward the visible chair.
+  t= 44 d= 2.48 Climb upstairs<normal>     SUB  Advance through the doorway, staying slightly left of the ottoman to close distance toward the chair.
+  t= 45 d= 2.35 Walk<forward><slow>        SUB  Climb up the doorway threshold to enter the room, positioning to pass left of the ottoman toward the chair.
+  t= 46 d= 2.21 Walk downstairs<normal>    SUB  Descend the doorway step to enter the room and set up a clear approach toward the chair.
+  t= 47 d= 2.18 Turn<left><30>             SUB  Move forward, staying slightly left of the ottoman, to close distance toward the visible chair.
+  t= 48 d= 2.07 Turn<left><30>             SUB  Move forward along the left side of the ottoman to reduce distance toward the visible chair.
+  t= 49 d= 1.93 Walk<forward><slow>        SUB  Advance ahead-left into the room along the left side of the ottoman to reduce distance to the white chair.
+  t= 50 d= 1.74 Walk<forward><slow>        SUB  Advance ahead-left into the room to clear the ottoman and reduce distance toward the white chair.
+  t= 51 d= 1.66 Walk<forward><normal>      SUB  Move ahead-left into the room center to clear the ottoman and set up a direct approach toward the chair area.
+  t= 52 d= 1.53 Turn<right><30>            SUB  Advance ahead-left into the room center to clear nearby obstacles and gain a direct view/approach to the chair
+  t= 53 d= 1.39 Turn<right><20>            SUB  Align to face the white chair and prepare a clear approach between the ottoman and bed.
+  t= 54 d= 1.20 Walk<forward><slow>        SUB  Advance forward through the gap to reduce distance to the white chair.
+  t= 56 d= 0.86 Walk<forward><slow>        SUB  Advance forward through the gap to further reduce distance to the white chair.
+  t= 57 d= 0.72 Walk<forward><slow>        SUB  Move forward slightly to close the remaining distance to the white chair while keeping left of the ottoman.
+  t= 58 d= 0.52 Walk<forward><slow>        SUB  Advance slightly forward to close the remaining gap to the white chair while staying left of the ottoman.
+  t= 59 d= 0.31 Turn<left><30>             SUB  Advance slightly forward through the narrow gap to reduce the distance to the white chair.
+  t= 60 d= 0.13 Turn<right><30>            SUB  Advance slightly forward into the rug area to clear the ottoman before turning toward the chair.
+        VS: From left to right, I can see a blue open shelf/closet against the left wall, about 0.5-1.
+  t= 61 d= 0.21 Turn<right><20>            SUB  Slightly turn right to center the chair in the forward lane for a controlled short approach.
+  t= 62 d= 0.11 Walk<forward><slow>        SUB  Make a short, controlled advance toward the white chair to reduce distance while staying left of the ottoman.
+  t= 63 d= 0.00 Walk<forward><slow>        SUB  Make a short, controlled advance toward the white chair, keeping slightly left of the ottoman.
+  t= 64 d= 0.00 Walk<forward><slow>        SUB  Make a short, precise advance to bring my body into contact with the white chair.
+  t= 65 d= 0.00 Turn<right><30>            SUB  Make a short, precise forward advance to bring my body into contact with the white chair.
+  t= 66 d= 0.00 Turn<right><20>            SUB  Slightly turn right to center the chair, setting up a precise short forward move to touch it.
+  t= 67 d= 0.00 Walk<forward><slow>        SUB  Advance a few centimeters forward to bring my body into contact with the white chair.
+  t= 68 d= 0.00 Turn<left><30>             SUB  Make a tiny, controlled advance to bring my body into contact with the white chair.
+  t= 69 d= 0.00 Walk<forward><slow>        SUB  Make a tiny, precise forward advance to bring my body into contact with the white chair.
+  t= 70 d= 0.00 Walk<forward><slow>             Make a tiny, precise forward advance to bring my body into contact with the white chair.
+  t= 72 d= 0.00 Turn<right><15>            SUB  Slightly turn right to center the chair in my forward lane for a precise short approach.
+  t= 73 d= 0.00 Turn<right><10>            SUB  Make a tiny right turn to bring my body into contact with the chair without advancing into the wall.
+  t= 74 d= 0.00 Walk<forward><slow>        SUB  Stop in place because the chair is already touching my body.
+  t= 75 d= 0.00 Turn<right><10>            SUB  Rotate slightly right to bring my body into gentle contact with the chair without advancing.
+  t= 76 d= 0.00 Stop/Stand                 STOP Stop in place because contact with the chair has been achieved.
+
+==========================================================================================
+[hard_success_true_longhaul] bed scene=102817140 ep=22 | path=14.8m turns=1 choice=19 obst=67 | min_dist=0.00 travel=17.2m steps=88 tax=success
+  t=  0 d=11.25 Turn<left><30>             SUB  Turn left to face the open passage and prepare to move through it.
+        VS: From left to right, I can see an open brighter doorway/passage on the left, about 1.2 mete
+  t=  1 d=11.25 Turn<left><20>             SUB  Align with the left passage to prepare to move into the adjacent room.
+  t=  2 d=11.22 Walk<forward><slow>        SUB  Move forward through the left opening into the adjacent larger room.
+  t=  3 d=11.05 Climb upstairs<normal>     SUB  Advance through the opening into the larger room to continue searching for the bed.
+  t=  4 d=10.98 Turn<left><20>             SUB  Climb the step to enter the larger room through the opening ahead-left.
+  t=  5 d=10.98 Turn<left><15>             SUB  Finish aligning with the opening to face straight into the larger room before climbing the step.
+  t=  6 d=10.96 Climb upstairs<normal>     SUB  Climb the step to enter the larger room onto the light wood floor.
+  t=  7 d=10.87 Climb upstairs<normal>     SUB  Climb the step to enter the living room onto the light wood floor.
+  t=  9 d=10.57 Climb upstairs<normal>     SUB  Climb the step to get onto the living room’s light wood floor.
+  t= 10 d=10.49 Climb upstairs<normal>     SUB  Climb the step to enter the living room onto the light wood floor.
+  t= 11 d=10.33 Climb upstairs<normal>     SUB  Climb the step to fully enter the living room onto the light wood floor.
+  t= 12 d=10.17 Walk<forward><slow>        SUB  Climb the step to get onto the living room’s light wood floor.
+  t= 13 d= 9.83 Walk<forward><normal>      SUB  Advance onto the living room floor to gain a central position and broaden visibility.
+  t= 14 d= 9.44 Walk<forward><normal>      SUB  Advance forward onto the living room floor to gain a central vantage and expand visibility.
+  t= 15 d= 9.09 Walk<forward><normal>      SUB  Advance forward into the living room toward the open doorway to expand visibility.
+  t= 16 d= 8.74 Walk<forward><normal>      SUB  Advance toward the open doorway ahead-right to reach potential bedroom areas.
+  t= 20 d= 7.41 Turn<right><20>            SUB  Align toward and approach the open doorway ahead-right.
+        VS: From left to right, I can see a coffee table and sofa area on a rug ahead-left, about 1.2-
+  t= 21 d= 7.13 Walk<forward><normal>      SUB  Approach the open doorway ahead-center to move toward potential bedroom areas.
+  t= 23 d= 6.68 Turn<left><20>             SUB  Slightly turn left to align with the open doorway ahead-left, then advance toward it.
+  t= 24 d= 6.61 Turn<left><15>             SUB  Slightly turn left to center the open doorway, then proceed toward it.
+  t= 25 d= 6.68 Side step<right><0.25>     SUB  Make a slight right lateral move to clear the obstacle, setting up a safe approach toward the open doorway.
+  t= 26 d= 6.43 Walk<forward><normal>      SUB  Approach the open doorway ahead-left via the clear center/right lane.
+  t= 27 d= 6.05 Turn<right><40>            SUB  Advance toward and through the open doorway ahead-left via the clear center-right lane.
+  t= 28 d= 5.93 Turn<left><25>             SUB  Slightly turn left to align with the open doorway ahead-left, then proceed toward it.
+  t= 29 d= 5.82 Walk<forward><slow>        SUB  Advance toward the open doorway ahead-left via the clear center-left lane.
+  t= 30 d= 5.64 Walk<forward><normal>      SUB  Advance toward and through the open doorway ahead-left via the clear center-left lane.
+  t= 31 d= 5.47 Walk<forward><normal>      SUB  Advance toward and through the open doorway ahead-left.
+  t= 32 d= 5.32 Walk<forward><normal>      SUB  Advance toward and through the open doorway ahead-left via the clear center-left lane.
+  t= 33 d= 5.20 Walk<forward><normal>      SUB  Advance toward the open doorway ahead-left via the clear center-left lane.
+  t= 34 d= 5.07 Walk<forward><normal>      SUB  Advance toward and through the open doorway ahead-left via the clear center-left lane.
+  t= 35 d= 4.90 Turn<left><40>             SUB  Advance through the doorway toward the visible bed via the clear center-left lane.
+  t= 36 d= 4.63 Walk<forward><normal>      SUB  Advance through the doorway ahead-left via the clear center-left lane.
+  t= 37 d= 4.30 Walk<forward><normal>      SUB  Move forward through the doorway into the next room to get closer to where the bed should be.
+  t= 38 d= 4.07 Walk<forward><normal>      SUB  Proceed forward through the doorway into the next room to get closer, then be ready to turn left to locate the
+  t= 39 d= 3.81 Walk<forward><normal>      SUB  Advance forward onto the gray rug to enter the room, then be ready to turn left to locate the bed.
+  t= 40 d= 3.65 Walk<forward><slow>        SUB  Step onto the rug to enter the room, then prepare to turn left toward the bed.
+        VS: From left to right, I can see a bed through a curtained opening at the left, about 1.5-2.0
+  t= 41 d= 3.62 Turn<left><45>             SUB  Turn left to align with the bed alcove entrance for a direct approach.
+  t= 42 d= 3.64 Turn<right><20>            SUB  Advance forward onto the rug toward the curtained bed alcove entrance.
+  t= 43 d= 3.54 Turn<right><20>            SUB  Step forward onto the rug toward the curtained bed alcove entrance.
+  t= 44 d= 3.49 Walk<forward><slow>        SUB  Step forward onto the rug to enter the room and position for an approach to the bed alcove.
+  t= 45 d= 3.21 Walk<forward><normal>      SUB  Step forward onto the rug to fully enter the room before turning toward the bed.
+  t= 46 d= 2.85 Turn<left><40>             SUB  Move forward onto the rug to fully enter the room before turning left toward the bed alcove.
+  t= 47 d= 2.69 Walk<forward><normal>      SUB  Advance forward toward the bed to close distance for contact.
+  t= 48 d= 2.28 Walk<forward><normal>      SUB  Close distance by moving forward toward the foot of the bed to reach contact.
+  t= 49 d= 2.18 Walk<forward><slow>        SUB  Advance carefully toward the bed to make physical contact.
+  t= 50 d= 2.01 Walk<forward><slow>        SUB  Move forward slightly to make contact with the bed.
+  t= 51 d= 1.73 Walk<forward><slow>        SUB  Advance slightly toward the foot of the bed to make physical contact.
+  t= 52 d= 1.63 Walk<forward><slow>        SUB  Close the last few centimeters to touch the bed.
+  t= 53 d= 1.40 Walk<forward><slow>        SUB  Close the last centimeters to make physical contact with the bed.
+  t= 54 d= 1.16 Walk<forward><slow>        SUB  Close the final centimeters to make physical contact with the bed.
+  t= 56 d= 0.85 Walk<forward><slow>        SUB  Close the final centimeters to make contact with the bed.
+  t= 57 d= 0.64 Walk<forward><slow>        SUB  Close the last centimeters to make physical contact with the bed.
+  t= 58 d= 0.56 Turn<left><20>             SUB  Nudge forward to make physical contact with the bed.
+  t= 60 d= 0.14 Walk<forward><slow>             Nudge forward to make physical contact with the bed.
+        VS: From left to right, I can see a cushioned armchair near the left, about 1.7-2.0 meters fro
+  t= 61 d= 0.16 Turn<left><100>            SUB  Turn to orient my back toward the bed to set up for sitting.
+  t= 62 d= 0.16 Turn<right><90>            SUB  Turn to align my back squarely toward the bed on my right.
+  t= 63 d= 0.31 Step back<0.25>            SUB  Step back to make firm contact with the bed edge for sitting setup.
+  t= 64 d= 0.13 Walk<forward><normal>      SUB  Turn so my back is squarely toward the bed to set up the sit.
+  t= 65 d= 0.00 Walk<forward><slow>        SUB  Nudge forward to make firm physical contact with the bed.
+  t= 66 d= 0.00 Turn<right><120>           SUB  Turn to align my back squarely toward the bed to set up for sitting.
+  t= 67 d= 0.05 Turn<left><90>             SUB  Turn so my back is squarely toward the bed to set up sitting.
+  t= 68 d= 0.11 Turn<left><90>             SUB  Turn left to orient my back directly toward the bed for sitting setup.
+  t= 69 d= 0.20 Turn<left><80>             SUB  Turn left to orient my back squarely toward the bed for sitting setup.
+  t= 70 d= 0.26 Turn<left><60>             SUB  Continue turning left to align my back directly toward the bed for the sit setup.
+  t= 71 d= 0.10 Step back<0.25>            SUB  Gently step back to make firm contact with the bed behind me.
+  t= 72 d= 0.00 Step back<0.25>            SUB  Gently step back to achieve solid contact with the bed behind me.
+  t= 73 d= 0.00 Step back<0.25>            SUB  Gently step back to make firm contact with the bed behind me.
+  t= 76 d= 0.00 Side step<left><0.25>      SUB  Side step left to make firm contact with the bed edge.
+  t= 77 d= 0.00 Side step<left><0.20>      SUB  Side step left to bring my body into firm contact with the bed edge.
+  t= 78 d= 0.00 Side step<left><0.15>      SUB  Side step left to make firm contact with the bed edge.
+  t= 79 d= 0.00 Turn<right><90>            SUB  Turn right to align my back squarely toward the bed for the sit setup.
+  t= 80 d= 0.00 Step back<0.25>            SUB  Gently step back to achieve firm contact with the bed behind me.
+        VS: From left to right, I can see a wooden crib on a cowhide rug ahead-left, about 1.0-1.5 met
+  t= 81 d= 0.00 Step back<0.25>            SUB  Gently step back to make firm contact with the bed behind me.
+  t= 83 d= 0.00 Sit down<0.45>             SUB  Begin sitting down onto the bed from the current contact position.
+  t= 84 d= 0.00 Sit down<0.45>             SUB  Continue lowering to fully sit on the bed.
+  t= 86 d= 0.00 Sit down<0.45>             SUB  Finish lowering to be fully seated on the bed.
+  t= 87 d= 0.00 Stop/Stand                 STOP Stop after completing the sit on the bed.
+
+==========================================================================================
+[model_wrong_stop_far] tv scene=107734287_176000160 ep=24 | path=18.1m turns=5 choice=23 obst=51 | min_dist=9.99 travel=1.9m steps=39 tax=model_wrong_stop
+  t=  0 d=10.12 Walk<forward><slow>        SUB  Advance out of the tight nook toward the open floor ahead to reach the adjacent passage.
+        VS: From left to right, I can see a close left wall with a hanging rod, about 0.3 meters from 
+  t=  1 d=10.07 Turn<right><40>            SUB  Turn right to face the open passage and prepare to walk out into the adjacent area.
+  t=  2 d=10.06 Turn<right><30>            SUB  Finish orienting right so the open passage is centered ahead to prepare to walk out.
+  t=  3 d=10.14 Turn<right><25>            SUB  Finish turning right to center the open passage ahead and prepare to walk out.
+  t=  5 d=10.09 Turn<right><30>            SUB  Finish turning right to align with the open passage for a safe exit.
+  t=  6 d=10.02 Turn<right><30>            SUB  Finish turning right to align with the open passage and prepare to walk out.
+  t=  7 d=10.01 Turn<right><30>            SUB  Finish turning right to face the open passage and prepare to walk out.
+  t=  8 d=10.01 Turn<right><30>            SUB  Finish turning right to align with the open passage for a safe exit.
+  t= 10 d=10.00 Turn<left><30>             SUB  Turn left to face the open passage on the left to prepare to walk out.
+  t= 11 d= 9.99 Turn<left><30>             SUB  Finish turning left to face the open passage on the left for a safe exit.
+  t= 12 d=10.05 Turn<left><30>             SUB  Finish turning left to face the open passage for a safe exit.
+  t= 13 d=10.06 Turn<left><30>             SUB  Finish turning left to face the open passage on the left to prepare for a safe exit.
+  t= 14 d=10.05 Turn<right><30>            SUB  Turn right to align with the open passage on the right to prepare to walk out.
+  t= 15 d=10.02 Turn<right><30>            SUB  Finish turning right to face the open passage on the right to prepare to walk out.
+  t= 16 d=10.04 Turn<left><30>             SUB  Turn left to face the open passage on the left to prepare for forward walking.
+  t= 17 d=10.05 Turn<left><30>             SUB  Finish turning left to face the open passage on the left for a safe exit.
+  t= 18 d=10.08 Turn<right><30>            SUB  Turn right to face the open passage on the right to prepare for forward walking out of the nook.
+  t= 19 d=10.06 Turn<right><30>            SUB  Finish turning right to face the open passage on the right for a safe exit.
+  t= 20 d=10.04 Turn<left><30>             SUB  Turn left to face the open passage on the left for a safe exit.
+        VS: From left to right, I can see a bright beige-tile open floor/passage, about 0.6-0.8 meters
+  t= 21 d=10.05 Turn<left><30>             SUB  Finish turning left to face the open passage for a safe exit.
+  t= 22 d=10.09 Turn<right><30>            SUB  Turn right to face the open passage on the right to prepare to walk out.
+  t= 23 d=10.06 Turn<right><30>            SUB  Finish turning right to face the open passage on the right for a safe exit.
+  t= 24 d=10.04 Turn<left><30>             SUB  Turn left to face the open passage on the left to set up a safe exit.
+  t= 25 d=10.06 Turn<left><30>             SUB  Finish turning left to face the open passage for a safe exit.
+  t= 26 d=10.10 Turn<right><30>            SUB  Advance carefully into the open beige-tile passage ahead to exit the tight nook.
+  t= 27 d=10.06 Turn<right><20>            SUB  Align with the open beige-tile passage ahead-right to set up a safe forward exit.
+  t= 28 d=10.07 Turn<left><30>             SUB  Turn left to face the open passage on the left to set up a safe forward exit.
+  t= 29 d=10.11 Turn<left><30>             SUB  Finish turning left to face the open passage for a safe exit.
+  t= 30 d=10.11 Turn<right><30>            SUB  Turn right to face the open passage on the right to set up a safe forward exit.
+  t= 31 d=10.07 Turn<right><30>            SUB  Finish turning right to face the open passage for a safe forward exit.
+  t= 32 d=10.06 Turn<left><30>             SUB  Turn left to face the open passage on the left to set up a safe forward exit.
+  t= 33 d=10.08 Turn<left><30>             SUB  Finish turning left to face the open passage for a safe exit.
+  t= 34 d=10.10 Turn<right><30>            SUB  Turn right to face the open passage on the right for a safe forward exit.
+  t= 35 d=10.02 Turn<right><30>            SUB  Finish turning right to face the open passage on the right for a safe forward exit.
+  t= 36 d=10.00 Turn<left><30>             SUB  Turn left to face the open beige-tile passage on the left to set up a safe exit.
+  t= 37 d=10.02 Turn<left><30>             SUB  Continue turning left to face the open passage on the left for a safe exit.
+  t= 38 d=10.02 Stop/Stand                 STOP Stop since I am already touching the TV.
