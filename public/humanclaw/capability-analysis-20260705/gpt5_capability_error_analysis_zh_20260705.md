@@ -227,7 +227,7 @@ taxonomy 构成 × 综合难度三分位（low run）：
 
 ## 4. 定性：失败的行为学（案例）
 
-对 13 个按难度格子抽样的 episode 逐步阅读（完整时间线见 `case_storylines.txt`），归纳出 7 种可复现的行为模式。每种给出案例 + 定量呼应。
+对 12 个按难度格子抽样的 episode 逐步阅读，归纳出 7 种可复现的行为模式，每种给出案例 + 定量呼应。**每个案例的执行轨迹俯视图（navmesh + 实际轨迹 + 最短路径）与 6 个代表案例的第三人称 3D 回放视频见 [cases 可视化页](cases/)**；完整逐步日志见 `case_storylines.txt`。
 
 ### 4.1 接触确认缺失（contact verification gap）——easy 题最大杀手
 

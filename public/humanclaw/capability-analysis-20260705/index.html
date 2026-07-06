@@ -763,7 +763,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <p>模型说"我到了、停"时基本是对的（wrong-stop 仅 29 例 / 2.4%）；但 217 个 episode 摸到目标（min_dist 中位 0.000m、1m 内平均滞留 58 步、88% 的滞留步仍在 claim 目标）却始终不发 Stop。<strong>终止是 recall 问题不是 precision 问题</strong>——模型宁可无限微调也不做一次不可逆的完成承诺。</p>
 <hr />
 <h2 id="4">4. 定性：失败的行为学（案例）</h2>
-<p>对 13 个按难度格子抽样的 episode 逐步阅读（完整时间线见 <code>case_storylines.txt</code>），归纳出 7 种可复现的行为模式。每种给出案例 + 定量呼应。</p>
+<p>对 12 个按难度格子抽样的 episode 逐步阅读，归纳出 7 种可复现的行为模式，每种给出案例 + 定量呼应。<strong>每个案例的执行轨迹俯视图（navmesh + 实际轨迹 + 最短路径）与 6 个代表案例的第三人称 3D 回放视频见 <a href="cases/">cases 可视化页</a></strong>；完整逐步日志见 <code>case_storylines.txt</code>。</p>
 <h3 id="41-contact-verification-gapeasy">4.1 接触确认缺失（contact verification gap）——easy 题最大杀手</h3>
 <p><strong>案例</strong>：chair 102343992 ep12（path 4.4m）。t=14 已达 d=0.00，随后 <strong>85 步</strong>全部在"close the final centimeters / tiny lateral gap"，左右 0.10m 微横移直到 100 步耗尽，从未尝试 Stop。
 <strong>机制</strong>：没有触觉反馈，视觉上无法区分 0cm 与 10cm；env_feedback 里"上一步有碰撞"的信息从未被当作"已接触"的证据使用。
