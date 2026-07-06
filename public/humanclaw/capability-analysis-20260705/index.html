@@ -261,6 +261,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 </tbody>
 </table>
 <p><strong>共线性警告</strong>：path_length 与 choice_point_count / choice_entropy / corridor_area 的 Spearman 相关达 0.92–0.98——它们量的是同一个东西（"路远 = 决策点多 = 走廊面积大"）。paper 中不应把它们当独立难度轴并列；分层分析（§3.3）确认 choice point 在控制路径长度后无残余效应。<strong>建议 paper 报告三个弱相关的轴：路径长度、转弯数、障碍密度，外加目标多重性作为任务属性</strong>。</p>
+<p><strong>26 例 path=NaN 的解释（疑似无解 episode）</strong>：这 26 例全部是 <code>reachable_goal_objects=0</code>——difficulty 脚本把每个目标实例的中心 snap 到 navmesh 全部失败，集中在 5 个 scene（102343992×9、104862417×8、102816600×6 等，前两个正是成功率 0% 的最差 scene）。实证上它们<strong>接近无解</strong>：三个 run 共 77 次尝试中只有 3 次达成 0.2m 接触（high 成功 1 例、nothink 接触 2 例，均为目标中心在货架/花盆内但 AABB 边缘勉强可触的 potted_plant 边界情况），其余 ~23 例在任何 run 中从未接触（low run 上 26 例 contact=0/26，min_dist 中位 3.07m，而全库 contact 率 32%）。<strong>建议</strong>：paper 中把这 26 例从分母剔除（low 成功率 14.06%→14.37%）或单独标注；下一版 benchmark 生成时应以"navmesh 可达空间到目标 AABB ≤0.2m"为准做可解性校验（见 §6.4）。</p>
 <p><strong>障碍物计数的过滤（difficulty_r3，已验证）</strong>：原始（r2）corridor 计数没有语义过滤——建筑地板/墙属于 stage mesh 天然不计，但 <strong>rug/carpet/doormat 等平铺物、挂墙/吊顶装饰会被算作"障碍物"</strong>。我们重算了过滤版 r3：剔除 floor_covering 类（HSSD semantics 类别匹配）+ 行走高度带过滤（物体 Y 范围须与 [路径高度+0.1m, +1.9m] 相交），每 episode 平均剔除 ~34 个物体（类别中位 8 + 高度带中位 26），static 计数中位 26→21。<strong>结论不变</strong>：r2/r3 排序相关 0.963，过滤后障碍计数在前三个四分位对成功率依然无梯度、只有最密尾部才有效应（§3.2）——弱信号不是地毯噪声造成的，是真实现象。本报告障碍物相关数字均已更新为 r3 口径。对比之下，<strong>碰撞指标本来就过滤过</strong>：<code>static_collision_step_fraction</code> 已忽略脚/踝与 stage 地面及 carpet/rug/floor/mat 类低表面的接触。</p>
 <h3 id="23">2.3 类别差异的三个来源</h3>
 <ol>
@@ -864,6 +865,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <h3 id="64">6.4 其他</h3>
 <ul>
 <li><code>at_target</code> 完成短路机制全程 0 触发（死代码）。</li>
+<li><strong>疑似无解 episode</strong>：26 例（2.1%）所有目标实例中心均无法 snap 到可达 navmesh（§2.2），实证接近零接触——episode 生成管线缺少以实际成功判据（0.2m 接触）为准的可解性校验；它们同时拖垮了 102343992/104862417 两个 0% scene。</li>
 <li>render_find（渲染级可见性 ground truth）被禁用——建议重跑时打开，可直接量化"可见未识别/不可见却声称"两类真感知错误。</li>
 <li>评测分数对 scaffold 细节的敏感度（id-bug ±2.4pt、sit 口径 ±5.2pt、token cap 使 high 崩溃）本身值得作为 agentic-eval 的 methodological finding 写一小节。</li>
 </ul>
