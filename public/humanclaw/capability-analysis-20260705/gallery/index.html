@@ -169,7 +169,7 @@ function addPage(){
     const feat=f?`<span class="feat">⭐ ${f.tag} ${f.pat}</span> `:"";
     const tname=d.ins||`${d.cat} task`;
     const media=vf
-      ?`<video muted loop playsinline preload="none" poster="figs_all/${d.img}" src="videos/${vf}"></video>`
+      ?`<video muted loop playsinline preload="none" poster="figs_all/${d.img}" src="${vf.startsWith('http')?vf:'videos/'+vf}"></video>`
       :`<img loading="lazy" src="figs_all/${d.img}" alt="${d.scene} ep${d.ep}">`;
     c.innerHTML=`${media}
       <div class="cap"><div class="tname" title="${tname.replace(/"/g,"&quot;")}">${tname}</div>
@@ -233,7 +233,7 @@ function openModal(d){
   $("mimg").src="figs_all/"+d.img;
   const v=VIDEOS[key(d)];
   $("vidcol").innerHTML=v
-    ?`<video controls autoplay muted preload="metadata" src="videos/${v}"></video><div style="color:var(--muted);font-size:.8em;margin-top:4px">三联：ego 视角 | 第三人称 3D | 逐帧同步 BEV（右图为静态全轨迹，可拖动逐步回放）</div>`
+    ?`<video controls autoplay muted preload="metadata" src="${v.startsWith('http')?v:'videos/'+v}"></video><div style="color:var(--muted);font-size:.8em;margin-top:4px">三联：ego 视角 | 第三人称 3D | 逐帧同步 BEV（右图为静态全轨迹，可拖动逐步回放）</div>`
     :`<div class="novid">该 task 的 3D 视频正在批量渲染队列中<br>（全量生成进行中，完成后自动上线）</div>`;
   $("modal").classList.add("open");
   const setup=()=>{
@@ -267,7 +267,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"){stopAnim();$("modal
 
 Promise.all([
   fetch("gallery_meta.json").then(r=>r.json()),
-  fetch("videos_manifest.json").then(r=>r.ok?r.json():{}).catch(()=>({}))
+  fetch("https://huggingface.co/datasets/Choiszt/humanclaw-hcbv6-videos/resolve/main/videos_manifest.json",{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).catch(()=>fetch("videos_manifest.json").then(r=>r.ok?r.json():{}).catch(()=>({})))
 ]).then(([data,vids])=>{
   VIDEOS=vids;
   DATA=data;
