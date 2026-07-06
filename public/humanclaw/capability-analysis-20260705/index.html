@@ -41,7 +41,7 @@ figcaption{color:var(--muted);font-size:.85em;margin-top:6px}
 hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 @media(max-width:1020px){.layout{grid-template-columns:1fr}nav.toc{position:static;max-height:none;padding:24px 24px 0;border-bottom:1px solid var(--line)}}
 </style></head><body>
-<nav class="crumbs"><a href="../../">HumanClaw</a><span class="sep">›</span><a href="./" class="here">误差分析报告</a><span class="sep">·</span><a href="gallery/?featured=1">精选案例</a><span class="sep">·</span><a href="gallery/">全量 Gallery</a></nav>
+<nav class="crumbs"><a href="../../">HumanClaw</a><span class="sep">›</span><a href="./" class="here">误差分析报告</a><span class="sep">·</span><a href="gallery/">全量 Gallery</a></nav>
 <div class="layout">
 <nav class="toc"><div class="toc-title">目录</div><div class="toc">
 <ul>
@@ -92,9 +92,12 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 </ul>
 </div>
 </nav>
-<article><h1 id="hcbv6-humanclaw-gpt-5-v2">HCBv6 / HumanClaw：任务难度与 GPT-5 能力误差分析（v2）</h1><blockquote><p><strong>命名与范围约定（2026-07-06 决定）</strong>：paper 中 GPT-5 只报告一个配置——即本报告中的 <strong>low-thinking run（reasoning_effort=low）</strong>，对外统一命名为 <strong>GPT-5 (non-thinking)</strong>。effort=none（nothink）与 high 两个 run 不进 paper（high 重跑取消），仅作内部对照。下文各表中的 "low" 即 GPT-5 (non-thinking)。</p></blockquote>
+<article><h1 id="hcbv6-humanclaw-gpt-5-v2">HCBv6 / HumanClaw：任务难度与 GPT-5 能力误差分析（v2）</h1>
 <p>日期：2026-07-05 · 数据/脚本：<code>humanvla/outputs/gpt5_capability_analysis_20260705/</code>
 分析对象：GPT-5 nothink / low-thinking / high-thinking 三个 full-val run（1218 episodes，41 scenes，6 类目标，max 100 steps）。</p>
+<blockquote>
+<p><strong>命名与范围约定（2026-07-06 决定）</strong>：paper 中 GPT-5 只报告一个配置——即本报告中的 <strong>low-thinking run（reasoning_effort=low）</strong>，对外统一命名为 <strong>GPT-5 (non-thinking)</strong>。effort=none（nothink）与 high 两个 run 不进 paper（high 的 cap 修复重跑取消），仅作内部对照保留。下文各表中的 "low" 即 paper 的 GPT-5 (non-thinking)。</p>
+</blockquote>
 <p>报告结构按「<strong>任务 overview（分布与难度划分）→ 定量（GPT 对哪些题做得好/不好）→ 定性（为什么）</strong>」组织。所有结论来自对每个 episode 的 step 级日志解析：每步的动作、pelvis 位置、身体关节到最近目标 AABB 的距离、planner 的 visible_state 文本、verifier 的 proposed/final action。与 07-04 那份报告（侧重 token-cap 系统故障）不同，本报告以模型能力为主轴，系统因素被显式剥离并单列（§6）。</p>
 <hr />
 <h2 id="0-tldr">0. TL;DR</h2>
@@ -770,7 +773,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <p>模型说"我到了、停"时基本是对的（wrong-stop 仅 29 例 / 2.4%）；但 217 个 episode 摸到目标（min_dist 中位 0.000m、1m 内平均滞留 58 步、88% 的滞留步仍在 claim 目标）却始终不发 Stop。<strong>终止是 recall 问题不是 precision 问题</strong>——模型宁可无限微调也不做一次不可逆的完成承诺。</p>
 <hr />
 <h2 id="4">4. 定性：失败的行为学（案例）</h2>
-<p>对 12 个按难度格子抽样的 episode 逐步阅读，归纳出 7 种可复现的行为模式，每种给出案例 + 定量呼应。<strong>每个案例的执行轨迹俯视图（navmesh + 实际轨迹 + 最短路径）与 6 个代表案例的三联同步 3D 视频，见 <a href="gallery/?featured=1">Gallery 的 ⭐ 精选筛选</a></strong>；完整逐步日志见 <code>case_storylines.txt</code>。</p>
+<p>对 12 个按难度格子抽样的 episode 逐步阅读，归纳出 7 种可复现的行为模式，每种给出案例 + 定量呼应。<strong>每个案例的执行轨迹俯视图与逐步回放、以及 6 个代表案例的三联同步 3D 视频，见 <a href="gallery/?featured=1">Gallery 的 ⭐ 精选筛选</a></strong>（点卡片打开详情）；完整逐步日志见 <code>case_storylines.txt</code>。</p>
 <h3 id="41-contact-verification-gapeasy">4.1 接触确认缺失（contact verification gap）——easy 题最大杀手</h3>
 <p><strong>案例</strong>：chair 102343992 ep12（path 4.4m）。t=14 已达 d=0.00，随后 <strong>85 步</strong>全部在"close the final centimeters / tiny lateral gap"，左右 0.10m 微横移直到 100 步耗尽，从未尝试 Stop。
 <strong>机制</strong>：没有触觉反馈，视觉上无法区分 0cm 与 10cm；env_feedback 里"上一步有碰撞"的信息从未被当作"已接触"的证据使用。
