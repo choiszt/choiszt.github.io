@@ -26,6 +26,8 @@ select,input[type=text]{background:var(--bg);color:var(--fg);border:1px solid va
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
 .card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--code);cursor:pointer}
 .card img{width:100%;display:block;aspect-ratio:1;object-fit:cover;background:#fff}
+.card video{width:100%;display:block;aspect-ratio:1;object-fit:cover;background:#000}
+.cap .tname{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:600;font-size:.98em;line-height:1.4;margin-bottom:2px}
 .cap{padding:6px 10px;font-size:.78em;line-height:1.5}
 .cap b{font-size:1.05em}
 .tax{display:inline-block;padding:0 7px;border-radius:9px;font-size:.92em;border:1px solid var(--line);color:var(--muted)}
@@ -43,14 +45,14 @@ label{font-size:.82em;color:var(--muted)}
 .mhead{font-size:1.05em;margin:0 40px 4px 0}
 .msub{color:var(--muted);font-size:.83em;margin-bottom:12px}
 .mbody{display:flex;flex-wrap:wrap;gap:20px}
-.viewer{position:relative;width:min(600px,100%);flex:0 0 auto}
+.viewer{position:relative;flex:0 1 460px;min-width:300px}
 .viewer img{width:100%;display:block;border:1px solid var(--line);border-radius:8px;background:#fff}
 .viewer canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .ctrl{display:flex;gap:10px;align-items:center;margin-top:8px;font-size:.85em;flex-wrap:wrap}
 .ctrl button{cursor:pointer;border:1px solid var(--accent);color:var(--accent);background:none;border-radius:6px;padding:2px 14px;font-size:1em}
 .ctrl input[type=range]{flex:1;min-width:120px}
 .stepinfo{font-family:ui-monospace,monospace;color:var(--muted);min-width:150px}
-.vidcol{flex:1;min-width:320px}
+.vidcol{flex:1 1 560px;min-width:340px}
 .vidcol video{width:100%;border:1px solid var(--line);border-radius:8px}
 .novid{color:var(--muted);font-size:.85em;border:1px dashed var(--line);border-radius:8px;padding:18px;text-align:center;margin-top:4px}
 </style>
@@ -90,6 +92,7 @@ label{font-size:.82em;color:var(--muted)}
     <h3 class="mhead" id="mtitle"></h3>
     <div class="msub" id="msub"></div>
     <div class="mbody">
+      <div class="vidcol" id="vidcol"></div>
       <div class="viewer">
         <img id="mimg" alt="">
         <canvas id="mcanvas"></canvas>
@@ -100,7 +103,6 @@ label{font-size:.82em;color:var(--muted)}
           <span class="stepinfo" id="stepinfo"></span>
         </div>
       </div>
-      <div class="vidcol" id="vidcol"></div>
     </div>
   </div>
 </div>
@@ -161,13 +163,24 @@ function addPage(){
     const c=document.createElement("div");
     c.className="card";
     const taxCls=d.success?"success":(d.tax==="verifier_bug_stop"||d.tax==="system_forced_stop"?"sys":"");
-    const vid=VIDEOS[key(d)]?'<span class="vid">🎬 视频</span> ':"";
+    const vf=VIDEOS[key(d)];
+    const vid=vf?'<span class="vid">🎬 视频</span> ':"";
     const f=FEATURED[key(d)];
     const feat=f?`<span class="feat">⭐ ${f.tag} ${f.pat}</span> `:"";
-    c.innerHTML=`<img loading="lazy" src="figs_all/${d.img}" alt="${d.scene} ep${d.ep}">
-      <div class="cap"><b>${d.cat}</b> · ${d.scene} · ep${d.ep}<br>
+    const tname=d.ins||`${d.cat} task`;
+    const media=vf
+      ?`<video muted loop playsinline preload="none" poster="figs_all/${d.img}" src="videos/${vf}"></video>`
+      :`<img loading="lazy" src="figs_all/${d.img}" alt="${d.scene} ep${d.ep}">`;
+    c.innerHTML=`${media}
+      <div class="cap"><div class="tname" title="${tname.replace(/"/g,"&quot;")}">${tname}</div>
+      <span style="color:var(--muted)">${d.cat} · ${d.scene} · ep${d.ep}</span><br>
       ${feat}${vid}<span class="tax ${taxCls}">${d.tax}</span>
       path ${d.path_m??"NaN"}m · min_dist ${d.min_dist??"?"}m · ${d.steps??"?"} steps</div>`;
+    if(vf){
+      const v=c.querySelector("video");
+      c.onmouseenter=()=>{v.play().catch(()=>{});};
+      c.onmouseleave=()=>{v.pause();};
+    }
     c.onclick=()=>openModal(d);
     frag.appendChild(c);
   });
@@ -213,15 +226,15 @@ function drawFrame(d,i){
 
 function openModal(d){
   stopAnim();
-  $("mtitle").textContent=`${d.cat} · scene ${d.scene} · ep ${d.ep}`;
+  $("mtitle").textContent=d.ins||`${d.cat} · scene ${d.scene} · ep ${d.ep}`;
   const f=FEATURED[key(d)];
   const featLine=f?`<div style="margin:2px 0 6px"><span class="feat">⭐ ${f.tag} · ${f.pat}</span> ${f.note}</div>`:"";
-  $("msub").innerHTML=featLine+`${d.tax} · path ${d.path_m??"NaN"}m · min_dist ${d.min_dist??"?"}m · ${d.steps??"?"} steps · <a href="figs_all/${d.img}" target="_blank">打开大图 ↗</a>`;
+  $("msub").innerHTML=featLine+`<b>${d.cat}</b> · scene ${d.scene} · ep ${d.ep} · ${d.tax} · path ${d.path_m??"NaN"}m · min_dist ${d.min_dist??"?"}m · ${d.steps??"?"} steps · <a href="figs_all/${d.img}" target="_blank">打开大图 ↗</a>`;
   $("mimg").src="figs_all/"+d.img;
   const v=VIDEOS[key(d)];
   $("vidcol").innerHTML=v
-    ?`<video controls preload="metadata" src="videos/${v}"></video><div style="color:var(--muted);font-size:.8em;margin-top:4px">三联：ego 视角 | 第三人称 3D | 逐帧同步 BEV</div>`
-    :`<div class="novid">该 task 尚未渲染 3D 视频<br>（按需渲染约 10 分钟/个，见 render_videos.sh）</div>`;
+    ?`<video controls autoplay muted preload="metadata" src="videos/${v}"></video><div style="color:var(--muted);font-size:.8em;margin-top:4px">三联：ego 视角 | 第三人称 3D | 逐帧同步 BEV（右图为静态全轨迹，可拖动逐步回放）</div>`
+    :`<div class="novid">该 task 的 3D 视频正在批量渲染队列中<br>（全量生成进行中，完成后自动上线）</div>`;
   $("modal").classList.add("open");
   const setup=()=>{
     const cv=$("mcanvas");cv.width=600;cv.height=600;
