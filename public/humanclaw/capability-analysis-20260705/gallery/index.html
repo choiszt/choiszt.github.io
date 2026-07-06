@@ -18,6 +18,11 @@ a{color:var(--accent)}
 .chip{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:2px 11px;font-size:.82em;color:var(--muted);background:none}
 .chip.on{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
 select,input[type=text]{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:.85em}
+nav.crumbs{max-width:1300px;margin:0 auto;padding:14px 24px 0;font-size:.88em}
+nav.crumbs a{color:var(--muted);text-decoration:none}
+nav.crumbs a:hover{color:var(--accent)}
+nav.crumbs a.here{color:var(--accent);font-weight:600;border-bottom:2px solid var(--accent)}
+nav.crumbs .sep{margin:0 7px;color:var(--line)}
 .count{margin-left:auto;color:var(--muted);font-size:.85em}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px}
 .card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--code)}
@@ -34,7 +39,7 @@ label{font-size:.82em;color:var(--muted)}
 </head>
 <body>
 <main>
-<p class="back"><a href="../">← 返回报告</a> · <a href="../cases/">精选案例（视频）</a></p>
+<nav class="crumbs"><a href="../../">HumanClaw</a><span class="sep">›</span><a href="../">误差分析报告</a><span class="sep">·</span><a href="../cases/">精选案例</a><span class="sep">·</span><a href="./" class="here">全量 Gallery</a></nav>
 <h1>全量轨迹 Gallery — GPT-5 low-thinking（1202 episodes）</h1>
 <p style="color:var(--muted);font-size:.85em;margin:4px 0 10px">灰=navmesh · 蓝虚线=最短路径 · 彩色=实际轨迹（紫→黄按步数）· ★=目标实例 · ●起点 · ✖停止/■耗尽。点卡片看大图。</p>
 

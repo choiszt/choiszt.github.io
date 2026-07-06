@@ -21,13 +21,18 @@ img,video{max-width:100%;border:1px solid var(--line);border-radius:6px;backgrou
 .tag.fail{border-color:#c0392b;color:#c0392b}
 .tag.sys{border-color:#b8860b;color:#b8860b}
 .tag.ok{border-color:var(--accent);color:var(--accent)}
+nav.crumbs{max-width:1300px;margin:0 auto;padding:14px 24px 0;font-size:.88em}
+nav.crumbs a{color:var(--muted);text-decoration:none}
+nav.crumbs a:hover{color:var(--accent)}
+nav.crumbs a.here{color:var(--accent);font-weight:600;border-bottom:2px solid var(--accent)}
+nav.crumbs .sep{margin:0 7px;color:var(--line)}
 .back{font-size:.9em}
 figcaption{color:var(--muted);font-size:.85em;margin-top:4px}
 </style>
 </head>
 <body>
 <main>
-<p class="back"><a href="../">← 返回报告</a> · <a href="../gallery/">全量轨迹 Gallery（1202 集可筛选）</a></p>
+<nav class="crumbs"><a href="../../">HumanClaw</a><span class="sep">›</span><a href="../">误差分析报告</a><span class="sep">·</span><a href="./" class="here">精选案例</a><span class="sep">·</span><a href="../gallery/">全量 Gallery</a></nav>
 <h1>案例可视化：执行轨迹俯视图 + 3D 回放视频</h1>
 <p class="note">对应报告 §4 的 12 个案例。俯视图：灰色为可行走 navmesh，虚线为规划最短路径，彩色线为 agent 实际 pelvis 轨迹（颜色=步数，紫→黄），★ 为目标实例，● 起点，✖/■ 终点（停止/耗尽步数）。视频为三联同步画面：<b>左=第一人称 ego 视角，中=第三人称 3D 回放，右=BEV 俯视图</b>（红点+箭头为当前位置与朝向，轨迹随播放增长，左上角实时显示 step/动作/到目标距离，三者逐帧对齐）。完整逐步日志见 <a href="../case_storylines.txt">case_storylines.txt</a>。</p>
 

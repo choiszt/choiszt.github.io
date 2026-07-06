@@ -6,6 +6,12 @@
 :root{--bg:#fcfcfa;--fg:#1e222a;--muted:#5b6472;--accent:#0f6f5c;--line:#dde1e6;--code:#f0f2f4}
 @media(prefers-color-scheme:dark){:root{--bg:#14171c;--fg:#dfe4ea;--muted:#9aa4b2;--accent:#4fd1b5;--line:#2c333d;--code:#1e242c}}
 *{box-sizing:border-box}
+nav.crumbs{max-width:1300px;margin:0 auto;padding:14px 24px 0;font-size:.88em}
+nav.crumbs a{color:var(--muted);text-decoration:none}
+nav.crumbs a:hover{color:var(--accent)}
+nav.crumbs a.here{color:var(--accent);font-weight:600;border-bottom:2px solid var(--accent)}
+nav.crumbs .sep{margin:0 7px;color:var(--line)}
+
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 -apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif}
 .layout{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1300px;margin:0 auto;gap:24px}
 nav.toc{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:40px 0 40px 20px;font-size:.82em;line-height:1.5}
@@ -35,6 +41,7 @@ figcaption{color:var(--muted);font-size:.85em;margin-top:6px}
 hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 @media(max-width:1020px){.layout{grid-template-columns:1fr}nav.toc{position:static;max-height:none;padding:24px 24px 0;border-bottom:1px solid var(--line)}}
 </style></head><body>
+<nav class="crumbs"><a href="../../">HumanClaw</a><span class="sep">›</span><a href="./" class="here">误差分析报告</a><span class="sep">·</span><a href="cases/">精选案例</a><span class="sep">·</span><a href="gallery/">全量 Gallery</a></nav>
 <div class="layout">
 <nav class="toc"><div class="toc-title">目录</div><div class="toc">
 <ul>
