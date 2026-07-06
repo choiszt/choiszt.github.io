@@ -3,6 +3,9 @@
 日期：2026-07-05 · 数据/脚本：`humanvla/outputs/gpt5_capability_analysis_20260705/`
 分析对象：GPT-5 nothink / low-thinking / high-thinking 三个 full-val run（1218 episodes，41 scenes，6 类目标，max 100 steps）。
 
+
+> **命名与范围约定（2026-07-06 决定）**：paper 中 GPT-5 只报告一个配置——即本报告中的 **low-thinking run（reasoning_effort=low）**，对外统一命名为 **GPT-5 (non-thinking)**。effort=none（nothink）与 high 两个 run 不进 paper（high 的 cap 修复重跑取消），仅作内部对照保留。下文各表中的 "low" 即 paper 的 GPT-5 (non-thinking)。
+
 报告结构按「**任务 overview（分布与难度划分）→ 定量（GPT 对哪些题做得好/不好）→ 定性（为什么）**」组织。所有结论来自对每个 episode 的 step 级日志解析：每步的动作、pelvis 位置、身体关节到最近目标 AABB 的距离、planner 的 visible_state 文本、verifier 的 proposed/final action。与 07-04 那份报告（侧重 token-cap 系统故障）不同，本报告以模型能力为主轴，系统因素被显式剥离并单列（§6）。
 
 ---
