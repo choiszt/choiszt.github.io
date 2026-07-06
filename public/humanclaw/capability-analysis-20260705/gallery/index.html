@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HCBv6 全量轨迹 Gallery（GPT-5 low）</title>
+<style>
+:root{--bg:#fcfcfa;--fg:#1e222a;--muted:#5b6472;--accent:#0f6f5c;--line:#dde1e6;--code:#f0f2f4}
+@media(prefers-color-scheme:dark){:root{--bg:#14171c;--fg:#dfe4ea;--muted:#9aa4b2;--accent:#4fd1b5;--line:#2c333d;--code:#1e242c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 -apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif}
+main{max-width:1360px;margin:0 auto;padding:28px 20px 80px}
+h1{font-size:1.3em;border-bottom:2px solid var(--accent);padding-bottom:8px;margin:0 0 6px}
+.back{font-size:.85em}
+a{color:var(--accent)}
+.bar{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);z-index:10;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:2px 11px;font-size:.82em;color:var(--muted);background:none}
+.chip.on{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+select,input[type=text]{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:.85em}
+.count{margin-left:auto;color:var(--muted);font-size:.85em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px}
+.card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--code)}
+.card img{width:100%;display:block;aspect-ratio:1.2;object-fit:cover;background:#fff}
+.cap{padding:6px 10px;font-size:.78em;line-height:1.5}
+.cap b{font-size:1.05em}
+.tax{display:inline-block;padding:0 7px;border-radius:9px;font-size:.92em;border:1px solid var(--line);color:var(--muted)}
+.tax.success{border-color:var(--accent);color:var(--accent)}
+.tax.sys{border-color:#b8860b;color:#b8860b}
+.more{display:block;margin:24px auto;padding:8px 26px;font-size:.95em;cursor:pointer;border:1px solid var(--accent);color:var(--accent);background:none;border-radius:8px}
+.sep{color:var(--line)}
+label{font-size:.82em;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<p class="back"><a href="../">← 返回报告</a> · <a href="../cases/">精选案例（视频）</a></p>
+<h1>全量轨迹 Gallery — GPT-5 low-thinking（1202 episodes）</h1>
+<p style="color:var(--muted);font-size:.85em;margin:4px 0 10px">灰=navmesh · 蓝虚线=最短路径 · 彩色=实际轨迹（紫→黄按步数）· ★=目标实例 · ●起点 · ✖停止/■耗尽。点卡片看大图。</p>
+
+<div class="bar">
+  <span id="cats"></span>
+  <span class="sep">|</span>
+  <span id="outcomes"></span>
+  <span class="sep">|</span>
+  <label>失败模式 <select id="tax"><option value="">全部</option></select></label>
+  <label>scene <select id="scene"><option value="">全部</option></select></label>
+  <input type="text" id="q" placeholder="搜索: scene / ep / 类别" size="18">
+  <label>排序 <select id="sort">
+    <option value="default">scene·ep</option>
+    <option value="path_asc">路径 短→长</option>
+    <option value="path_desc">路径 长→短</option>
+    <option value="mind_asc">min_dist 近→远</option>
+  </select></label>
+  <span class="count" id="count"></span>
+</div>
+
+<div class="grid" id="grid"></div>
+<button class="more" id="more" style="display:none">加载更多</button>
+
+<script>
+const PAGE=60;
+let DATA=[],view=[],shown=0;
+const state={cat:"",outcome:"",tax:"",scene:"",q:"",sort:"default"};
+const $=id=>document.getElementById(id);
+
+function chip(el,items,key){
+  items.forEach(v=>{
+    const b=document.createElement("button");
+    b.className="chip"+(state[key]===v.val?" on":"");
+    b.textContent=v.label;
+    b.onclick=()=>{state[key]=v.val;el.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));b.classList.add("on");refresh();};
+    el.appendChild(b);
+  });
+}
+
+function refresh(){
+  view=DATA.filter(d=>
+    (!state.cat||d.cat===state.cat)&&
+    (!state.outcome||(state.outcome==="success")===(d.success===1))&&
+    (!state.tax||d.tax===state.tax)&&
+    (!state.scene||d.scene===state.scene)&&
+    (!state.q||`${d.scene} ${d.ep} ${d.cat} ep${d.ep}`.toLowerCase().includes(state.q)));
+  if(state.sort==="path_asc")view.sort((a,b)=>(a.path_m??1e9)-(b.path_m??1e9));
+  else if(state.sort==="path_desc")view.sort((a,b)=>(b.path_m??-1)-(a.path_m??-1));
+  else if(state.sort==="mind_asc")view.sort((a,b)=>(a.min_dist??1e9)-(b.min_dist??1e9));
+  else view.sort((a,b)=>a.scene===b.scene?(+a.ep)-(+b.ep):a.scene<b.scene?-1:1);
+  shown=0;$("grid").innerHTML="";addPage();
+  $("count").textContent=`${view.length} / ${DATA.length}`;
+}
+
+function addPage(){
+  const frag=document.createDocumentFragment();
+  view.slice(shown,shown+PAGE).forEach(d=>{
+    const a=document.createElement("a");
+    a.className="card";a.href="figs_all/"+d.img;a.target="_blank";a.style.textDecoration="none";a.style.color="inherit";
+    const taxCls=d.success?"success":(d.tax==="verifier_bug_stop"||d.tax==="system_forced_stop"?"sys":"");
+    a.innerHTML=`<img loading="lazy" src="figs_all/${d.img}" alt="${d.scene} ep${d.ep}">
+      <div class="cap"><b>${d.cat}</b> · ${d.scene} · ep${d.ep}<br>
+      <span class="tax ${taxCls}">${d.tax}</span>
+      path ${d.path_m??"NaN"}m · min_dist ${d.min_dist??"?"}m · ${d.steps??"?"} steps</div>`;
+    frag.appendChild(a);
+  });
+  $("grid").appendChild(frag);
+  shown=Math.min(shown+PAGE,view.length);
+  $("more").style.display=shown<view.length?"block":"none";
+  $("more").textContent=`加载更多（${shown}/${view.length}）`;
+}
+$("more").onclick=addPage;
+
+fetch("gallery_meta.json").then(r=>r.json()).then(data=>{
+  DATA=data;
+  chip($("cats"),[{label:"全部类别",val:""},...[...new Set(data.map(d=>d.cat))].sort().map(c=>({label:c,val:c}))],"cat");
+  chip($("outcomes"),[{label:"全部结果",val:""},{label:"成功",val:"success"},{label:"失败",val:"fail"}],"outcome");
+  [...new Set(data.map(d=>d.tax))].sort().forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=t;$("tax").appendChild(o);});
+  [...new Set(data.map(d=>d.scene))].sort().forEach(s=>{const o=document.createElement("option");o.value=s;o.textContent=s;$("scene").appendChild(o);});
+  $("tax").onchange=e=>{state.tax=e.target.value;refresh();};
+  $("scene").onchange=e=>{state.scene=e.target.value;refresh();};
+  $("q").oninput=e=>{state.q=e.target.value.trim().toLowerCase();refresh();};
+  $("sort").onchange=e=>{state.sort=e.target.value;refresh();};
+  refresh();
+});
+</script>
+</main>
+</body>
+</html>
