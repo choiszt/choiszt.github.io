@@ -10,47 +10,65 @@
 @media(prefers-color-scheme:dark){:root{--bg:#14171c;--fg:#dfe4ea;--muted:#9aa4b2;--accent:#4fd1b5;--line:#2c333d;--code:#1e242c}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 -apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif}
-main{max-width:1360px;margin:0 auto;padding:28px 20px 80px}
-h1{font-size:1.3em;border-bottom:2px solid var(--accent);padding-bottom:8px;margin:0 0 6px}
-.back{font-size:.85em}
+main{max-width:1360px;margin:0 auto;padding:16px 20px 80px}
+h1{font-size:1.3em;border-bottom:2px solid var(--accent);padding-bottom:8px;margin:8px 0 6px}
 a{color:var(--accent)}
-.bar{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);z-index:10;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.chip{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:2px 11px;font-size:.82em;color:var(--muted);background:none}
-.chip.on{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
-select,input[type=text]{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:.85em}
-nav.crumbs{max-width:1300px;margin:0 auto;padding:14px 24px 0;font-size:.88em}
+nav.crumbs{max-width:1360px;margin:0 auto;padding:14px 20px 0;font-size:.88em}
 nav.crumbs a{color:var(--muted);text-decoration:none}
 nav.crumbs a:hover{color:var(--accent)}
 nav.crumbs a.here{color:var(--accent);font-weight:600;border-bottom:2px solid var(--accent)}
 nav.crumbs .sep{margin:0 7px;color:var(--line)}
+.bar{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);z-index:10;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:2px 11px;font-size:.82em;color:var(--muted);background:none}
+.chip.on{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+select,input[type=text]{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:.85em}
 .count{margin-left:auto;color:var(--muted);font-size:.85em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px}
-.card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--code)}
-.card img{width:100%;display:block;aspect-ratio:1.2;object-fit:cover;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+.card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--code);cursor:pointer}
+.card img{width:100%;display:block;aspect-ratio:1;object-fit:cover;background:#fff}
 .cap{padding:6px 10px;font-size:.78em;line-height:1.5}
 .cap b{font-size:1.05em}
 .tax{display:inline-block;padding:0 7px;border-radius:9px;font-size:.92em;border:1px solid var(--line);color:var(--muted)}
 .tax.success{border-color:var(--accent);color:var(--accent)}
 .tax.sys{border-color:#b8860b;color:#b8860b}
+.vid{display:inline-block;padding:0 7px;border-radius:9px;font-size:.92em;border:1px solid #3b6fd4;color:#3b6fd4}
 .more{display:block;margin:24px auto;padding:8px 26px;font-size:.95em;cursor:pointer;border:1px solid var(--accent);color:var(--accent);background:none;border-radius:8px}
-.sep{color:var(--line)}
 label{font-size:.82em;color:var(--muted)}
+/* modal */
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;z-index:100;overflow-y:auto}
+#modal.open{display:block}
+.box{max-width:1100px;margin:4vh auto;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:18px 22px 26px;position:relative}
+.close{position:absolute;top:10px;right:14px;font-size:1.5em;cursor:pointer;color:var(--muted);background:none;border:none}
+.mhead{font-size:1.05em;margin:0 40px 4px 0}
+.msub{color:var(--muted);font-size:.83em;margin-bottom:12px}
+.mbody{display:flex;flex-wrap:wrap;gap:20px}
+.viewer{position:relative;width:min(600px,100%);flex:0 0 auto}
+.viewer img{width:100%;display:block;border:1px solid var(--line);border-radius:8px;background:#fff}
+.viewer canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ctrl{display:flex;gap:10px;align-items:center;margin-top:8px;font-size:.85em;flex-wrap:wrap}
+.ctrl button{cursor:pointer;border:1px solid var(--accent);color:var(--accent);background:none;border-radius:6px;padding:2px 14px;font-size:1em}
+.ctrl input[type=range]{flex:1;min-width:120px}
+.stepinfo{font-family:ui-monospace,monospace;color:var(--muted);min-width:150px}
+.vidcol{flex:1;min-width:320px}
+.vidcol video{width:100%;border:1px solid var(--line);border-radius:8px}
+.novid{color:var(--muted);font-size:.85em;border:1px dashed var(--line);border-radius:8px;padding:18px;text-align:center;margin-top:4px}
 </style>
 </head>
 <body>
-<main>
 <nav class="crumbs"><a href="../../">HumanClaw</a><span class="sep">›</span><a href="../">误差分析报告</a><span class="sep">·</span><a href="../cases/">精选案例</a><span class="sep">·</span><a href="./" class="here">全量 Gallery</a></nav>
+<main>
 <h1>全量轨迹 Gallery — GPT-5 low-thinking（1202 episodes）</h1>
-<p style="color:var(--muted);font-size:.85em;margin:4px 0 10px">灰=navmesh · 蓝虚线=最短路径 · 彩色=实际轨迹（紫→黄按步数）· ★=目标实例 · ●起点 · ✖停止/■耗尽。点卡片看大图。</p>
+<p style="color:var(--muted);font-size:.85em;margin:4px 0 10px">灰=navmesh · 蓝虚线=最短路径 · 彩色=实际轨迹（紫→黄按步数）· ★=目标实例。<b>点卡片打开详情：逐步回放动态轨迹；已渲染 3D 视频的任务（标 🎬）可直接播放。</b></p>
 
 <div class="bar">
   <span id="cats"></span>
-  <span class="sep">|</span>
+  <span style="color:var(--line)">|</span>
   <span id="outcomes"></span>
-  <span class="sep">|</span>
+  <span style="color:var(--line)">|</span>
   <label>失败模式 <select id="tax"><option value="">全部</option></select></label>
   <label>scene <select id="scene"><option value="">全部</option></select></label>
-  <input type="text" id="q" placeholder="搜索: scene / ep / 类别" size="18">
+  <label><input type="checkbox" id="hasvid"> 只看有视频的</label>
+  <input type="text" id="q" placeholder="搜索: scene / ep / 类别" size="16">
   <label>排序 <select id="sort">
     <option value="default">scene·ep</option>
     <option value="path_asc">路径 短→长</option>
@@ -62,19 +80,50 @@ label{font-size:.82em;color:var(--muted)}
 
 <div class="grid" id="grid"></div>
 <button class="more" id="more" style="display:none">加载更多</button>
+</main>
+
+<div id="modal">
+  <div class="box">
+    <button class="close" id="mclose">×</button>
+    <h3 class="mhead" id="mtitle"></h3>
+    <div class="msub" id="msub"></div>
+    <div class="mbody">
+      <div class="viewer">
+        <img id="mimg" alt="">
+        <canvas id="mcanvas"></canvas>
+        <div class="ctrl">
+          <button id="play">▶ 播放</button>
+          <input type="range" id="scrub" min="0" max="99" value="0">
+          <select id="speed"><option value="4">慢速</option><option value="10" selected>常速</option><option value="25">快速</option></select>
+          <span class="stepinfo" id="stepinfo"></span>
+        </div>
+      </div>
+      <div class="vidcol" id="vidcol"></div>
+    </div>
+  </div>
+</div>
 
 <script>
 const PAGE=60;
-let DATA=[],view=[],shown=0;
-const state={cat:"",outcome:"",tax:"",scene:"",q:"",sort:"default"};
+// 已渲染视频的任务（cases 页的 6 个三联视频）
+const VIDEOS={
+ "102344529|19":"case01_contact_no_stop_sit_couch_combo.mp4",
+ "102343992|12":"case02_contact_no_stop_chair_combo.mp4",
+ "102344094|8":"case04_last_mile_tv_combo.mp4",
+ "106878858_174886965|15":"case06_long_wander_chair_combo.mp4",
+ "102817140|22":"case11_hard_success_longhaul_combo.mp4",
+ "107734287_176000160|24":"case12_model_wrong_stop_tv_combo.mp4"};
+let DATA=[],TRAJ=null,view=[],shown=0;
+const state={cat:"",outcome:"",tax:"",scene:"",q:"",sort:"default",hasvid:false};
 const $=id=>document.getElementById(id);
+const key=d=>`${d.scene}|${d.ep}`;
 
-function chip(el,items,key){
+function chip(el,items,k){
   items.forEach(v=>{
     const b=document.createElement("button");
-    b.className="chip"+(state[key]===v.val?" on":"");
+    b.className="chip"+(state[k]===v.val?" on":"");
     b.textContent=v.label;
-    b.onclick=()=>{state[key]=v.val;el.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));b.classList.add("on");refresh();};
+    b.onclick=()=>{state[k]=v.val;el.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));b.classList.add("on");refresh();};
     el.appendChild(b);
   });
 }
@@ -85,6 +134,7 @@ function refresh(){
     (!state.outcome||(state.outcome==="success")===(d.success===1))&&
     (!state.tax||d.tax===state.tax)&&
     (!state.scene||d.scene===state.scene)&&
+    (!state.hasvid||VIDEOS[key(d)])&&
     (!state.q||`${d.scene} ${d.ep} ${d.cat} ep${d.ep}`.toLowerCase().includes(state.q)));
   if(state.sort==="path_asc")view.sort((a,b)=>(a.path_m??1e9)-(b.path_m??1e9));
   else if(state.sort==="path_desc")view.sort((a,b)=>(b.path_m??-1)-(a.path_m??-1));
@@ -97,14 +147,16 @@ function refresh(){
 function addPage(){
   const frag=document.createDocumentFragment();
   view.slice(shown,shown+PAGE).forEach(d=>{
-    const a=document.createElement("a");
-    a.className="card";a.href="figs_all/"+d.img;a.target="_blank";a.style.textDecoration="none";a.style.color="inherit";
+    const c=document.createElement("div");
+    c.className="card";
     const taxCls=d.success?"success":(d.tax==="verifier_bug_stop"||d.tax==="system_forced_stop"?"sys":"");
-    a.innerHTML=`<img loading="lazy" src="figs_all/${d.img}" alt="${d.scene} ep${d.ep}">
+    const vid=VIDEOS[key(d)]?'<span class="vid">🎬 视频</span> ':"";
+    c.innerHTML=`<img loading="lazy" src="figs_all/${d.img}" alt="${d.scene} ep${d.ep}">
       <div class="cap"><b>${d.cat}</b> · ${d.scene} · ep${d.ep}<br>
-      <span class="tax ${taxCls}">${d.tax}</span>
+      ${vid}<span class="tax ${taxCls}">${d.tax}</span>
       path ${d.path_m??"NaN"}m · min_dist ${d.min_dist??"?"}m · ${d.steps??"?"} steps</div>`;
-    frag.appendChild(a);
+    c.onclick=()=>openModal(d);
+    frag.appendChild(c);
   });
   $("grid").appendChild(frag);
   shown=Math.min(shown+PAGE,view.length);
@@ -112,6 +164,78 @@ function addPage(){
   $("more").textContent=`加载更多（${shown}/${view.length}）`;
 }
 $("more").onclick=addPage;
+
+/* ---------- modal + trajectory player ---------- */
+let anim={timer:null,idx:0,pts:null,d:null};
+function stopAnim(){if(anim.timer){clearInterval(anim.timer);anim.timer=null;}$("play").textContent="▶ 播放";}
+
+function w2p(x,z,d,W){
+  const px=(x-(d.cx-d.span))/(2*d.span)*W;
+  const py=((d.cz+d.span)-z)/(2*d.span)*W;
+  return [px,py];
+}
+
+function drawFrame(d,i){
+  const cv=$("mcanvas"),ctx=cv.getContext("2d");
+  const W=cv.width;
+  ctx.clearRect(0,0,W,W);
+  const pts=anim.pts;
+  if(!pts||!pts.length||d.cx==null)return;
+  ctx.lineWidth=3;ctx.strokeStyle="#d62728";ctx.lineJoin="round";
+  ctx.beginPath();
+  for(let k=0;k<=i&&k<pts.length;k++){
+    const [px,py]=w2p(pts[k][0],pts[k][1],d,W);
+    k?ctx.lineTo(px,py):ctx.moveTo(px,py);
+  }
+  ctx.stroke();
+  const cur=pts[Math.min(i,pts.length-1)];
+  const [px,py]=w2p(cur[0],cur[1],d,W);
+  ctx.beginPath();ctx.arc(px,py,8,0,7);ctx.fillStyle="#d62728";ctx.fill();
+  ctx.lineWidth=2.5;ctx.strokeStyle="#fff";ctx.stroke();
+  const dist=cur[2]!=null?` · d=${cur[2].toFixed(2)}m`:"";
+  const stop=cur[3]?" · STOP":"";
+  $("stepinfo").textContent=`step ${Math.min(i,pts.length-1)+1}/${pts.length}${dist}${stop}`;
+  $("scrub").value=i;
+}
+
+function openModal(d){
+  stopAnim();
+  $("mtitle").textContent=`${d.cat} · scene ${d.scene} · ep ${d.ep}`;
+  $("msub").innerHTML=`${d.tax} · path ${d.path_m??"NaN"}m · min_dist ${d.min_dist??"?"}m · ${d.steps??"?"} steps · <a href="figs_all/${d.img}" target="_blank">打开大图 ↗</a>`;
+  $("mimg").src="figs_all/"+d.img;
+  const v=VIDEOS[key(d)];
+  $("vidcol").innerHTML=v
+    ?`<video controls preload="metadata" src="../cases/videos/${v}"></video><div style="color:var(--muted);font-size:.8em;margin-top:4px">三联：ego 视角 | 第三人称 3D | 逐帧同步 BEV</div>`
+    :`<div class="novid">该 task 尚未渲染 3D 视频<br>（按需渲染约 10 分钟/个，见 render_videos.sh）</div>`;
+  $("modal").classList.add("open");
+  const setup=()=>{
+    const cv=$("mcanvas");cv.width=600;cv.height=600;
+    anim.pts=(TRAJ&&TRAJ[key(d)])||[];
+    anim.idx=0;anim.d=d;
+    $("scrub").max=Math.max(anim.pts.length-1,0);
+    drawFrame(d,0);
+  };
+  if(!TRAJ){
+    $("stepinfo").textContent="加载轨迹…";
+    fetch("gallery_traj.json").then(r=>r.json()).then(t=>{TRAJ=t;setup();});
+  }else setup();
+}
+$("mclose").onclick=()=>{stopAnim();$("modal").classList.remove("open");};
+$("modal").onclick=e=>{if(e.target.id==="modal"){stopAnim();$("modal").classList.remove("open");}};
+$("play").onclick=()=>{
+  if(anim.timer){stopAnim();return;}
+  if(!anim.pts||!anim.pts.length)return;
+  if(anim.idx>=anim.pts.length-1)anim.idx=0;
+  $("play").textContent="⏸ 暂停";
+  const tick=()=>{
+    anim.idx++;
+    if(anim.idx>=anim.pts.length){stopAnim();anim.idx=anim.pts.length-1;}
+    drawFrame(anim.d,anim.idx);
+  };
+  anim.timer=setInterval(tick,1000/(+$("speed").value));
+};
+$("scrub").oninput=e=>{stopAnim();anim.idx=+e.target.value;drawFrame(anim.d,anim.idx);};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){stopAnim();$("modal").classList.remove("open");}});
 
 fetch("gallery_meta.json").then(r=>r.json()).then(data=>{
   DATA=data;
@@ -123,9 +247,9 @@ fetch("gallery_meta.json").then(r=>r.json()).then(data=>{
   $("scene").onchange=e=>{state.scene=e.target.value;refresh();};
   $("q").oninput=e=>{state.q=e.target.value.trim().toLowerCase();refresh();};
   $("sort").onchange=e=>{state.sort=e.target.value;refresh();};
+  $("hasvid").onchange=e=>{state.hasvid=e.target.checked;refresh();};
   refresh();
 });
 </script>
-</main>
 </body>
 </html>
