@@ -267,7 +267,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"){stopAnim();$("modal
 
 Promise.all([
   fetch("gallery_meta.json").then(r=>r.json()),
-  fetch("https://huggingface.co/datasets/Choiszt/humanclaw-hcbv6-videos/resolve/main/videos_manifest.json",{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).catch(()=>fetch("videos_manifest.json").then(r=>r.ok?r.json():{}).catch(()=>({})))
+  fetch("https://huggingface.co/datasets/Choiszt/nvr-assets-0726/resolve/main/videos_manifest.json",{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).catch(()=>fetch("videos_manifest.json").then(r=>r.ok?r.json():{}).catch(()=>({})))
 ]).then(([data,vids])=>{
   VIDEOS=vids;
   DATA=data;
