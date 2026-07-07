@@ -74,7 +74,8 @@ label{font-size:.82em;color:var(--muted)}
   <label><input type="checkbox" id="hasvid"> 只看有视频的</label>
   <input type="text" id="q" placeholder="搜索: scene / ep / 类别" size="16">
   <label>排序 <select id="sort">
-    <option value="default">scene·ep</option>
+    <option value="default">随机（代表性采样）</option>
+    <option value="scene_ep">scene·ep</option>
     <option value="path_asc">路径 短→长</option>
     <option value="path_desc">路径 长→短</option>
     <option value="mind_asc">min_dist 近→远</option>
@@ -152,7 +153,8 @@ function refresh(){
   if(state.sort==="path_asc")view.sort((a,b)=>(a.path_m??1e9)-(b.path_m??1e9));
   else if(state.sort==="path_desc")view.sort((a,b)=>(b.path_m??-1)-(a.path_m??-1));
   else if(state.sort==="mind_asc")view.sort((a,b)=>(a.min_dist??1e9)-(b.min_dist??1e9));
-  else view.sort((a,b)=>a.scene===b.scene?(+a.ep)-(+b.ep):a.scene<b.scene?-1:1);
+  else if(state.sort==="scene_ep")view.sort((a,b)=>a.scene===b.scene?(+a.ep)-(+b.ep):a.scene<b.scene?-1:1);
+  else{const h=x=>{let v=0,k=key(x);for(let i=0;i<k.length;i++){v=(v*31+k.charCodeAt(i))>>>0;}return v;};view.sort((a,b)=>h(a)-h(b));}
   shown=0;$("grid").innerHTML="";addPage();
   $("count").textContent=`${view.length} / ${DATA.length}`;
 }
