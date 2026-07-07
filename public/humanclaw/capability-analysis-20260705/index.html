@@ -84,6 +84,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <li><a href="#61-verifier-idname-161-episode">6.1 verifier id/name 错配 → 16.1% episode 被错杀</a></li>
 <li><a href="#62-sit">6.2 sit 不终止、不计分</a></li>
 <li><a href="#63-high-run-empty-response-fallback07-04">6.3 high run 的 empty-response fallback（07-04 报告已详述）</a></li>
+<li><a href="#65-scene-102343992">6.5 scene 102343992 的出生下陷缺陷（全量视频复核后新发现）</a></li>
 <li><a href="#64">6.4 其他</a></li>
 </ul>
 </li>
@@ -873,6 +874,9 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <p>指令要求 "Finally, sit on the …"，模型 107 次真的在 ≤0.2m 坐下（sit 步距离中位 0.0m），但成功只认 Stop/Stand；62 例（5.2%）坐完没有再发 Stop、跑满 100 步判失败，toilet 类受损最重。<strong>修复选项</strong>：sit@≤0.2m 记成功，或 sit 视同 stop，或删掉指令里的 sit；paper 应报告双口径。</p>
 <h3 id="63-high-run-empty-response-fallback07-04">6.3 high run 的 empty-response fallback（07-04 报告已详述）</h3>
 <p>10.9% 的 high API 调用被 4096 completion cap 截断为空 JSON → fallback Stop/Stand；925/1218（75.9%）episode 被强制终止，"干净" episode 仅 29 个且偏短。<strong>high 必须用新 cap（12000）重跑</strong>——cap 修复与空响应报错已完成。</p>
+<h3 id="65-scene-102343992">6.5 scene 102343992 的出生下陷缺陷（全量视频复核后新发现）</h3>
+<p>对全部 1202 集做了出生点体检（step-0 骨盆高度 − navmesh 地面高度，<code>spawn_audit.csv</code>）：41 个场景中 40 个紧密聚在 0.74–0.84m 的正常带，<strong>唯独 102343992 中位仅 0.435m，30 集中 22 集下陷 0.3–0.5m</strong>（半个身体埋入地板）。因果非常硬：下陷 episode 的"原地卡住"率（净位移&lt;1m）为 <strong>70.8%</strong>，正常 episode 仅 10.6%。该场景同时贡献了 §2.2 的 9 个 path-NaN 疑似无解 episode 和 0% 成功率——出生下陷与目标 snap 失败两个症状指向同一根源：<strong>该 scene instance 的地面/高度整体偏移</strong>（数据问题，非生成管线问题）。
+<strong>处理建议</strong>：评测口径将该场景 30 集标记 invalid（与 path-NaN 剔除重叠 9 集，合并剔除后 low 分母 1218→1171，成功率 169/1171=14.4%）；根修为修复该 scene 的 stage 变换或生成时对 spawn 做 navmesh 高度 snap，仅需重跑此场景。</p>
 <h3 id="64">6.4 其他</h3>
 <ul>
 <li><code>at_target</code> 完成短路机制全程 0 触发（死代码）。</li>
