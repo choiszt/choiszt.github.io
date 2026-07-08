@@ -1,0 +1,780 @@
+{
+ "claude48": {
+  "circling": [
+   "106878858_174886965|ep14|chair",
+   "106878858_174886965|ep4|bed",
+   "106878858_174886965|ep17|chair"
+  ],
+  "contact_brief_no_stop": [
+   "107734176_176000019|ep22|tv",
+   "104348028_171512877|ep1|couch",
+   "107733960_175999701|ep21|chair"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep11|tv",
+   "106878858_174886965|ep19|toilet",
+   "103997586_171030669|ep28|bed"
+  ],
+  "instant_death": [
+   "102816036|ep8|chair"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep6|tv",
+   "102344094|ep22|toilet",
+   "104348328_171513363|ep17|tv"
+  ],
+  "last_mile_pass": [
+   "102344094|ep5|tv",
+   "103997586_171030669|ep16|tv",
+   "103997895_171031182|ep13|potted_plant"
+  ],
+  "micro_adjust_deadlock": [
+   "102815835|ep14|potted_plant",
+   "102816114|ep27|toilet",
+   "106366410_174226806|ep1|potted_plant"
+  ],
+  "turn_deadlock": [
+   "106879080_174887211|ep26|toilet",
+   "102344529|ep26|toilet",
+   "107734254_176000121|ep21|tv"
+  ],
+  "wander_other": [
+   "102344529|ep4|potted_plant",
+   "106366410_174226806|ep12|couch",
+   "104348361_171513414|ep4|potted_plant"
+  ],
+  "wrong_stop": [
+   "105515379_173104395|ep5|bed",
+   "102816600|ep13|couch",
+   "103997895_171031182|ep24|couch"
+  ]
+ },
+ "deepseek_ocr": {
+  "bug_killed": [
+   "102344094|ep15|chair",
+   "102815835|ep23|tv",
+   "104348010_171512832|ep2|couch"
+  ],
+  "instant_death": [
+   "102344094|ep0|couch",
+   "106878915_174887025|ep6|tv",
+   "106878915_174887025|ep22|couch"
+  ]
+ },
+ "gemini25": {
+  "bug_killed": [
+   "102344529|ep11|tv",
+   "102344094|ep1|couch"
+  ],
+  "circling": [
+   "105515184_173104128|ep25|bed",
+   "106879005_174887124|ep22|bed",
+   "107733960_175999701|ep16|bed"
+  ],
+  "contact_brief_no_stop": [
+   "102344529|ep6|tv",
+   "108736884_177263634|ep20|tv",
+   "102816756|ep5|chair"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep11|tv",
+   "106878858_174886965|ep15|chair",
+   "102816756|ep25|toilet"
+  ],
+  "instant_death": [
+   "107733960_175999701|ep23|chair"
+  ],
+  "last_mile_dwell": [
+   "104348010_171512832|ep7|potted_plant",
+   "102344094|ep8|tv",
+   "104348010_171512832|ep27|toilet"
+  ],
+  "last_mile_pass": [
+   "104348010_171512832|ep0|couch",
+   "106366410_174226806|ep21|bed",
+   "102344094|ep21|toilet"
+  ],
+  "micro_adjust_deadlock": [
+   "107734338_176000244|ep15|chair",
+   "103997586_171030666|ep0|potted_plant",
+   "104862384_172226319|ep5|bed"
+  ],
+  "turn_deadlock": [
+   "107734254_176000121|ep23|tv",
+   "104348328_171513363|ep23|bed",
+   "105515379_173104395|ep23|tv"
+  ],
+  "wander_other": [
+   "102816114|ep8|bed",
+   "104862417_172226382|ep20|toilet",
+   "104862501_172226556|ep27|tv"
+  ],
+  "wrong_stop": [
+   "106878858_174886965|ep28|couch",
+   "103997586_171030669|ep26|bed",
+   "102344094|ep24|toilet"
+  ]
+ },
+ "gemini31": {
+  "bug_killed": [
+   "103997895_171031182|ep9|bed",
+   "107734338_176000244|ep24|toilet",
+   "102817140|ep13|couch"
+  ],
+  "circling": [
+   "106366104_174226332|ep18|toilet",
+   "106366410_174226806|ep21|bed",
+   "102816114|ep7|bed"
+  ],
+  "contact_brief_no_stop": [
+   "107734176_176000019|ep29|toilet",
+   "107734338_176000244|ep6|bed",
+   "106878858_174886965|ep26|couch"
+  ],
+  "directed_budget_out": [
+   "106878867_174886977|ep9|chair",
+   "102816756|ep26|toilet",
+   "107734254_176000121|ep29|bed"
+  ],
+  "instant_death": [
+   "106878960_174887073|ep5|potted_plant",
+   "107734056_175999839|ep17|chair",
+   "106879005_174887124|ep5|potted_plant"
+  ],
+  "last_mile_dwell": [
+   "102344529|ep6|tv",
+   "103997895_171031182|ep14|potted_plant",
+   "106878915_174887025|ep10|potted_plant"
+  ],
+  "last_mile_pass": [
+   "102344529|ep16|chair",
+   "102817140|ep18|bed",
+   "106366386_174226770|ep28|toilet"
+  ],
+  "micro_adjust_deadlock": [
+   "106879080_174887211|ep22|bed",
+   "104348028_171512877|ep3|couch",
+   "106878960_174887073|ep12|couch"
+  ],
+  "turn_deadlock": [
+   "105515379_173104395|ep19|tv",
+   "103997895_171031182|ep19|toilet",
+   "107734287_176000160|ep10|couch"
+  ],
+  "wander_other": [
+   "107734338_176000244|ep23|toilet",
+   "108736779_177263484|ep8|potted_plant",
+   "102816114|ep8|bed"
+  ],
+  "wrong_stop": [
+   "103997895_171031182|ep8|bed",
+   "107734287_176000160|ep9|couch",
+   "107734287_176000160|ep7|couch"
+  ]
+ },
+ "gemma4": {
+  "circling": [
+   "106878858_174886965|ep19|toilet",
+   "104862501_172226556|ep17|potted_plant",
+   "105515184_173104128|ep21|bed"
+  ],
+  "contact_brief_no_stop": [
+   "102344094|ep0|couch",
+   "102815835|ep6|couch",
+   "108736779_177263484|ep24|bed"
+  ],
+  "directed_budget_out": [
+   "106878867_174886977|ep9|chair",
+   "106878858_174886965|ep4|bed",
+   "102816036|ep1|couch"
+  ],
+  "instant_death": [
+   "106878960_174887073|ep5|potted_plant"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep6|tv",
+   "106878858_174886965|ep26|couch",
+   "105515184_173104128|ep13|chair"
+  ],
+  "last_mile_pass": [
+   "102344094|ep24|toilet",
+   "106366386_174226770|ep14|tv",
+   "106878867_174886977|ep17|toilet"
+  ],
+  "micro_adjust_deadlock": [
+   "102815835|ep14|potted_plant",
+   "106879080_174887211|ep18|chair",
+   "106879080_174887211|ep6|couch"
+  ],
+  "turn_deadlock": [
+   "104862417_172226382|ep26|bed",
+   "104862417_172226382|ep11|chair",
+   "102816114|ep3|chair"
+  ],
+  "wander_other": [
+   "102816036|ep12|tv",
+   "102816036|ep14|tv",
+   "108736689_177263340|ep3|potted_plant"
+  ],
+  "wrong_stop": [
+   "108736800_177263517|ep6|chair",
+   "106366410_174226806|ep25|toilet",
+   "107734254_176000121|ep1|chair"
+  ]
+ },
+ "gpt5_nonthinking": {
+  "bug_killed": [
+   "103997586_171030666|ep8|tv",
+   "102816036|ep12|tv",
+   "102816036|ep20|bed"
+  ],
+  "circling": [
+   "104348361_171513414|ep27|bed",
+   "104862501_172226556|ep27|tv",
+   "103997586_171030666|ep23|couch"
+  ],
+  "contact_brief_no_stop": [
+   "108736689_177263340|ep8|toilet",
+   "102816036|ep4|couch",
+   "107734056_175999839|ep14|toilet"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep15|chair",
+   "106878858_174886965|ep14|chair",
+   "106878858_174886965|ep23|toilet"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep5|tv",
+   "104348328_171513363|ep13|tv",
+   "104862384_172226319|ep20|tv"
+  ],
+  "last_mile_pass": [
+   "102344094|ep9|tv",
+   "104348328_171513363|ep18|bed",
+   "106366104_174226332|ep10|tv"
+  ],
+  "micro_adjust_deadlock": [
+   "105515184_173104128|ep18|couch",
+   "105515211_173104185|ep4|chair",
+   "108736779_177263484|ep20|couch"
+  ],
+  "turn_deadlock": [
+   "104862417_172226382|ep16|tv",
+   "104862417_172226382|ep8|couch",
+   "105515379_173104395|ep23|tv"
+  ],
+  "wander_other": [
+   "107734254_176000121|ep13|couch",
+   "106878858_174886965|ep11|tv",
+   "105515211_173104185|ep22|potted_plant"
+  ],
+  "wrong_stop": [
+   "106879005_174887124|ep0|potted_plant",
+   "102816114|ep1|chair",
+   "102816756|ep8|chair"
+  ]
+ },
+ "internvl35_38b": {
+  "circling": [
+   "106878858_174886965|ep25|couch",
+   "106878858_174886965|ep26|couch",
+   "102816114|ep5|chair"
+  ],
+  "contact_brief_no_stop": [
+   "102344529|ep15|chair",
+   "106878960_174887073|ep24|toilet",
+   "104862501_172226556|ep19|chair"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep23|toilet",
+   "104862417_172226382|ep21|toilet",
+   "106878858_174886965|ep11|tv"
+  ],
+  "instant_death": [
+   "102816600|ep1|potted_plant",
+   "102816600|ep17|bed",
+   "105515211_173104185|ep27|couch"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep6|tv",
+   "106878915_174887025|ep5|tv",
+   "106879080_174887211|ep1|potted_plant"
+  ],
+  "last_mile_pass": [
+   "102344094|ep5|tv",
+   "106879080_174887211|ep13|tv",
+   "106879080_174887211|ep3|potted_plant"
+  ],
+  "micro_adjust_deadlock": [
+   "104348028_171512877|ep5|potted_plant",
+   "107734287_176000160|ep2|potted_plant",
+   "102815835|ep14|potted_plant"
+  ],
+  "turn_deadlock": [
+   "107734176_176000019|ep11|potted_plant",
+   "103997895_171031182|ep12|potted_plant",
+   "107734056_175999839|ep14|toilet"
+  ],
+  "wander_other": [
+   "108736884_177263634|ep9|potted_plant",
+   "106878858_174886965|ep17|chair",
+   "106366410_174226806|ep21|bed"
+  ],
+  "wrong_stop": [
+   "106879005_174887124|ep3|potted_plant"
+  ]
+ },
+ "qwen25vl_32b": {
+  "circling": [
+   "102816600|ep2|potted_plant",
+   "102816114|ep3|chair",
+   "106878858_174886965|ep28|couch"
+  ],
+  "contact_brief_no_stop": [
+   "106879005_174887124|ep1|potted_plant",
+   "102817140|ep0|potted_plant",
+   "108736779_177263484|ep2|chair"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep15|chair",
+   "102816756|ep28|toilet",
+   "106878867_174886977|ep19|tv"
+  ],
+  "instant_death": [
+   "104348361_171513414|ep5|potted_plant",
+   "103997895_171031182|ep5|chair",
+   "107734338_176000244|ep3|potted_plant"
+  ],
+  "last_mile_dwell": [
+   "105515211_173104185|ep10|bed",
+   "106878867_174886977|ep8|chair",
+   "106878960_174887073|ep15|couch"
+  ],
+  "last_mile_pass": [
+   "108736884_177263634|ep20|tv",
+   "104348328_171513363|ep12|tv",
+   "104348328_171513363|ep20|bed"
+  ],
+  "micro_adjust_deadlock": [
+   "102817140|ep4|potted_plant",
+   "108736800_177263517|ep1|potted_plant",
+   "105515379_173104395|ep25|chair"
+  ],
+  "turn_deadlock": [
+   "106878867_174886977|ep29|couch",
+   "104862384_172226319|ep11|chair",
+   "104862417_172226382|ep16|tv"
+  ],
+  "wander_other": [
+   "104348361_171513414|ep28|bed",
+   "102816600|ep13|couch",
+   "106366386_174226770|ep20|couch"
+  ],
+  "wrong_stop": [
+   "106366104_174226332|ep10|tv",
+   "103997586_171030669|ep12|tv",
+   "104862384_172226319|ep5|bed"
+  ]
+ },
+ "qwen35_122b_a10b_fp8": {
+  "bug_killed": [
+   "106366410_174226806|ep5|chair",
+   "105515184_173104128|ep12|chair",
+   "106878867_174886977|ep22|tv"
+  ],
+  "circling": [
+   "103997586_171030666|ep18|chair",
+   "106878858_174886965|ep17|chair",
+   "103997586_171030666|ep7|tv"
+  ],
+  "contact_brief_no_stop": [
+   "102344529|ep21|couch",
+   "102815835|ep27|bed",
+   "108736884_177263634|ep3|chair"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep10|tv",
+   "106878858_174886965|ep9|tv",
+   "106878858_174886965|ep19|toilet"
+  ],
+  "last_mile_dwell": [
+   "102344529|ep3|potted_plant",
+   "102815835|ep13|potted_plant",
+   "106878915_174887025|ep5|tv"
+  ],
+  "last_mile_pass": [
+   "102344094|ep5|tv",
+   "105515379_173104395|ep1|bed",
+   "106879005_174887124|ep1|potted_plant"
+  ],
+  "micro_adjust_deadlock": [
+   "107734056_175999839|ep3|potted_plant",
+   "104862384_172226319|ep7|bed",
+   "102817140|ep20|bed"
+  ],
+  "turn_deadlock": [
+   "104862417_172226382|ep26|bed",
+   "108736779_177263484|ep14|couch",
+   "103997895_171031182|ep0|chair"
+  ],
+  "wander_other": [
+   "102344094|ep18|chair",
+   "102344529|ep26|toilet",
+   "105515211_173104185|ep24|couch"
+  ],
+  "wrong_stop": [
+   "102816756|ep11|tv",
+   "102816756|ep19|bed",
+   "103997586_171030669|ep12|tv"
+  ]
+ },
+ "qwen35_27b": {
+  "bug_killed": [
+   "102816600|ep8|chair",
+   "104862501_172226556|ep0|bed",
+   "103997586_171030669|ep16|tv"
+  ],
+  "circling": [
+   "102816756|ep17|bed",
+   "106878858_174886965|ep19|toilet",
+   "106366104_174226332|ep16|toilet"
+  ],
+  "contact_brief_no_stop": [
+   "104862417_172226382|ep0|potted_plant",
+   "106366386_174226770|ep13|tv",
+   "107733960_175999701|ep27|chair"
+  ],
+  "directed_budget_out": [
+   "106878867_174886977|ep9|chair",
+   "106878858_174886965|ep14|chair",
+   "102816114|ep5|chair"
+  ],
+  "instant_death": [
+   "104348010_171512832|ep15|bed"
+  ],
+  "last_mile_dwell": [
+   "102815835|ep0|chair",
+   "105515379_173104395|ep8|potted_plant",
+   "108736800_177263517|ep1|potted_plant"
+  ],
+  "last_mile_pass": [
+   "102816600|ep2|potted_plant",
+   "104348028_171512877|ep10|chair",
+   "106879080_174887211|ep19|chair"
+  ],
+  "micro_adjust_deadlock": [
+   "102817140|ep4|potted_plant",
+   "102815835|ep14|potted_plant",
+   "104348028_171512877|ep5|potted_plant"
+  ],
+  "turn_deadlock": [
+   "104348361_171513414|ep10|chair",
+   "102815835|ep21|tv",
+   "108736779_177263484|ep9|potted_plant"
+  ],
+  "wander_other": [
+   "102816036|ep15|potted_plant",
+   "102816600|ep4|potted_plant",
+   "103997586_171030669|ep8|potted_plant"
+  ],
+  "wrong_stop": [
+   "106878858_174886965|ep13|chair",
+   "104348328_171513363|ep1|potted_plant",
+   "104348010_171512832|ep29|toilet"
+  ]
+ },
+ "qwen35_35b_a3b": {
+  "bug_killed": [
+   "105515211_173104185|ep10|bed",
+   "106879080_174887211|ep11|tv",
+   "105515211_173104185|ep23|potted_plant"
+  ],
+  "circling": [
+   "104862501_172226556|ep2|bed",
+   "108736779_177263484|ep10|potted_plant",
+   "104862501_172226556|ep12|potted_plant"
+  ],
+  "contact_brief_no_stop": [
+   "102344094|ep4|couch",
+   "102344529|ep19|couch",
+   "108736779_177263484|ep16|couch"
+  ],
+  "directed_budget_out": [
+   "103997586_171030669|ep16|tv",
+   "102816600|ep5|chair",
+   "104348361_171513414|ep3|potted_plant"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep9|tv",
+   "102344529|ep4|potted_plant",
+   "105515379_173104395|ep21|tv"
+  ],
+  "last_mile_pass": [
+   "102344094|ep8|tv",
+   "106879080_174887211|ep22|bed",
+   "106366410_174226806|ep5|chair"
+  ],
+  "micro_adjust_deadlock": [
+   "102817140|ep4|potted_plant",
+   "108736800_177263517|ep1|potted_plant",
+   "104348328_171513363|ep9|chair"
+  ],
+  "turn_deadlock": [
+   "107734056_175999839|ep12|toilet",
+   "104862417_172226382|ep7|couch",
+   "102817140|ep11|chair"
+  ],
+  "wander_other": [
+   "102344094|ep5|tv",
+   "106879080_174887211|ep27|toilet",
+   "105515211_173104185|ep12|toilet"
+  ],
+  "wrong_stop": [
+   "106878960_174887073|ep16|couch",
+   "106366410_174226806|ep28|toilet",
+   "102816036|ep2|couch"
+  ]
+ },
+ "qwen36_27b": {
+  "bug_killed": [
+   "106366104_174226332|ep2|couch",
+   "104862417_172226382|ep12|chair",
+   "106366104_174226332|ep10|tv"
+  ],
+  "circling": [
+   "106878858_174886965|ep26|couch",
+   "108736884_177263634|ep14|toilet",
+   "106878858_174886965|ep25|couch"
+  ],
+  "contact_brief_no_stop": [
+   "102344094|ep3|couch",
+   "105515379_173104395|ep14|couch",
+   "108736884_177263634|ep4|chair"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep11|tv",
+   "106878858_174886965|ep23|toilet",
+   "102816756|ep26|toilet"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep6|tv",
+   "104862384_172226319|ep5|bed",
+   "108736800_177263517|ep9|chair"
+  ],
+  "last_mile_pass": [
+   "102344094|ep9|tv",
+   "102344094|ep20|toilet",
+   "106366386_174226770|ep14|tv"
+  ],
+  "micro_adjust_deadlock": [
+   "102817140|ep4|potted_plant",
+   "108736800_177263517|ep1|potted_plant",
+   "104862501_172226556|ep20|chair"
+  ],
+  "turn_deadlock": [
+   "107734254_176000121|ep26|bed",
+   "104862417_172226382|ep16|tv",
+   "102816756|ep10|tv"
+  ],
+  "wander_other": [
+   "102344529|ep20|couch",
+   "102815835|ep9|couch",
+   "108736800_177263517|ep11|tv"
+  ],
+  "wrong_stop": [
+   "107733960_175999701|ep8|couch",
+   "102344529|ep19|couch",
+   "106366410_174226806|ep27|toilet"
+  ]
+ },
+ "qwen36_35b_a3b": {
+  "bug_killed": [
+   "105515184_173104128|ep3|tv",
+   "106879080_174887211|ep4|potted_plant",
+   "107734254_176000121|ep0|chair"
+  ],
+  "circling": [
+   "104348010_171512832|ep13|tv",
+   "106366386_174226770|ep28|toilet",
+   "104862501_172226556|ep17|potted_plant"
+  ],
+  "contact_brief_no_stop": [
+   "102815835|ep11|potted_plant",
+   "102817140|ep9|chair",
+   "108736884_177263634|ep20|tv"
+  ],
+  "directed_budget_out": [
+   "102816756|ep25|toilet",
+   "106366104_174226332|ep29|potted_plant",
+   "102816036|ep13|tv"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep8|tv",
+   "104348028_171512877|ep1|couch",
+   "104862384_172226319|ep9|bed"
+  ],
+  "last_mile_pass": [
+   "102344094|ep15|chair",
+   "106366386_174226770|ep24|couch",
+   "106366410_174226806|ep13|couch"
+  ],
+  "micro_adjust_deadlock": [
+   "108736800_177263517|ep1|potted_plant",
+   "107734287_176000160|ep0|potted_plant",
+   "103997895_171031182|ep3|chair"
+  ],
+  "turn_deadlock": [
+   "104862417_172226382|ep29|bed",
+   "103997895_171031182|ep7|bed",
+   "106366386_174226770|ep22|couch"
+  ],
+  "wander_other": [
+   "102816114|ep2|chair",
+   "103997895_171031182|ep1|chair",
+   "104348028_171512877|ep26|bed"
+  ],
+  "wrong_stop": [
+   "106879080_174887211|ep5|couch",
+   "105515184_173104128|ep10|chair"
+  ]
+ },
+ "qwen3_omni_30b_a3b": {
+  "circling": [
+   "106878867_174886977|ep16|toilet",
+   "108736884_177263634|ep15|couch",
+   "102816756|ep10|tv"
+  ],
+  "contact_brief_no_stop": [
+   "102344529|ep4|potted_plant",
+   "106878960_174887073|ep0|potted_plant",
+   "105515184_173104128|ep26|bed"
+  ],
+  "directed_budget_out": [
+   "106878858_174886965|ep15|chair",
+   "102816036|ep14|tv",
+   "103997586_171030669|ep26|bed"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep22|toilet",
+   "106878960_174887073|ep13|couch",
+   "107734176_176000019|ep29|toilet"
+  ],
+  "last_mile_pass": [
+   "102344094|ep1|couch",
+   "106878867_174886977|ep17|toilet",
+   "106878960_174887073|ep2|potted_plant"
+  ],
+  "micro_adjust_deadlock": [
+   "106878915_174887025|ep13|potted_plant",
+   "104348328_171513363|ep18|bed",
+   "102816036|ep17|potted_plant"
+  ],
+  "turn_deadlock": [
+   "105515211_173104185|ep13|toilet",
+   "108736779_177263484|ep14|couch",
+   "106879080_174887211|ep19|chair"
+  ],
+  "wander_other": [
+   "102344094|ep23|toilet",
+   "107733960_175999701|ep15|bed",
+   "106878858_174886965|ep21|toilet"
+  ],
+  "wrong_stop": [
+   "102815835|ep21|tv",
+   "107733960_175999701|ep8|couch",
+   "107734056_175999839|ep24|tv"
+  ]
+ },
+ "qwen3vl_30b_a3b": {
+  "circling": [
+   "104348010_171512832|ep14|tv",
+   "106878960_174887073|ep27|toilet",
+   "106366386_174226770|ep22|couch"
+  ],
+  "contact_brief_no_stop": [
+   "102815835|ep2|chair",
+   "106879005_174887124|ep5|potted_plant",
+   "106366104_174226332|ep27|potted_plant"
+  ],
+  "directed_budget_out": [
+   "108736884_177263634|ep24|tv",
+   "104862384_172226319|ep16|couch",
+   "104862417_172226382|ep0|potted_plant"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep8|tv",
+   "106878915_174887025|ep10|potted_plant",
+   "107733960_175999701|ep0|potted_plant"
+  ],
+  "last_mile_pass": [
+   "102344094|ep6|tv",
+   "102344094|ep14|potted_plant",
+   "106878960_174887073|ep9|chair"
+  ],
+  "micro_adjust_deadlock": [
+   "102815835|ep14|potted_plant",
+   "108736800_177263517|ep1|potted_plant",
+   "102816036|ep12|tv"
+  ],
+  "turn_deadlock": [
+   "103997586_171030666|ep9|tv",
+   "107734338_176000244|ep7|bed",
+   "103997895_171031182|ep22|toilet"
+  ],
+  "wander_other": [
+   "102344529|ep2|potted_plant",
+   "106878960_174887073|ep29|toilet",
+   "106879005_174887124|ep14|couch"
+  ],
+  "wrong_stop": [
+   "102344094|ep2|couch",
+   "106879005_174887124|ep21|bed",
+   "106878915_174887025|ep28|toilet"
+  ]
+ },
+ "qwen3vl_8b": {
+  "circling": [
+   "104348028_171512877|ep20|toilet",
+   "106366386_174226770|ep28|toilet",
+   "106879080_174887211|ep11|tv"
+  ],
+  "contact_brief_no_stop": [
+   "102344094|ep7|tv",
+   "107733960_175999701|ep21|chair",
+   "106366104_174226332|ep27|potted_plant"
+  ],
+  "directed_budget_out": [
+   "106878867_174886977|ep20|tv",
+   "104348361_171513414|ep3|potted_plant",
+   "103997586_171030669|ep28|bed"
+  ],
+  "last_mile_dwell": [
+   "102344094|ep8|tv",
+   "106878858_174886965|ep5|bed",
+   "106878960_174887073|ep23|bed"
+  ],
+  "last_mile_pass": [
+   "102344529|ep1|potted_plant",
+   "102344529|ep21|couch",
+   "107733960_175999701|ep20|bed"
+  ],
+  "micro_adjust_deadlock": [
+   "102817140|ep4|potted_plant",
+   "108736800_177263517|ep1|potted_plant",
+   "104348361_171513414|ep6|chair"
+  ],
+  "turn_deadlock": [
+   "106878867_174886977|ep9|chair",
+   "103997586_171030666|ep21|couch",
+   "102816114|ep7|bed"
+  ],
+  "wander_other": [
+   "102344529|ep0|potted_plant",
+   "102344529|ep2|potted_plant",
+   "104862501_172226556|ep11|couch"
+  ],
+  "wrong_stop": [
+   "106879005_174887124|ep3|potted_plant"
+  ]
+ }
+}
