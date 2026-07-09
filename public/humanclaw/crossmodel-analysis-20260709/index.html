@@ -99,7 +99,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <p><strong>排行</strong>:Gemini 3.1(43.4%)&gt;&gt; Gemma 4(29.4%)&gt; Gemini 2.5(22.1%)≈ Qwen3.6-27B(21.4%)&gt; GPT-5(14.4%)≈ Qwen3.5-27B(13.7%*)&gt; … &gt; 尾部 &lt;1%(*被 bug 屠杀 71%,真实力未知,§7)。</p>
 <p><strong>benchmark 难度</strong>:1188 题中 <strong>38.8%(461 题)16 个模型无一解出</strong>;被 10 个以上模型解出的题为 <strong>0</strong>。tv 类全员崩(最好者仅 12.2%);Q4 长路径上最强模型也只剩 18.2%。天花板远未触及。</p>
 <p><strong>行为层五大发现</strong>(§4–§5,全部有 step 级 trace 佐证):
-1. <strong>自我否决循环</strong>:微调死锁的真实机理不是"模型不想停",而是 planner 提议 Stop 后,被<strong>同一模型扮演的 verifier</strong> 拒绝(replace)。qwen36_27b 在 d=0.00 贴脸处提议 Stop 被自己否决 40+ 次直到超时;gemini31 同样被拒 3 次但第 4 次通过——差距在 verifier 角色的终点判断,不在 planner。
+1. <strong>自我否决循环</strong>:微调死锁的真实机理不是"模型不想停",而是 planner 提议 Stop 后,被<strong>同一模型扮演的 verifier</strong> 拒绝(replace)。全量统计(§5.1):Qwen 3.5/3.6 系每模型提议 Stop 1.6万–4.5万次、<strong>97–99.9% 被自我否决</strong>,其微调死锁 episode <strong>97–100% 含被否决的 Stop 提议</strong>;gemini31 的否决率全场最低(61.5%),所以它的正确提议能通过。终止失败的病灶在 verifier 角色的完成判定,不在 planner 的决策勇气。
 2. <strong>原地转圈(turn_deadlock)是弱模型的第一行为死法</strong>:qwen3vl_8b 47.1%、qwen3vl_30b 42.7%、qwen25vl 42.0% 的 episode 以连续 ≥8 步纯 turn 收场;且存在<strong>场景级转圈陷阱</strong>(104862417:gemma4 与 qwen35_122b 两个不同家族在同一 episode 双双 100 步纯 turn)。
 3. <strong>强模型的近而不识(approach-abandon)</strong>:gemini31/gemma4 在同一长程 chair 题上都曾推进到 1–2.5m,却未确认目标、掉头走远至 15m+ 耗尽——导航到位、感知未收口。
 4. <strong>一题四死法</strong>:同一 tv 题(102344094 ep5),claude 触到 0.33m 不停、GPT-5 在 0.5m 卡 21 步、qwen35_122b 在 1.4m 原地转 52 步、gemini31 在 2.0m 自信错停——行为归类的四大类在一题内齐活。
@@ -884,7 +884,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 - <strong>绕圈(circling)是 claude 的独有签名</strong>:18.2%,是次高者的 1.25 倍以上——与"声称看见但走不到"直接对应(§5.5)。
 - <strong>错停(wrong_stop)集中在头部三强 + omni</strong>:敢做终止决策是能力,但深度/实例误判让 27–29% 的 episode "自信地错"(§5.6)。</p>
 <h3 id="43-episode-top-3">4.3 代表 episode 名单(每模型 × 每行为类 top-3,可按需渲染视频)</h3>
-<p>全量清单见 <a href="behavior_exemplars.json"><code>behavior_exemplars.json</code></a>(16 模型 × 11 类 × 3 例,格式 <code>scene|ep|类别</code>);全部 19008 个 episode 的行为标签在 <code>outputs/gdrive_dl/t1_steps/crossmodel_behavior.csv</code>。GPT-5 的对应 episode 可直接在 <a href="../capability-analysis-20260705/gallery/">全量 Gallery</a> 搜索 scene id 观看三联视频。精选跨模型对照:</p>
+<p>全量清单见 <a href="behavior_exemplars.json"><code>behavior_exemplars.json</code></a>(16 模型 × 11 类 × 3 例,格式 <code>scene|ep|类别</code>);全部 19008 个 episode 的行为标签可下载:<a href="crossmodel_behavior.csv.gz"><code>crossmodel_behavior.csv.gz</code></a>(含每 episode 的 dwell/turn_streak/被否决 Stop 提议数)。GPT-5 的对应 episode 可直接在 <a href="../capability-analysis-20260705/gallery/">全量 Gallery</a> 搜索 scene id 观看三联视频。精选跨模型对照:</p>
 <table>
 <thead>
 <tr>
@@ -950,6 +950,116 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <li><strong>gemini31(26 步成功)</strong>:s12–13 在 d=0.00 提议 Stop 被拒 2 次,被替换的动作把它带远到 0.91m;它走回来,s24 再被拒 1 次,<strong>s25 第 4 次提议 stand-Stop 被 accept</strong>——成功。</li>
 </ul>
 <p><strong>结论</strong>:PSV 管线中 planner/verifier 是<strong>同一个模型的两个角色</strong>。"接触不停/微调死锁"的主要机理是<strong>verifier 角色否决了 planner 角色的正确 Stop 提议</strong>(自我否决循环),而非模型从不想停。强弱差距体现在 verifier 的视觉终点判断:gemini31 的 verifier 三拒之后会转 accept,弱模型的 verifier 永远 replace。这把"终止召回缺失"的改进方向从"鼓励提议 Stop"精确到"校准 verifier 的完成判定"(§10)。</p>
+<p><strong>全模型量化(crossmodel_t4)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th style="text-align: right;">Stop 提议步数</th>
+<th style="text-align: right;">否决率%</th>
+<th style="text-align: right;">近距(&lt;0.5m)否决率%</th>
+<th style="text-align: right;">微调死锁 ep 含否决%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qwen35_35b_a3b</td>
+<td style="text-align: right;"><strong>45311</strong></td>
+<td style="text-align: right;"><strong>99.7</strong></td>
+<td style="text-align: right;">99.3</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr>
+<td>qwen36_27b</td>
+<td style="text-align: right;">41037</td>
+<td style="text-align: right;">99.0</td>
+<td style="text-align: right;">96.9</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr>
+<td>qwen36_35b_a3b</td>
+<td style="text-align: right;">27223</td>
+<td style="text-align: right;">98.8</td>
+<td style="text-align: right;">98.5</td>
+<td style="text-align: right;">99.3</td>
+</tr>
+<tr>
+<td>qwen35_27b</td>
+<td style="text-align: right;">16415</td>
+<td style="text-align: right;">93.8</td>
+<td style="text-align: right;">96.3</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+<tr>
+<td>qwen35_122b</td>
+<td style="text-align: right;">16034</td>
+<td style="text-align: right;">97.4</td>
+<td style="text-align: right;">95.1</td>
+<td style="text-align: right;">97.0</td>
+</tr>
+<tr>
+<td>claude48</td>
+<td style="text-align: right;">5976</td>
+<td style="text-align: right;">92.8</td>
+<td style="text-align: right;">91.0</td>
+<td style="text-align: right;">87.5</td>
+</tr>
+<tr>
+<td>qwen3vl_8b</td>
+<td style="text-align: right;">4274</td>
+<td style="text-align: right;">99.9</td>
+<td style="text-align: right;">99.8</td>
+<td style="text-align: right;">27.8</td>
+</tr>
+<tr>
+<td>gemini25</td>
+<td style="text-align: right;">3612</td>
+<td style="text-align: right;">88.0</td>
+<td style="text-align: right;">84.4</td>
+<td style="text-align: right;">89.5</td>
+</tr>
+<tr>
+<td>gemma4</td>
+<td style="text-align: right;">2260</td>
+<td style="text-align: right;">77.4</td>
+<td style="text-align: right;">68.9</td>
+<td style="text-align: right;">60.0</td>
+</tr>
+<tr>
+<td><strong>gemini31</strong></td>
+<td style="text-align: right;">2189</td>
+<td style="text-align: right;"><strong>61.5</strong></td>
+<td style="text-align: right;"><strong>52.8</strong></td>
+<td style="text-align: right;">86.4</td>
+</tr>
+<tr>
+<td>qwen25vl_32b</td>
+<td style="text-align: right;">754</td>
+<td style="text-align: right;">98.4</td>
+<td style="text-align: right;">99.2</td>
+<td style="text-align: right;">21.5</td>
+</tr>
+<tr>
+<td>qwen3_omni</td>
+<td style="text-align: right;">454</td>
+<td style="text-align: right;">60.1</td>
+<td style="text-align: right;">47.1</td>
+<td style="text-align: right;">8.8</td>
+</tr>
+<tr>
+<td><strong>internvl35_38b</strong></td>
+<td style="text-align: right;"><strong>100</strong></td>
+<td style="text-align: right;">93.0</td>
+<td style="text-align: right;">93.1</td>
+<td style="text-align: right;">1.3</td>
+</tr>
+</tbody>
+</table>
+<p>(GPT-5 的 trace 无 verdict 字段,量化见姊妹篇的停止归因分析)</p>
+<p>三个读法:
+1. <strong>Qwen 系"疯狂想停但全被自己否决"</strong>:提议量是别家的 5–20 倍(最多 4.5 万步),否决率 97–99.9%,微调死锁 episode 97–100% 含被否决提议——它们的终止召回缺失几乎完全是 verifier 病,不是 planner 病。<strong>这是 bug 校正之外,Qwen 系被低估的第二重机制</strong>。
+2. <strong>gemini31 赢在 verifier 的判断而非 planner 的胆量</strong>:它的提议量不大(2189),但否决率全场最低(61.5%,近距 52.8%)——verifier 校准差异直接解释了漏斗里"接触→成功"的档次差。
+3. <strong>真·不提议型只有小模型</strong>:internvl 全程仅提议 100 次(所以它的微调死锁只有 1.3% 含否决——根本没提议过)、qwen3_omni 454 次、qwen25vl 754 次。"planner 不提议"与"verifier 否决"是两种可分离的病灶,处方不同。</p>
 <h3 id="52-102344094-ep5tv3m">5.2 一题四死法(102344094 ep5,tv,初始距离≈3m)</h3>
 <p>同一道 tv 题,四个模型演示了四种典型死法(<a href="https://huggingface.co/datasets/Choiszt/nvr-assets-0726/resolve/main/102344094_ep5_combo.mp4">GPT-5 视角视频</a>):</p>
 <table>
@@ -963,7 +1073,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <tbody>
 <tr>
 <td>claude48</td>
-<td>s39 已触到 <strong>0.33m</strong>,但整整 100 步<strong>没有一次 Stop 提议</strong>;随后走远 2.5m→折返 0.63m→再走远,2.93m 处耗尽</td>
+<td>s39 已触到 <strong>0.33m</strong>,但此题 100 步<strong>没有一次 Stop 提议</strong>(claude 整体并非不提议型——它 5976 次提议被 91% 近距否决,§5.1;此题是感知未确认);随后走远 2.5m→折返 0.63m→再走远,2.93m 处耗尽</td>
 <td>接触路过</td>
 </tr>
 <tr>
@@ -996,7 +1106,41 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <li><strong>gemma4</strong>:s0–99 全部 turn,d 7.19→7.55。</li>
 <li><strong>qwen35_122b</strong>:s0–99 全部 turn,d 7.18→6.93。</li>
 </ul>
-<p><strong>两个不同家族的模型在同一 episode 一模一样地转了 100 步</strong>。scene 104862417 出现在至少 6 个模型的 turn_deadlock 代表名单里(gemma4/qwen35_122b/gpt5/qwen25vl/qwen36_27b/gemini25)。机理推断:该 spawn 朝向的初始视野无信息(墙/门),模型每步都选择"转身观察",而观察结果永远"不满意"——探索策略在无信息视野下退化成死循环。<strong>这类场景陷阱是 benchmark 的天然对抗样本,值得在 paper 里单列</strong>(场景×行为的交互效应)。</p>
+<p><strong>两个不同家族的模型在同一 episode 一模一样地转了 100 步</strong>。机理推断:该 spawn 朝向的初始视野无信息(墙/门),模型每步都选择"转身观察",而观察结果永远"不满意"——探索策略在无信息视野下退化成死循环。</p>
+<p>转圈失败的<strong>场景集中度</strong>极高(crossmodel_t4,跨模型 turn_deadlock episode 计数):</p>
+<table>
+<thead>
+<tr>
+<th>scene</th>
+<th style="text-align: right;">104862417</th>
+<th style="text-align: right;">104348361</th>
+<th style="text-align: right;">106878858</th>
+<th style="text-align: right;">107734338</th>
+<th style="text-align: right;">106878867</th>
+<th style="text-align: right;">103997895</th>
+<th style="text-align: right;">102816036</th>
+<th style="text-align: right;">107734287</th>
+<th style="text-align: right;">108736800</th>
+<th style="text-align: right;">104862501</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ep 数</td>
+<td style="text-align: right;"><strong>215</strong></td>
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: right;">171</td>
+<td style="text-align: right;">169</td>
+<td style="text-align: right;">166</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">162</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">152</td>
+</tr>
+</tbody>
+</table>
+<p>top-10 场景贡献了全部转圈失败的约三分之一,104862417 一个场景就让 16 模型累计 215 个 episode 原地转死。<strong>这类场景陷阱是 benchmark 的天然对抗样本,值得在 paper 里单列</strong>(场景×行为的交互效应,也提示 spawn 朝向应纳入难度特征)。</p>
 <h3 id="55-claude-106878858_174886965-ep14chair-182m">5.5 claude 的远距幻觉与绕圈(106878858_174886965 ep14,chair,初始距离 18.2m)</h3>
 <p>100 步内 d 始终在 13.5–18.2m 之间,walk/turn 高频交替、net 位移极小;从 s6 起(16.9m 处)就间歇 claim=1——<strong>在十几米外、隔着房间声称看见目标椅子</strong>。claude 的 circling 占其失败 18.2%(全场最高),与它 claim=100% / 到 1m 仅 32% 的漏斗互为微观-宏观证据:<strong>它的"看见"很多是语义联想而非可执行的视觉定位</strong>,声称看见后并不能生成收敛的接近路径。</p>
 <h3 id="56-gemini31-103997895_171031182-ep8bed-89m">5.6 gemini31 的自信错停(103997895_171031182 ep8,bed,初始距离 8.9m)</h3>
@@ -1024,7 +1168,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 <h3 id="ivpaper">类别 IV:高层决策失败——"低层对、高层错"(paper 重点)</h3>
 <p><strong>IV-a 终止召回缺失(contact_no_stop)——最强共性问题</strong>
 - 全员存在(秒死模型除外):qwen3vl_8b 28.2% → gemini31 3.5%,与档次强负相关
-- <strong>机理修正(本轮新发现)</strong>:step 级 trace 表明,相当部分"不停"其实是<strong>planner 提议了 Stop、被同模型的 verifier 否决</strong>(自我否决循环,§5.1)。"终止召回缺失"应拆成:①planner 从不提议(claude 在 0.33m 零提议,§5.2);②提议被 verifier 反复否决(Qwen 系典型)。两种病灶的处方不同——前者是决策勇气/提示设计,后者是 verifier 的完成判定校准
+- <strong>机理修正(本轮新发现,§5.1 T4 表)</strong>:大部分"不停"其实是<strong>planner 提议了 Stop、被同模型的 verifier 否决</strong>(自我否决循环)。"终止召回缺失"应拆成两种可分离病灶:①<strong>planner 不提议型</strong>——仅小模型(internvl 全程 100 次、qwen3_omni 454、qwen25vl 754)与个别 episode(claude 在 0.33m 零提议,§5.2);②<strong>verifier 否决型</strong>——Qwen 系每模型 1.6万–4.5万次提议被 97–99.9% 否决,claude/gemini25 也有 84–91% 的近距否决率。处方不同:前者是决策提示设计,后者是 verifier 完成判定校准。contact_no_stop episode 中含近距被否决提议的比例:Qwen 中大模型 85–100%、gemini25 75.9%、claude 69.4%——<strong>termination recall 的大头是自我否决,不是无意识</strong>
 - 与 GPT-5 报告的"precision 高 recall 低"结论在 15 个模型上复现</p>
 <p><strong>IV-b 停止精度不足(model_wrong_stop)</strong>
 - 自主停止的落点精度 P(≤0.2m|自主 stop):gemini31 61%、gemma4 68%、qwen36_27b 69% vs <strong>claude48 24.5%</strong>、qwen3_omni 24.3%、gemini25 40.6%
@@ -1218,7 +1362,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 </tr>
 <tr>
 <td>终止决策是第二瓶颈</td>
-<td>contact_no_stop 全员 3.5–28%;机理=不提议(claude 型)+ 自我否决(Qwen 型)双病灶(§5.1/5.2)</td>
+<td>contact_no_stop 全员 3.5–28%;机理=自我否决为主(Qwen/claude/gemini25 近距否决率 84–99.8%)+ 小模型不提议(§5.1 T4 表)</td>
 </tr>
 <tr>
 <td>tv 判据物理性难题</td>
@@ -1270,7 +1414,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 7. 硬核集直方图(§8):解出模型数分布,38.8% 零解出 + 最高仅 10/16
 8. 案例板:§5.2 一题四死法的四条轨迹并排(共享 BEV)——审稿人一眼看懂行为差异</p>
 <p><strong>可直接下的 claim</strong>:
-- 终止决策是跨模型共性软肋,且有两种可分离的病灶:planner 不提议(语义模型)与 verifier 自我否决(开源模型)——PSV 类 scaffold 的 verifier 校准是新的改进轴
+- 终止决策是跨模型共性软肋,且主病灶是 <strong>verifier 自我否决</strong>(Qwen 系 4.5 万次 Stop 提议被 99.7% 否决;仅小模型属"不提议型")——PSV 类 scaffold 的 verifier 校准是比"鼓励提议"更关键的改进轴,且 gemini31 的优势有一半来自 verifier 判定更准(否决率 61.5% vs 全场 88–99.9%)
 - 长程导航衰减普遍且陡峭(Q4/Q1 从 0.29 到 0.02),感知不是主要瓶颈(claim 率普遍 &gt;75%)
 - benchmark 未饱和:38.8% 题目零解出,无题被 &gt;10/16 解出;未解前沿=长路径 × tv/大家具
 - 评测分数对 scaffold 解析细节高度敏感且敏感度因模型而异(0–71%)——agentic benchmark 方法论教训
