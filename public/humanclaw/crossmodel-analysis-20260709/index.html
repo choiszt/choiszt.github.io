@@ -104,7 +104,7 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 3. <strong>强模型的近而不识(approach-abandon)</strong>:gemini31/gemma4 在同一长程 chair 题上都曾推进到 1–2.5m,却未确认目标、掉头走远至 15m+ 耗尽——导航到位、感知未收口。
 4. <strong>一题四死法</strong>:同一 tv 题(102344094 ep5),claude 触到 0.33m 不停、GPT-5 在 0.5m 卡 21 步、qwen35_122b 在 1.4m 原地转 52 步、gemini31 在 2.0m 自信错停——行为归类的四大类在一题内齐活。
 5. <strong>远距幻觉 claim</strong>:claude 在 15–18m 外就间歇声称看见目标并绕圈(claim 100% / 到 1m 仅 32% 的微观形态);gemini31 会在 6.9m 处误认、<strong>坐下、然后自信宣布完成</strong>。</p>
-<p><strong>最重要的方法论发现——系统污染不均匀</strong>(§7):verifier id/name bug 对不同模型杀伤 <strong>0%(Gemini/Claude/Gemma)到 71%(qwen35_27b)</strong>。不做 bug 校正,Qwen 家族被系统性冤枉;发表前必须重跑受害集(~2000 集)。</p>
+<p><strong>最重要的方法论发现——系统污染不均匀</strong>(§7):verifier id/name bug 对不同模型杀伤 <strong>0%(Gemini/Claude/Gemma)到 71%(qwen35_27b)</strong>。发表口径(已定):主表用原始分数 + 标注每模型 system_stop 率;跨家族比较时须援引 §7 的污染分析。</p>
 <hr />
 <h2 id="1">1. 数据与方法</h2>
 <ul>
@@ -1419,8 +1419,8 @@ hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 - benchmark 未饱和:38.8% 题目零解出,无题被 &gt;10/16 解出;未解前沿=长路径 × tv/大家具
 - 评测分数对 scaffold 解析细节高度敏感且敏感度因模型而异(0–71%)——agentic benchmark 方法论教训
 - 运动质量(破坏性)与任务能力正相关;场景级行为陷阱(无信息 spawn)是天然对抗样本</p>
-<p><strong>必做修正(发表前)</strong>:
-1. Qwen 系受害 episode 用修复管线重跑(~2000 集,~1 天)
+<p><strong>发表口径(2026-07-09 已定)</strong>:
+1. <strong>主表采用原始分数</strong>(不做 bug 重跑校正),同时标注每模型 system_stop 率——诚实呈现污染而非重测。受害 episode 重跑(~2000 集)列为可选 future work;注意一个警示信号:o4-mini 在 216 集受害集上的探索性重跑仅救回 1 集,提示"bug 解除 ≠ 分数恢复"(终止层软肋仍在),幸存集外推(如 qwen35_27b 30–47%)应视为宽松上界
 2. deepseek_ocr/gemma4 数据问题处理(脚注/剔除)
 3. 下陷场景剔除口径 + tv 判据讨论写入 setup</p>
 <hr />
