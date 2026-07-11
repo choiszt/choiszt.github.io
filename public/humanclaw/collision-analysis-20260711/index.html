@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh"><head><meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HCBv6 碰撞→能力诊断 (2026-07-11 v2)</title>
+<title>HCBv6 碰撞说明书 (2026-07-11 v3)</title>
 <style>
 :root{--bg:#fcfcfa;--fg:#1e222a;--muted:#5b6472;--accent:#0f6f5c;--line:#dde1e6;--code:#f0f2f4}
 @media(prefers-color-scheme:dark){:root{--bg:#14171c;--fg:#dfe4ea;--muted:#9aa4b2;--accent:#4fd1b5;--line:#2c333d;--code:#1e242c}}
@@ -16,7 +16,6 @@ body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 -apple-system,
 nav.toc{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:40px 0 40px 20px;font-size:.82em;line-height:1.5}
 nav.toc .toc-title{font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.85em;margin-bottom:10px}
 nav.toc ul{list-style:none;margin:0;padding-left:0}
-nav.toc ul ul{padding-left:14px}
 nav.toc li{margin:2px 0}
 nav.toc a{color:var(--muted);text-decoration:none;display:block;padding:2px 8px;border-left:2px solid transparent;border-radius:0 4px 4px 0}
 nav.toc a:hover{color:var(--accent)}
@@ -32,120 +31,127 @@ th{background:var(--code)}
 td.hl{background:color-mix(in srgb,var(--accent) 14%,transparent);font-weight:600}
 code{background:var(--code);padding:1px 5px;border-radius:3px;font-size:.88em}
 blockquote{border-left:3px solid var(--accent);margin:1em 0;padding:.2em 1em;color:var(--muted)}
-hr{border:none;border-top:1px solid var(--line);margin:2.5em 0}
 .note{color:var(--muted);font-size:.88em}
-.cap{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:12px 18px;margin:16px 0}
-.cap b.t{color:var(--accent);font-size:1.05em}
 @media(max-width:1020px){.layout{grid-template-columns:1fr}nav.toc{position:static;max-height:none;padding:24px 24px 0;border-bottom:1px solid var(--line)}}
 </style></head><body>
-<nav class="crumbs"><a href="../">HumanClaw</a><span class="sep">›</span><a href="../capability-analysis-20260705/">GPT-5 深度报告</a><span class="sep">·</span><a href="../crossmodel-analysis-20260709/">跨模型分析</a><span class="sep">·</span><a href="./" class="here">碰撞→能力诊断</a><span class="sep">·</span><a href="../capability-analysis-20260705/gallery/">全量 Gallery</a></nav>
+<nav class="crumbs"><a href="../">HumanClaw</a><span class="sep">›</span><a href="../capability-analysis-20260705/">GPT-5 深度报告</a><span class="sep">·</span><a href="../crossmodel-analysis-20260709/">跨模型分析</a><span class="sep">·</span><a href="./" class="here">碰撞说明书</a><span class="sep">·</span><a href="../capability-analysis-20260705/gallery/">全量 Gallery</a></nav>
 <div class="layout">
 <nav class="toc"><div class="toc-title">目录</div><ul>
-<li><a href="#tldr">TL;DR：四条能力结论</a></li>
-<li><a href="#facts">1 事实层：碰撞五分类</a></li>
-<li><a href="#evidence">2 能力诊断的证据链</a></li>
-<li><a href="#carpet">3 测量层备注：地毯</a></li>
-<li><a href="#samples">4 样例（按能力轴标注）</a></li>
-<li><a href="#paper">5 对 paper 的建议</a></li>
-<li><a href="#repro">6 数据与复现</a></li>
+<li><a href="#tldr">0 一页结论</a></li>
+<li><a href="#def">1 碰撞的定义与口径</a></li>
+<li><a href="#what">2 碰到的是什么</a></li>
+<li><a href="#body">3 碰在身体哪里</a></li>
+<li><a href="#view">4 方位与画面可见性</a></li>
+<li><a href="#when">5 什么时候撞</a></li>
+<li><a href="#shape">6 碰撞事件的形态</a></li>
+<li><a href="#samples">7 样例 IDs</a></li>
+<li><a href="#repro">8 数据与复现</a></li>
 </ul></nav>
 <article>
-<h1>HCBv6 碰撞分析：碰撞暴露了模型的哪些能力缺陷</h1>
-<p class="note">2026-07-11 v2 · 碰撞分类只是事实层，落脚点是能力诊断。数据 = 16 模型 × ~1,188 集步级接触记录（约 136 万步，每条接触带对象/坐标/力/方向），剔除下陷场景与 init-stuck 集；论文口径 9 个入表模型。<a href="collision_analysis.md">Markdown 版下载</a></p>
+<h1>HCBv6 碰撞说明书：benchmark 里的 collision 到底是什么</h1>
+<p class="note">2026-07-11 v3 · 纯客观描述：碰撞怎么定义、碰到什么、碰在哪、被撞物在身体哪个方位、碰撞那一刻画面里可见吗、什么时候撞、事件长什么样。数据 = 16 模型 × ~1,188 集步级接触记录（约 136 万步），剔除下陷场景与 init-stuck；论文口径 9 个入表模型。<a href="collision_analysis.md">Markdown 下载</a></p>
 
-<h2 id="tldr">TL;DR：四条能力结论</h2>
+<h2 id="tldr">0 一页结论</h2>
+<ol>
+<li><b>碰撞的一半是目标本身</b>：接触步中 42–60% 涉及目标物体，12–19% 只踩了地毯（测量噪声），其余约 1/3 是环境家具。</li>
+<li><b>碰撞发生那一刻，约 91% 的接触点不在当前 ego 画面里</b>（行走步，9 模型池化）：侧面 42.6% + 身后 36.2% + 正前但画面下缘以下 12.7%；<b>画面内正前方只有 8.5%</b>（各模型 7.2–10.6%，高度一致）。</li>
+<li><b>下肢主导</b>：腿 42–55% ≫ 手臂 24–37% ＞ 躯干 ＞ 头 4–9%。</li>
+<li><b>70% 的接触步发生在转向/侧移/静止中</b>（视角扫动），仅 30% 在直线行走中。</li>
+<li><b>模型收不到任何碰撞信号</b>（系统事实）：环境每步计算碰撞反馈（<code>HalfPhysicsEnv.py:777</code>），但 planner 与 verifier 的 prompt 构造均显式丢弃（<code>psv_plan_skill_planner.py:347</code> / <code>verifiers/v0.py:178</code> 的 <code>del env_feedback</code>）；prompt 只有静态避碰指令。模型唯一感知通道是 ego 图像。</li>
+<li><b>碰撞量不区分模型，构成区分</b>：Coll% 挤在 36–51%（成功集 52% ≈ 失败集）；随能力变化的是构成——持续零位移接触+前向重撞（弱模型 &gt;50%）vs 短暂擦碰（强模型 ~30%）；巡航期撞家具率差 2.5 倍。</li>
+</ol>
 
-<div class="cap"><b class="t">C1 没有身体图式：模型把自己当漂浮的相机，不是占空间的人。</b><br>
-碰撞集中在相机视野之外的身体部位（腿/脚 42–55% ≫ 头 4–9%）；障碍就在正前方视野里，前进中仍然撞上（迎面撞上占失误型碰撞主体，均值 24%）——看得见障碍，推理不了"我的肩宽/步幅过不过得去"。成功 episode 的碰撞率（52%）与失败集相当：接触从来不是被管理的事件，而是模型无感的常态背景。</div>
+<h2 id="def">1 碰撞的定义与口径</h2>
+<ul>
+<li><b>计数规则</b>（与论文 Coll% 一致）：一步内任一身体 link 接触<b>非地面物体</b>即记碰撞步；"地面" = stage 几何（含墙体、地板）——<b>墙体接触不计入</b>，Coll% 数的是与家具/物体的接触。</li>
+<li><b>事件化</b>：连续接触步合并为一个事件，按持续步数加权。</li>
+<li><b>地毯</b>：rug/mat 是独立 rigid object，脚踩计为碰撞，占接触步 12–19%；剔除后各模型 Coll% −5.7~−8.0 pt、排序不变。属测量噪声，下文统计均剔除。</li>
+<li><b>模型输入无碰撞信号</b>：环境每步生成 <code>"Last motion executed with collision."</code>，但 harness 两处 prompt 构造均 <code>del env_feedback</code>；实测 prompt 中无此字符串。</li>
+<li>采样：每步取最后一个物理帧（绝对率略低估、构成无偏）；约 25% 接触对象语义未解析（疑似门等 articulated 构件）。</li>
+</ul>
 
-<div class="cap"><b class="t">C2 触觉反馈整合不进空间信念：不是没给信号，是给了也用不上。</b><br>
-harness <b>每一步</b>都在 prompt 里反馈 <code>Last motion executed with collision</code>，system prompt 明令 "Avoid unnecessary collisions"。即便如此：卡住硬顶事件里模型连续 5–40 步收到"你撞了"仍推同一方向；14–23% 的 episode 身体贴着<b>目标</b>几十步而不确认到达（二值反馈不区分撞到的是目标还是障碍，而没有任何模型主动推断"我撞到的是什么"）；人工核查中有碰撞占比 0.97 的 episode 持续声称 "path clear"。每集撞倒 0.4–1.2 个可移动物体，reasoning 零反应。<b>文字化触觉信号无法更新模型的空间自我状态——不是感知缺失，是具身信念更新机制的缺失。</b></div>
+<h2 id="what">2 碰到的是什么</h2>
+<table><tr><th>对象</th><th>占接触步</th><th>说明</th></tr>
+<tr><td><b>目标物体本身</b></td><td>42–60%（均值 49%）</td><td>走到跟前、sit、贴着；≤0.2m 时 83% 的步在接触、其中 78% 是目标</td></tr>
+<tr><td><b>环境家具</b></td><td>约 1/3</td><td>top：table、chair、couch、bed、cabinet、window、counter、mirror、wardrobe</td></tr>
+<tr><td><b>地毯/垫子</b></td><td>12–19%</td><td>测量噪声（§1）</td></tr></table>
+<p>巡航期（距目标 &gt;2m）撞家具率：Gemini 双子/Gemma 17–22%，Claude/InternVL ~28%，表外小模型 49–51%。</p>
 
-<div class="cap"><b class="t">C3 推理的共性缺陷：开环的场景描述，没有"预期→结果"自校验。</b><br>
-9 个模型的 reasoning 文本几乎全部在描述场景（"我看到沙发在左边"），从不核对上一步动作的结果（"我命令了前进，我动了吗"）。卡住硬顶是最纯证据：命令前进、位移为零、下一步继续命令前进——无一模型出现"位移与命令不符 → 我被卡住了"的推断。与两个已确立发现同根：spatial trap（连转 ≥8 步不自知，Finding 4）= 无进展跟踪；自我否决循环（Qwen 系 94–99% Stop 提议被自己否决，Finding 2）= verifier 只审场景快照、不审行动结果历史。<b>同一个缺陷的三种表现：模型是场景的旁观者（spectator），不是核对自己行动后果的行动者（actor）。</b></div>
+<h2 id="body">3 碰在身体哪里</h2>
+<p>腿 42–55% ≫ 手臂 24–37% ＞ 躯干 13–22% ＞ 头 4–9%（全模型一致）。</p>
 
-<div class="cap"><b class="t">C4 规模买来的是碰撞后的恢复力，不是具身意识。</b><br>
-Coll% 不随能力提升下降（36–51% 挤在一起，最强的 Gemini-3.1 也有 42.3%）；随能力变化的是<b>构成</b>：强模型把非目标碰撞变成 1–2 步轻擦后继续推进（Gemini 双子途中擦碰 ~30%），弱模型变成迎面重撞+卡死（表外小模型两类合计 &gt;50%）；巡航期撞家具率强弱差 2.5 倍（17–22% vs 49–51%）。<b>更大的模型学会了"撞了之后怎么走出来"，没学会"别撞"或"感知到撞"——具身意识不是随规模涌现的弱能力，而是训练分布里缺失的模态。</b></div>
+<h2 id="view">4 被撞物在身体哪个方位？碰撞那一刻画面里可见吗？</h2>
+<p class="note"><b>判定方法</b>：只对行走锚点步判定（walk_forward/step_back，朝向 = 位移方向，精确；转向指令的物理执行偏差大，闭合误差 ~56°，不用于朝向传播）。ego 相机：头戴、448×448、HFOV 90°、下俯 23°、高度 ≈ 骨盆+0.7m → 垂直可视 [水平线上 22°, 下 68°]，站立时脚边 ~0.6m 内低矮物在画面下缘以下。</p>
+<p>非目标接触点的方位分布（行走步，占该模型行走接触点 %）：</p>
+<table><tr><th>模型</th><th>画面内正前</th><th>正前但画面下缘以下</th><th>侧面(45–120°)</th><th>身后(&gt;120°)</th><th>视角扫动接触占比¹</th></tr>
+<tr><td>Gemini-3.1</td><td>8.7</td><td>11.3</td><td>44.0</td><td>35.9</td><td>76.4</td></tr>
+<tr><td>Gemma-4-31B</td><td>8.7</td><td>11.7</td><td>40.8</td><td>38.7</td><td>75.2</td></tr>
+<tr><td>Gemini-2.5</td><td>10.0</td><td>10.8</td><td>43.3</td><td>35.9</td><td>79.3</td></tr>
+<tr><td>Qwen3.6-27B</td><td>7.9</td><td>11.7</td><td>44.4</td><td>36.0</td><td>70.9</td></tr>
+<tr><td>GPT-5 (non-thinking)</td><td>10.6</td><td>11.7</td><td>45.0</td><td>32.8</td><td>82.5</td></tr>
+<tr><td>Qwen3.5-27B</td><td>8.1</td><td>13.7</td><td>43.9</td><td>34.4</td><td>68.7</td></tr>
+<tr><td>Claude-4.8</td><td>9.2</td><td>13.2</td><td>43.3</td><td>34.2</td><td>72.1</td></tr>
+<tr><td>Qwen3.6-35B-A3B</td><td>7.2</td><td>14.6</td><td>44.0</td><td>34.2</td><td>63.5</td></tr>
+<tr><td>InternVL3.5-38B</td><td>7.7</td><td>13.5</td><td>38.8</td><td>40.0</td><td>66.9</td></tr>
+<tr><td><b>9 模型池化</b></td><td class="hl">8.5</td><td><b>12.7</b></td><td><b>42.6</b></td><td><b>36.2</b></td><td>—</td></tr></table>
+<p class="note">¹ 全部非目标接触步中发生在转向/侧移/静止步的比例（朝向连续变化，可见性无固定答案）；池化后全部接触步的 69.8% 属于此类。</p>
+<p><b>读法</b>：行走中撞上的东西，~91% 的接触点在碰撞瞬间不在 ego 画面里——近 80% 在侧面和身后（身体两侧和后缘行进中扫刮家具），12.7% 在正前方但低于画面下缘（贴脚低矮物：stool、花盆底座、桌腿等）；<b>画面内正前方的接触只有 7.2–10.6%，跨 16 个模型都在 7–12% 窄带内</b>——几何普适现象，与模型强弱无关。目标接触的方位分布类似（画面内 5.1%、下缘以下 15.5%、侧后 79%）：到达目标时身体是"包"上去接触的。</p>
+<p class="note">口径注意：判定的是<b>接触点</b>在不在当前帧视锥内。接触点在画面外 ≠ 该物体从未出现在画面中（可能早几步见过）；在画面内也可能被遮挡。严格的"看没看见过"需逐帧渲染回放（样例打包时可对代表帧渲染验证）。</p>
 
-<h2 id="facts">1 事实层：碰撞的五分类（证据基础）</h2>
-<p>事件化：episode 内连续接触步合并为一个事件，按持续步数加权。两层结构：测量层先剔除"整个事件只碰地毯"的 artifact（§3），行为层五类：</p>
-<table><tr><th>类（判据）</th><th>9 模型均值 (min–max)</th><th>指向的能力缺陷</th></tr>
-<tr><td>① 目标接触（≥50% 步接触目标 AABB+10cm）</td><td><b>49.4%</b> (42–60)</td><td>任务固有；被"贴着目标不确认"放大 → C2</td></tr>
-<tr><td>② 卡住硬顶（非目标接触 ≥5 步且位移 &lt;5cm/步）</td><td><b>4.4%</b> (1–9)</td><td>C2 + C3 最纯证据</td></tr>
-<tr><td>③ 迎面撞上（walk_forward 前进中，接触方向在运动方向 ±60°）</td><td><b>24.2%</b> (14–39)</td><td>C1（看得见、算不了自身几何）</td></tr>
-<tr><td>④ 落位失误（≤1m 收尾动作撞非目标）</td><td><b>2.5%</b> (2–4)</td><td>C1 精细版；"坐进空气"零接触，主体在 sit 管线</td></tr>
-<tr><td>⑤ 途中擦碰（其余，中位 2 步）</td><td><b>19.6%</b> (12–30)</td><td>C1（视野外下肢擦碰）；强模型的主要残余</td></tr></table>
+<h2 id="when">5 什么时候撞（距离与动作）</h2>
+<ul>
+<li><b>距目标</b>：≤0.2m 时 83% 的步在接触（78% 为目标）；0.2–1m：48–52%；1–5m：41–44%；&gt;5m：40%（16% 地毯 + 23% 家具）。</li>
+<li><b>按技能</b>：sit 90%（坐目标，预期）＞ side_walk 72%（近目标侧向微调）＞ step_back 61% ＞ turn 42% ＞ walk_forward 33%（直线行走最干净）。</li>
+</ul>
 
-<p>每模型明细（占有效碰撞步 %）：</p>
-<table><tr><th>模型</th><th>①目标</th><th>②卡住</th><th>③迎面</th><th>④落位</th><th>⑤擦碰</th><th>地毯(占接触步)</th><th>巡航撞家具%¹</th></tr>
-<tr><td>Gemini-3.1</td><td>42.2</td><td>3.4</td><td>20.5</td><td>3.6</td><td>30.3</td><td>8.2</td><td>21.8</td></tr>
-<tr><td>Gemma-4-31B</td><td>50.9</td><td>3.6</td><td>18.5</td><td>2.4</td><td>24.6</td><td>6.2</td><td>19.2</td></tr>
-<tr><td>Gemini-2.5</td><td>42.6</td><td>1.4</td><td>22.5</td><td>4.1</td><td>29.4</td><td>6.7</td><td>17.5</td></tr>
-<tr><td>Qwen3.6-27B</td><td>55.3</td><td>2.9</td><td>26.3</td><td>2.3</td><td>13.2</td><td>4.4</td><td>21.6</td></tr>
-<tr><td>GPT-5 (non-thinking)</td><td>52.6</td><td class="hl">9.0</td><td>13.6</td><td>3.0</td><td>21.8</td><td>5.5</td><td>22.0</td></tr>
-<tr><td>Qwen3.5-27B</td><td>60.1</td><td>3.5</td><td>21.7</td><td>1.6</td><td>13.2</td><td>4.1</td><td>19.9</td></tr>
-<tr><td>Claude-4.8</td><td>42.0</td><td>5.7</td><td class="hl">38.7</td><td>1.8</td><td>11.9</td><td>4.0</td><td>27.9</td></tr>
-<tr><td>Qwen3.6-35B-A3B</td><td>50.5</td><td>2.1</td><td>30.0</td><td>1.8</td><td>15.6</td><td>5.4</td><td>18.4</td></tr>
-<tr><td>InternVL3.5-38B</td><td>48.2</td><td>8.4</td><td>25.6</td><td>1.7</td><td>16.1</td><td>3.5</td><td>28.3</td></tr></table>
-<p class="note">¹ 距目标 &gt;2m 的步中接触非目标物体的比例；表外小模型（qwen3vl-30B、qwen-omni）达 49–51%。</p>
-<p><b>五类在所有模型上都非零</b>——这些是普适的能力缺陷表现，不是个别模型的毛病；幅度差是模型签名（Claude 迎面 38.7% ↔ 过度自信画像；GPT 卡住 9.0% ↔ 不终止画像），但每条能力诊断对全部 9 个模型成立。<b>身体部位</b>：腿 42–55% ≫ 手臂 24–37% &gt; 躯干 13–22% &gt; 头 4–9%——碰撞发生在相机看不到的地方（C1 直接证据）。</p>
+<h2 id="shape">6 碰撞事件的形态（五种，纯描述）</h2>
+<table><tr><th>形态（判据）</th><th>占有效碰撞步，9 模型均值 (min–max)</th></tr>
+<tr><td>① 目标接触（事件内 ≥50% 步接触目标）</td><td><b>49.4%</b> (42–60)</td></tr>
+<tr><td>② 持续零位移接触（非目标、≥5 步、位移 &lt;5cm/步）</td><td><b>4.4%</b> (1–9)；GPT 最高 9.0</td></tr>
+<tr><td>③ 前向接触（前进中，接触方向在运动方向 ±60°）</td><td><b>24.2%</b> (14–39)；Claude 最高 38.7</td></tr>
+<tr><td>④ 近目标收尾接触（≤1m、sit/侧移/转身中碰非目标）</td><td><b>2.5%</b> (2–4)</td></tr>
+<tr><td>⑤ 短暂擦碰（其余；中位 2 步）</td><td><b>19.6%</b> (12–30)；Gemini 双子 ~30</td></tr></table>
+<p>形态构成随模型能力系统性移动：强模型的非目标碰撞以 ⑤ 为主（碰一下就过去），弱模型以 ②+③ 为主（表外小模型合计 &gt;50%）。事件长度中位 2 步；≥5 步的长事件集中在 ① 和 ②。</p>
 
-<h2 id="evidence">2 能力诊断的证据链</h2>
-<table><tr><th>能力结论</th><th>碰撞侧证据</th><th>交叉验证（其他管线）</th></tr>
-<tr><td>C1 无身体图式</td><td>腿脚主导；迎面 24%；成功集碰撞率 52% ≈ 失败集</td><td>sit 失败 61% "坐进空气"——同为身体几何推理缺失</td></tr>
-<tr><td>C2 触觉不更新信念</td><td>每步反馈碰撞仍硬顶 5–40 步；贴目标不确认 14–23% 集；撞倒物体零反应</td><td>contact_no_stop / micro-adjust deadlock（Finding 2）；"path clear" 人工核查</td></tr>
-<tr><td>C3 开环无自校验</td><td>命令-位移不符无推断（卡住硬顶）</td><td>spatial trap（Finding 4）；自我否决循环（Finding 2）</td></tr>
-<tr><td>C4 恢复力≠意识</td><td>Coll% 不随能力降；构成随能力变（轻擦↔重撞，巡航率 2.5×）</td><td>成功率 42.5% 与 0.8% 的模型 Coll% 几乎相同</td></tr></table>
-
-<h2 id="carpet">3 测量层备注：地毯是 artifact，不是行为类</h2>
-<p>脚踩 rug/mat 被计为"非地面碰撞"（rug 是独立 rigid object），占接触步 12–19%；从 Coll% 剔除后每模型 −5.7~−8.0 pt、<b>排序不变</b>。不进入任何能力结论的证据链。建议：主表 Coll% 定义加 floor-covering 过滤（模拟器内置 static collision metric 本就过滤低矮薄面），或 caption 注明。另：论文碰撞口径将 stage（墙/地板）整体排除，"卡进墙"在数据中表现为卡进大件家具。</p>
-
-<h2 id="samples">4 样例（IDs；每类标注演示的能力缺陷）</h2>
-<p class="note">每类 4 个不同模型的典型事件（4–40 步、非出生位、力值正常）；图片/视频待确认后打包。格式：模型 / 场景 / ep / 类别 / 步区间（对象）。</p>
-<h3>② 卡住硬顶 → C2+C3（每步被告知"撞了"仍推同一方向）</h3>
+<h2 id="samples">7 样例（IDs，图片待打包）</h2>
+<p class="note">每类 4 个不同模型的典型事件（4–40 步、非出生位、力值正常）。格式：模型 / 场景 / ep / 类别 / 步区间（对象）。</p>
+<h3>② 持续零位移接触</h3>
 <table><tr><th>模型</th><th>场景</th><th>ep</th><th>类别</th><th>步区间</th><th>备注</th></tr>
 <tr><td>claude48</td><td>106878960_174887073</td><td>22</td><td>bed</td><td>2–41</td><td>cabinet，40 步零位移</td></tr>
 <tr><td>gemma4</td><td>102344094</td><td>6</td><td>tv</td><td>60–99</td><td>potted_plant+table</td></tr>
 <tr><td>gemini31</td><td>104348361_171513414</td><td>25</td><td>bed</td><td>61–99</td><td>window 旁</td></tr>
 <tr><td>qwen36_35b_a3b</td><td>103997586_171030669</td><td>26</td><td>bed</td><td>7–45</td><td>table</td></tr></table>
-<h3>③ 迎面撞上 → C1（障碍在正前方视野内，前进中撞上）</h3>
+<h3>③ 前向接触</h3>
 <table><tr><th>模型</th><th>场景</th><th>ep</th><th>类别</th><th>步区间</th><th>备注</th></tr>
 <tr><td>internvl35_38b</td><td>106879080_174887211</td><td>24</td><td>bed</td><td>12–51</td><td>couch，walk_forward 顶着推</td></tr>
 <tr><td>claude48</td><td>106878915_174887025</td><td>1</td><td>chair</td><td>9–48</td><td>mirror</td></tr>
 <tr><td>gemma4</td><td>106878960_174887073</td><td>20</td><td>bed</td><td>60–99</td><td>bench/chair/couch 连环</td></tr>
 <tr><td>gpt5_nonthinking</td><td>107734254_176000121</td><td>14</td><td>couch</td><td>39–78</td><td>chair</td></tr></table>
-<h3>⑤ 途中擦碰 → C1（视野外下肢擦碰）</h3>
+<h3>⑤ 短暂擦碰</h3>
 <table><tr><th>模型</th><th>场景</th><th>ep</th><th>类别</th><th>步区间</th><th>备注</th></tr>
 <tr><td>qwen36_35b_a3b</td><td>106366104_174226332</td><td>20</td><td>bed</td><td>60–99</td><td>picture</td></tr>
 <tr><td>qwen36_27b</td><td>102816036</td><td>10</td><td>tv</td><td>3–42</td><td>—</td></tr>
 <tr><td>gpt5_nonthinking</td><td>107734338_176000244</td><td>1</td><td>potted_plant</td><td>60–99</td><td>mirror/shelves/stool</td></tr>
 <tr><td>internvl35_38b</td><td>108736800_177263517</td><td>11</td><td>tv</td><td>40–79</td><td>wardrobe，转身扫碰</td></tr></table>
-<h3>① 目标接触 → C2 "贴着不确认"对照 + 任务固有基线</h3>
+<h3>① 目标接触</h3>
 <table><tr><th>模型</th><th>场景</th><th>ep</th><th>类别</th><th>步区间</th><th>备注</th></tr>
 <tr><td>qwen35_27b</td><td>103997586_171030669</td><td>6</td><td>potted_plant</td><td>12–51</td><td>贴住目标 40 步</td></tr>
 <tr><td>gpt5_nonthinking</td><td>107733960_175999701</td><td>18</td><td>bed</td><td>23–62</td><td>含 sit</td></tr>
 <tr><td>qwen36_35b_a3b</td><td>108736689_177263340</td><td>10</td><td>couch</td><td>47–86</td><td>cushion</td></tr>
 <tr><td>gemma4</td><td>106878960_174887073</td><td>12</td><td>couch</td><td>60–99</td><td>—</td></tr></table>
-<h3>④ 落位失误 → C1 精细版（位置对、动作对、身体放错）</h3>
+<h3>④ 近目标收尾接触</h3>
 <table><tr><th>模型</th><th>场景</th><th>ep</th><th>类别</th><th>步区间</th><th>备注</th></tr>
-<tr><td>gemini31</td><td>108736689_177263340</td><td>13</td><td>couch</td><td>22–60</td><td>贴着 table 微调</td></tr>
+<tr><td>gemini31</td><td>108736689_177263340</td><td>13</td><td>couch</td><td>22–60</td><td>贴 table 微调</td></tr>
 <tr><td>gemma4</td><td>103997586_171030666</td><td>27</td><td>couch</td><td>20–58</td><td>sit 时坐上 stool</td></tr>
 <tr><td>claude48</td><td>102816756</td><td>4</td><td>potted_plant</td><td>22–60</td><td>chair+chest_of_drawers</td></tr>
 <tr><td>qwen36_27b</td><td>106878867_174886977</td><td>26</td><td>couch</td><td>44–81</td><td>cabinet</td></tr></table>
-<h3>地毯 artifact（对照，不进能力证据链）</h3>
+<h3>地毯（对照）</h3>
 <table><tr><th>模型</th><th>场景</th><th>ep</th><th>类别</th><th>步区间</th><th>备注</th></tr>
 <tr><td>gpt5_nonthinking</td><td>108736884_177263634</td><td>18</td><td>couch</td><td>31–70</td><td>纯 carpet，力 0</td></tr>
 <tr><td>gemini31</td><td>104348010_171512832</td><td>11</td><td>tv</td><td>20–59</td><td>carpet</td></tr>
 <tr><td>claude48</td><td>107734254_176000121</td><td>21</td><td>tv</td><td>3–41</td><td>carpet</td></tr>
 <tr><td>gemma4</td><td>102817140</td><td>17</td><td>couch</td><td>62–99</td><td>carpet</td></tr></table>
 
-<h2 id="paper">5 对 paper 的建议</h2>
-<ol>
-<li><b>碰撞段落按能力写</b>，分类只出现在证据位置。可直接使用的三句主张：(a) <i>VLM agents plan as a floating camera, not a body</i>——碰撞集中于视野外肢体 + 视野内迎面撞上 24%；(b) <i>Textual touch feedback fails to update spatial belief</i>——每步碰撞反馈 + 明确避碰指令下仍连续硬顶 / 贴目标不确认；(c) <i>Scaling buys recovery, not awareness</i>——Coll% 不随能力降，碰撞构成随能力从"重撞"移向"轻擦"。</li>
-<li>Coll% caption：补精确定义 + 剔地毯（或注明占比 12–19%）；如需更能区分模型的具身指标，报"巡航撞家具率"（强弱差 2.5×）。</li>
-<li>与现有 findings 衔接：C2 支撑 Finding 2 的终止失败（触觉不更新信念 → 不确认到达）；C3 统一 Finding 2（自我否决）与 Finding 4（spatial trap）为"开环推理"；C1 与 sit "坐进空气" 61% 同根。</li>
-</ol>
-
-<h2 id="repro">6 数据与复现</h2>
-<p>DGX <code>outputs/gdrive_dl/coll_prov/</code>：<code>collsteps2_&lt;model&gt;.csv.gz</code>（步级 ×16）、<code>coll_events_v2.csv.gz</code>（事件级）、<code>coll_taxonomy_by_model.csv</code>、<code>coll_exemplars.json</code>、<code>bodypart_by_model.csv</code>、脚本 <code>coll_prov_disk2.py</code> / <code>coll_classify2.py</code> / <code>coll_decomp.py</code>、报告 <code>collision_analysis.md</code> + <code>README.md</code>。15 模型全量 rollout（含 trajectory npz，383GB）在 <code>gdrive_dl/&lt;model&gt;/</code>。口径：每步末帧采样（构成无偏）、目标判定 AABB+10cm、约 25% 接触对象语义 unknown（疑似门等 articulated 构件）。</p>
+<h2 id="repro">8 数据与复现</h2>
+<p>DGX <code>outputs/gdrive_dl/coll_prov/</code>：<code>collsteps2_&lt;model&gt;.csv.gz</code>（步级）、<code>collsteps3_&lt;model&gt;.csv.gz</code>（方位×画面）、<code>coll_events_v2.csv.gz</code>（事件级）、<code>coll_view_by_model.csv</code> / <code>coll_taxonomy_by_model.csv</code>（聚合）、<code>coll_exemplars.json</code>、<code>bodypart_by_model.csv</code>、脚本 <code>coll_prov_disk2.py</code> / <code>coll_prov_disk3.py</code> / <code>coll_classify2.py</code> / <code>coll_view_agg.py</code> / <code>coll_decomp.py</code>。15 模型全量 rollout（含 trajectory npz，383GB）在 <code>gdrive_dl/&lt;model&gt;/</code>。</p>
 </article></div></body></html>
