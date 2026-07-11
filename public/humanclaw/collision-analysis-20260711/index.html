@@ -47,9 +47,8 @@ figure.clip figcaption{font-size:.85em;color:var(--muted);margin-top:6px}
 <li><a href="#what">2 碰到的是什么</a></li>
 <li><a href="#body">3 碰在身体哪里</a></li>
 <li><a href="#view">4 方位与画面可见性</a></li>
-<li><a href="#types">5 六种碰撞（带视频示意）</a></li>
-<li><a href="#sub">6 类内小花样</a></li>
-<li><a href="#repro">7 数据与复现</a></li>
+<li><a href="#types">5 九种碰撞类型（带视频示意）</a></li>
+<li><a href="#repro">6 数据与复现</a></li>
 </ul></nav>
 <article>
 <h1>HCBv6 碰撞说明书：benchmark 里的 collision 到底是什么</h1>
@@ -57,7 +56,7 @@ figure.clip figcaption{font-size:.85em;color:var(--muted);margin-top:6px}
 
 <h2 id="tldr">0 一页结论</h2>
 <ol>
-<li><b>碰撞的主体是"移动中与环境家具的接触"</b>：推着/蹭着物体走 26.7–43.4%（最大类）+ 路过擦碰 18.5–38.2%，两者合计约 2/3。<b>真正碰到目标类别物体的只占 4.0–19.7%</b>，且模型分化大——GPT 19.7%（贴着目标耗步不终止）vs Claude 4.5%（到不了目标）。</li>
+<li><b>碰撞的主体是"移动中与环境家具的接触"</b>：推着/蹭着物体走 23.1–37.8%（最大类）+ 路过擦碰 14.6–27.1%，合计约一半；头部撞击类事件占 9.1–20.9%。<b>真正碰到目标类别物体的只占 4.0–19.7%</b>，且模型分化大——GPT 19.7%（贴着目标耗步不终止）vs Claude 4.5%（到不了目标）。</li>
 <li><b>地毯是第二大接触来源</b>：20–33% 的接触步只踩了地毯/垫子（测量噪声——脚踩静态 rug 无物理后果）；从 Coll% 剔除后各模型 −9~−14 pt，排序不变。</li>
 <li><b>碰撞发生那一刻，约 92% 的接触点不在当前 ego 画面里</b>（行走步，9 模型池化）：侧面 42.1% + 身后 37.5% + 正前但画面下缘以下 12.5%；画面内正前方仅 7.9%（16 个模型全部在 7–12% 窄带）。</li>
 <li><b>下肢主导</b>：腿 42–55% ≫ 手臂 24–37% ＞ 躯干 ＞ 头 4–9%（但头部撞击并不稀奇，见 §6）。</li>
@@ -93,42 +92,36 @@ figure.clip figcaption{font-size:.85em;color:var(--muted);margin-top:6px}
 <p class="note">只对行走锚点步判定（朝向 = 位移方向，精确）。ego 相机：头戴、448×448、HFOV 90°、下俯 23°、高度≈骨盆+0.7m → 垂直可视 [上 22°, 下 68°]，脚边 ~0.6m 内低矮物在画面下缘以下。判定的是<b>接触点</b>是否在当前帧视锥内（在画面外 ≠ 从未见过；在画面内也可能被遮挡）。</p>
 <p><b>9 模型池化（行走步非目标接触点）</b>：画面内正前方 <b>7.9%</b> · 正前但画面下缘以下 <b>12.5%</b> · 侧面(45–120°) <b>42.1%</b> · 身后(&gt;120°) <b>37.5%</b>。各模型画面内正前方均在 7.2–10.6%。另有约 70% 的接触步发生在转向/侧移/静止中（视角扫动，可见性无固定答案），上述分布仅针对行走步。</p>
 
-<h2 id="types">5 六种碰撞类型（白话 + 视频示意）</h2>
-<p class="note">事件级分类（连续接触步为一个事件，按步数加权）；占比为有效碰撞步 %（剔地毯与 init-stuck），9 模型均值 (min–max)。示意片段选自 GPT-5 / Qwen3.5-27B / Gemini-3.1。</p>
-
-<table><tr><th>类型</th><th>白话描述</th><th>占比</th><th>典型时长</th><th>典型部位</th></tr>
-<tr><td>① 推着/蹭着物体走</td><td>接触着家具仍在移动——脚趟着、身子蹭着一路过去</td><td class="hl"><b>36.9</b> (26.7–43.4)</td><td>7 步</td><td>脚/脚踝</td></tr>
-<tr><td>② 路过擦碰</td><td>路过时擦一下（腿碰桌角、手扫柜边），继续走</td><td><b>27.6</b> (18.5–38.2)</td><td>2 步</td><td>手腕/髋</td></tr>
-<tr><td>③ 贴着目标</td><td>到目标跟前贴着/坐/微调（任务固有接触）</td><td><b>12.4</b> (4.0–19.7)</td><td>4 步</td><td>脚踝/脚</td></tr>
-<tr><td>④ 撞后原地打转</td><td>碰到东西后开始原地转圈找路</td><td><b>9.5</b> (4.9–18.1)</td><td>2 步+连转</td><td>手腕/膝</td></tr>
-<tr><td>⑤ 收尾碰旁边</td><td>≤1m 做 sit/侧移收尾时碰到目标旁边的东西</td><td><b>7.1</b> (4.3–11.4)</td><td>3 步</td><td>手腕/髋</td></tr>
-<tr><td>⑥ 顶着不动</td><td>把家具顶住了：人不动、指令还在发（"手把门挡上了走不动"）</td><td><b>6.5</b> (0.8–10.7)</td><td><b>26 步</b></td><td><b>手腕/髋</b></td></tr></table>
-<p class="note">每模型明细：推着走 Gemini-3.1 43.4 / Claude 38.4 / GPT 26.7；贴目标 GPT 19.7、Qwen3.6-27B 18.0 vs Claude 4.5、Gemini-2.5 4.0（能到目标的模型才碰得到目标）；顶着不动 GPT 10.7 最高；撞后打转 InternVL 18.1 最高。</p>
-
+<h2 id="types">5 九种碰撞类型（白话 + 视频示意）</h2>
+<p class="note">事件级互斥分类（连续接触步为一个事件，稀有而显著的类型优先判定），占有效碰撞步 %（剔地毯与 init-stuck），9 模型均值 (min–max)。"连环%" = 该类事件中先后碰 ≥2 种不同类别物体的比例（横切属性）。</p>
+<table><tr><th>类型</th><th>白话描述</th><th>占比</th><th>典型时长</th><th>典型部位</th><th>连环%</th></tr>
+<tr><td>① 推着/蹭着物体走</td><td>接触着家具仍在移动——脚趟着、身子蹭着一路过去</td><td class="hl"><b>31.8</b> (23.1–37.8)</td><td>7 步</td><td>脚/脚踝</td><td>27</td></tr>
+<tr><td>② 路过擦碰</td><td>路过时擦一下（腿碰桌角、手扫柜边），继续走</td><td><b>22.2</b> (14.6–27.1)</td><td>2 步</td><td>手腕/髋</td><td>10</td></tr>
+<tr><td>③ 头部撞击</td><td>头/颈持续撞到东西（灯、衣柜、镜子、窗）</td><td><b>12.6</b> (9.1–20.9)</td><td>7 步</td><td><b>头</b>/腕</td><td>35</td></tr>
+<tr><td>④ 贴着目标</td><td>到目标跟前贴着/坐/微调（任务固有接触）</td><td><b>12.4</b> (4.0–19.7)</td><td>5 步</td><td>膝/髋</td><td>10</td></tr>
+<tr><td>⑤ 撞后原地打转</td><td>碰到东西后开始原地转圈找路</td><td><b>8.0</b> (3.5–16.1)</td><td>2 步+连转</td><td>手腕/膝</td><td>14</td></tr>
+<tr><td>⑥ 收尾碰旁边</td><td>≤1m 做 sit/侧移收尾时碰到目标旁边的东西</td><td><b>5.9</b> (3.6–10.2)</td><td>4 步</td><td>手腕/髋</td><td>22</td></tr>
+<tr><td>⑦ 顶着不动</td><td>把家具顶住了：人不动、指令还在发</td><td><b>4.5</b> (0.3–7.8)</td><td><b>26 步</b></td><td><b>手腕/髋</b></td><td>36</td></tr>
+<tr><td>⑧ 坐到错误物体</td><td>sit 时髋/骨盆压上非目标物（错的椅子/柜子/浴缸）</td><td><b>2.3</b> (0.0–5.1)</td><td>9 步</td><td><b>骨盆</b>/踝</td><td>39</td></tr>
+<tr><td>⑨ 上下台阶磕碰</td><td>爬台阶/下台阶时蹭到东西</td><td><b>0.3</b> (0.0–0.9)</td><td>3 步</td><td>脚</td><td>3</td></tr></table>
+<p class="note">模型签名：头部撞击 Claude 20.9% 最高；贴着目标 GPT 19.7 / Qwen3.6-27B 18.0 vs Claude 4.5 / Gemini-2.5 4.0（能到目标的模型才碰得到目标）；顶着不动 GPT 7.8 最高；撞后打转 InternVL 16.1 最高；坐错物体 Claude 5.1 / Gemini-3.1 4.9。头部撞击的事件级占比（12.6%）大于其步级占比（头部接触步占全部步的 1.4–3.6%），因为整个持续接触事件按其显著特征归为一类。另：sit 动作维度上，18–40% 的含 sit episode 至少出现一次"坐上非目标物"。</p>
 <div class="clipgrid">
 <figure class="clip"><video controls preload="metadata" src="clips/type2_push_along_qwen35_27b_102816756_ep9.mp4"></video><figcaption><b>① 推着/蹭着物体走</b> · Qwen3.5-27B / 102816756 / ep9 / 5–43 步 — 贴着沙发茶几一路蹭过客厅</figcaption></figure>
 <figure class="clip"><video controls preload="metadata" src="clips/type3_brush_gemini31_106366410_174226806_ep16.mp4"></video><figcaption><b>② 路过擦碰</b> · Gemini-3.1 / 106366410 / ep16 / 29–64 步 — 行进中侧身擦碰家具后继续走</figcaption></figure>
-<figure class="clip"><video controls preload="metadata" src="clips/type1_target_hug_gpt5_nonthinking_102816756_ep7.mp4"></video><figcaption><b>③ 贴着目标</b> · GPT-5 / 102816756 / ep7 / 61–99 步 — d=0.07m 贴着目标（餐桌绿植）反复走动直到超时</figcaption></figure>
-<figure class="clip"><video controls preload="metadata" src="clips/type4_spin_gemini31_108736779_177263484_ep4.mp4"></video><figcaption><b>④ 撞后原地打转</b> · Gemini-3.1 / 108736779 / ep4 / 12–40 步 — 在架子与长凳之间接触后连续转向</figcaption></figure>
-<figure class="clip"><video controls preload="metadata" src="clips/type6_lastmile_gemini31_103997895_171031182_ep14.mp4"></video><figcaption><b>⑤ 收尾碰旁边</b> · Gemini-3.1 / 103997895 / ep14 / 61–99 步 — 近目标微调时抵着 counter/fridge</figcaption></figure>
-<figure class="clip"><video controls preload="metadata" src="clips/type5_wedged_gpt5_nonthinking_108736800_177263517_ep8.mp4"></video><figcaption><b>⑥ 顶着不动</b> · GPT-5 / 108736800 / ep8 / 17–55 步 — ego 整个糊在大件柜体上，39 步零位移</figcaption></figure>
+<figure class="clip"><video controls preload="metadata" src="clips/type1_target_hug_gpt5_nonthinking_102816756_ep7.mp4"></video><figcaption><b>④ 贴着目标</b> · GPT-5 / 102816756 / ep7 / 61–99 步 — d=0.07m 贴着目标（餐桌绿植）反复走动直到超时</figcaption></figure>
+<figure class="clip"><video controls preload="metadata" src="clips/type4_spin_gemini31_108736779_177263484_ep4.mp4"></video><figcaption><b>⑤ 撞后原地打转</b> · Gemini-3.1 / 108736779 / ep4 / 12–40 步 — 在架子与长凳之间接触后连续转向</figcaption></figure>
+<figure class="clip"><video controls preload="metadata" src="clips/type6_lastmile_gemini31_103997895_171031182_ep14.mp4"></video><figcaption><b>⑥ 收尾碰旁边</b> · Gemini-3.1 / 103997895 / ep14 / 61–99 步 — 近目标微调时抵着 counter/fridge</figcaption></figure>
+<figure class="clip"><video controls preload="metadata" src="clips/type5_wedged_gpt5_nonthinking_108736800_177263517_ep8.mp4"></video><figcaption><b>⑦ 顶着不动</b> · GPT-5 / 108736800 / ep8 / 17–55 步 — ego 整个糊在大件柜体上，39 步零位移</figcaption></figure>
+
+<figure class="clip"><video controls preload="metadata" src="clips/sub_head_lamp_gemini31_102344094_ep6.mp4"></video><figcaption><b>③ 头部撞击（头撞灯）</b> · Gemini-3.1 / 102344094 / ep6 / 4–10 步 — 灯罩直接怼在脸上（table_lamp+curtain）</figcaption></figure>
+<figure class="clip"><video controls preload="metadata" src="clips/sub_chain_gemini31_102344094_ep20.mp4"></video><figcaption><b>横切属性:连环碰撞</b> · Gemini-3.1 / 102344094 / ep20 / 21–45 步 — cabinet→bathtub 连撞</figcaption></figure>
+<figure class="clip"><video controls preload="metadata" src="clips/sub_sit_wrong_gemini31_102344094_ep20.mp4"></video><figcaption><b>⑧ 坐到错误物体</b> · Gemini-3.1 / 102344094 / ep20 / 24–48 步 — sit 时骨盆压上 cabinet</figcaption></figure>
+<figure class="clip"><video controls preload="metadata" src="clips/sub_climb_gemini31_102344094_ep17.mp4"></video><figcaption><b>⑨ 上下台阶磕碰</b> · Gemini-3.1 / 102344094 / ep17 / 10–17 步 — 爬台阶蹭上 chest_of_drawers</figcaption></figure>
 </div>
 
-<h2 id="sub">6 类内小花样（数字 + 示意）</h2>
-<ul>
-<li><b>连环碰撞</b>：一个事件先后碰 ≥2 种不同类别物体的占事件 17.8%（≥3 类 2.4%），因多为长事件承载了 <b>42.5%</b> 的碰撞步；最易连环的是顶着不动与推着走。高频组合：chair+table（餐桌椅）、couch+table。</li>
-<li><b>头部撞击</b>：占步数 1.4–3.6%（Claude 3.6%、InternVL 3.2% 最高）；对象 top：wardrobe、mirror、window、picture、<b>灯具</b>——<b>头撞灯并不罕见</b>：GPT 263 步、InternVL 255、Claude 249（floor/ceiling/table lamp 都有）。</li>
-<li><b>坐到错误物体</b>：有 sit 动作的 episode 中 <b>18–40%</b> 出现"sit 时髋/骨盆接触非目标物"（Claude 40.3%、Gemma 36.9%、Gemini-3.1 34.9%、GPT 32.8%）；坐上去的有 chair（错的椅子）、cabinet、bathtub、shower。</li>
-<li><b>上下台阶磕碰</b>：climb 步不多（各模型 55–1,215 步），但其中 <b>45–69%</b> 的步在碰东西。</li>
-</ul>
-<div class="clipgrid">
-<figure class="clip"><video controls preload="metadata" src="clips/sub_head_lamp_gemini31_102344094_ep6.mp4"></video><figcaption><b>头撞灯</b> · Gemini-3.1 / 102344094 / ep6 / 4–10 步 — 灯罩直接怼在脸上（table_lamp+curtain）</figcaption></figure>
-<figure class="clip"><video controls preload="metadata" src="clips/sub_chain_gemini31_102344094_ep20.mp4"></video><figcaption><b>连环碰撞</b> · Gemini-3.1 / 102344094 / ep20 / 21–45 步 — cabinet→bathtub 连撞</figcaption></figure>
-<figure class="clip"><video controls preload="metadata" src="clips/sub_sit_wrong_gemini31_102344094_ep20.mp4"></video><figcaption><b>坐到错误物体</b> · Gemini-3.1 / 102344094 / ep20 / 24–48 步 — sit 时骨盆压上 cabinet</figcaption></figure>
-<figure class="clip"><video controls preload="metadata" src="clips/sub_climb_gemini31_102344094_ep17.mp4"></video><figcaption><b>上下台阶磕碰</b> · Gemini-3.1 / 102344094 / ep17 / 10–17 步 — 爬台阶蹭上 chest_of_drawers</figcaption></figure>
-</div>
 
-<h2 id="repro">7 数据与复现</h2>
+
+<h2 id="repro">6 数据与复现</h2>
 <p>DGX <code>outputs/gdrive_dl/coll_prov/</code>：<code>collsteps2_&lt;model&gt;.csv.gz</code>（步级）、<code>collsteps3_&lt;model&gt;.csv.gz</code>（方位×画面）、<code>coll_events_v3.csv.gz</code>（事件级六类）、<code>coll_exemplars_v3.json</code>、<code>clips/</code>（示意片段与 manifest）、脚本 <code>coll_prov_disk2/3.py</code> / <code>coll_classify3.py</code> / <code>coll_view_agg.py</code> / <code>coll_subphenomena.py</code> / <code>make_clips.py</code>。15 模型全量 rollout（含 trajectory npz）在 <code>gdrive_dl/&lt;model&gt;/</code>；Qwen3.5-27B 与 Gemini-3.1 的三联视频在 <code>gdrive_dl2/</code>。</p>
 <p class="note">修订记录：v4 修正目标判定（改语义类别匹配；此前用目标 AABB 包络盒，对多实例类别把"目标接触"高估至 ~50%、把地毯低估至 12–19%）。</p>
 </article></div></body></html>
