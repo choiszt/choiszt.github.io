@@ -2,7 +2,7 @@
 
 Personal homepage for Shuai Liu.
 
-I am a PhD student at [MMLab@NTU](https://www.mmlab-ntu.com/), supervised by [Prof. Ziwei Liu](https://liuziwei7.github.io/).
+I am a Ph.D. student at [MMLab@NTU](https://www.mmlab-ntu.com/), supervised by [Prof. Ziwei Liu](https://liuziwei7.github.io/).
 
 ## Development
 
