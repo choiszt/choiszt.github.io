@@ -4,6 +4,11 @@ on:
   push:
     branches: [main, master]
   workflow_dispatch:
+  # Commits pushed by the stats workflow use GITHUB_TOKEN, which does not fire `push`,
+  # so redeploy explicitly once it finishes.
+  workflow_run:
+    workflows: ["Update Scholar Stats"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -16,6 +21,7 @@ concurrency:
 
 jobs:
   build-and-deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
