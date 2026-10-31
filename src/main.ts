@@ -1,5 +1,4 @@
 import './style.css'
-import { prepare, layout, type PreparedText } from '@chenglou/pretext'
 
 // ── Open all external links in new tab ──
 document.querySelectorAll<HTMLAnchorElement>('a[href^="http"]').forEach((a) => {
@@ -8,104 +7,51 @@ document.querySelectorAll<HTMLAnchorElement>('a[href^="http"]').forEach((a) => {
 })
 
 // ── Theme Toggle ──
+// The stored choice is applied by an inline script in index.html before first paint;
+// without one, CSS follows the system preference.
 
 const html = document.documentElement
 const toggle = document.getElementById('theme-toggle')!
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
 
-// Initialize theme from system preference or localStorage
-const stored = localStorage.getItem('theme')
-if (stored) {
-  html.setAttribute('data-theme', stored)
-} else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-  html.setAttribute('data-theme', 'light')
+function currentTheme(): 'light' | 'dark' {
+  const set = html.getAttribute('data-theme')
+  if (set === 'light' || set === 'dark') return set
+  return prefersDark.matches ? 'dark' : 'light'
 }
 
 toggle.addEventListener('click', () => {
-  const current = html.getAttribute('data-theme')
-  const next = current === 'dark' ? 'light' : 'dark'
+  const next = currentTheme() === 'dark' ? 'light' : 'dark'
   html.setAttribute('data-theme', next)
-  localStorage.setItem('theme', next)
+  try {
+    localStorage.setItem('theme', next)
+  } catch {
+    // Storage unavailable (private mode); the choice lasts for this page view only.
+  }
 })
 
-// ── Time-based Accent Color ──
+// ── Header border and active nav link ──
 
-interface AccentTheme {
-  accent: string
-  accentHover: string
-  teal: string
-  accentDim: string
-  gradient: string
+const header = document.querySelector<HTMLElement>('.site-header')
+const sections = document.querySelectorAll<HTMLElement>('.section[id]')
+const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-links a')
+
+function onScroll() {
+  header?.classList.toggle('is-scrolled', window.scrollY > 8)
+
+  // The active section is the last one whose top has passed the upper third of the viewport.
+  const line = window.innerHeight / 3
+  let active = ''
+  sections.forEach((section) => {
+    if (section.getBoundingClientRect().top <= line) active = section.id
+  })
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+  if (atBottom && sections.length) active = sections[sections.length - 1]!.id
+  navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${active}`))
 }
 
-const accents: Record<string, AccentTheme> = {
-  indigo: {
-    accent: '#6c8aff', accentHover: '#8aa3ff', teal: '#4ecdc4',
-    accentDim: 'rgba(108, 138, 255, 0.2)',
-    gradient: 'linear-gradient(90deg, #6c8aff, #4ecdc4, #6c8aff)',
-  },
-  amber: {
-    accent: '#f59e0b', accentHover: '#fbbf24', teal: '#fb923c',
-    accentDim: 'rgba(245, 158, 11, 0.2)',
-    gradient: 'linear-gradient(90deg, #f59e0b, #fb923c, #f59e0b)',
-  },
-  emerald: {
-    accent: '#10b981', accentHover: '#34d399', teal: '#06b6d4',
-    accentDim: 'rgba(16, 185, 129, 0.2)',
-    gradient: 'linear-gradient(90deg, #10b981, #06b6d4, #10b981)',
-  },
-  violet: {
-    accent: '#8b5cf6', accentHover: '#a78bfa', teal: '#c084fc',
-    accentDim: 'rgba(139, 92, 246, 0.2)',
-    gradient: 'linear-gradient(90deg, #8b5cf6, #c084fc, #8b5cf6)',
-  },
-  rose: {
-    accent: '#f43f5e', accentHover: '#fb7185', teal: '#e11d48',
-    accentDim: 'rgba(244, 63, 94, 0.2)',
-    gradient: 'linear-gradient(90deg, #f43f5e, #e11d48, #f43f5e)',
-  },
-  cyan: {
-    accent: '#06b6d4', accentHover: '#22d3ee', teal: '#0891b2',
-    accentDim: 'rgba(6, 182, 212, 0.2)',
-    gradient: 'linear-gradient(90deg, #06b6d4, #0891b2, #06b6d4)',
-  },
-  pink: {
-    accent: '#ec4899', accentHover: '#f472b6', teal: '#db2777',
-    accentDim: 'rgba(236, 72, 153, 0.2)',
-    gradient: 'linear-gradient(90deg, #ec4899, #db2777, #ec4899)',
-  },
-  lime: {
-    accent: '#84cc16', accentHover: '#a3e635', teal: '#65a30d',
-    accentDim: 'rgba(132, 204, 22, 0.2)',
-    gradient: 'linear-gradient(90deg, #84cc16, #65a30d, #84cc16)',
-  },
-  orange: {
-    accent: '#f97316', accentHover: '#fb923c', teal: '#ea580c',
-    accentDim: 'rgba(249, 115, 22, 0.2)',
-    gradient: 'linear-gradient(90deg, #f97316, #ea580c, #f97316)',
-  },
-  sky: {
-    accent: '#38bdf8', accentHover: '#7dd3fc', teal: '#0ea5e9',
-    accentDim: 'rgba(56, 189, 248, 0.2)',
-    gradient: 'linear-gradient(90deg, #38bdf8, #0ea5e9, #38bdf8)',
-  },
-}
-
-function getRandomAccent(): AccentTheme {
-  const keys = Object.keys(accents)
-  return accents[keys[Math.floor(Math.random() * keys.length)]!]!
-}
-
-function applyAccent(theme: AccentTheme) {
-  const s = html.style
-  s.setProperty('--accent', theme.accent)
-  s.setProperty('--accent-hover', theme.accentHover)
-  s.setProperty('--teal', theme.teal)
-  s.setProperty('--accent-dim', theme.accentDim)
-  s.setProperty('--gradient-bar', theme.gradient)
-}
-
-applyAccent(getRandomAccent())
-
+window.addEventListener('scroll', onScroll, { passive: true })
+onScroll()
 
 // ── Last Updated ──
 
@@ -119,17 +65,6 @@ if (lastUpdatedEl) {
   })
 }
 
-// ── Scroll Progress Bar ──
-
-const scrollProgress = document.getElementById('scroll-progress')
-window.addEventListener('scroll', () => {
-  if (!scrollProgress) return
-  const scrollTop = window.scrollY
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight
-  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
-  scrollProgress.style.width = `${pct}%`
-}, { passive: true })
-
 // ── Google Scholar Citation Count ──
 
 const citationEl = document.getElementById('citation-count')
@@ -137,629 +72,80 @@ if (citationEl) {
   fetch('/scholar-stats.json')
     .then((r) => r.json())
     .then((data: { citations: number }) => {
-      if (data.citations > 0) {
-        citationEl.textContent = `${data.citations} citations`
-      } else {
-        citationEl.textContent = 'Google Scholar'
-      }
+      if (data.citations > 0) citationEl.textContent = `${data.citations.toLocaleString('en-US')} citations`
     })
     .catch(() => {
-      citationEl.textContent = 'Google Scholar'
+      // Keep the "Google Scholar" fallback text from the markup.
     })
 }
 
-// ── Fade-in Animations ──
+// ── News panel: expand once the reader scrolls inside it; drop the bottom fade at the end ──
 
-const fadeObserver = new IntersectionObserver(
-  (entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible')
-        fadeObserver.unobserve(entry.target)
-      }
-    }
-  },
-  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-)
-
-document.querySelectorAll('.fade-in').forEach((el) => fadeObserver.observe(el))
-
-// ── Active Nav Link ──
-
-const sections = document.querySelectorAll<HTMLElement>('.section[id]')
-const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-links a')
-
-const navObserver = new IntersectionObserver(
-  (entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        const id = entry.target.id
-        navLinks.forEach((link) => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`)
-        })
-      }
-    }
-  },
-  { threshold: 0.2, rootMargin: `-${getComputedStyle(html).getPropertyValue('--nav-height')} 0px -50% 0px` }
-)
-
-sections.forEach((section) => navObserver.observe(section))
-
-// ── Pretext Masonry for Publications ──
-
-interface PubCardData {
-  element: HTMLElement
-  titlePrepared: PreparedText
-  authorsPrepared: PreparedText
-  hasLinks: boolean
-}
-
-const THUMB_HEIGHT = 120
-const INFO_PADDING = 12
-const TITLE_AUTHORS_GAP = 6
-const AUTHORS_LINKS_GAP = 8
-const LINKS_HEIGHT = 24
-const GAP = 20
-const MIN_COL_WIDTH = 280
-const MAX_COLS = 3
-
-// Compute font strings matching CSS
-const titleFont = '600 13.6px Inter, -apple-system, BlinkMacSystemFont, sans-serif'
-const titleLineHeight = 18.4
-const authorsFont = '12.16px Inter, -apple-system, BlinkMacSystemFont, sans-serif'
-const authorsLineHeight = 17
-
-const pubContainer = document.getElementById('pub-masonry')
-let pubCards: PubCardData[] = []
-
-function initMasonry() {
-  if (!pubContainer) return
-
-  const cards = pubContainer.querySelectorAll<HTMLElement>('.pub-card')
-  pubCards = Array.from(cards).map((card) => {
-    const titleEl = card.querySelector('.pub-title')!
-    const authorsEl = card.querySelector('.pub-authors')!
-    const linksEl = card.querySelector('.pub-links')!
-    return {
-      element: card,
-      titlePrepared: prepare(titleEl.textContent!, titleFont),
-      authorsPrepared: prepare(authorsEl.textContent!, authorsFont),
-      hasLinks: linksEl.children.length > 0,
-    }
-  })
-
-  pubContainer.classList.add('masonry-active')
-  computeMasonry()
-}
-
-function computeMasonry() {
-  if (!pubContainer || pubCards.length === 0) return
-
-  const containerWidth = pubContainer.clientWidth
-  if (containerWidth === 0) return
-
-  // Determine columns
-  let colCount = Math.max(1, Math.min(MAX_COLS, Math.floor((containerWidth + GAP) / (MIN_COL_WIDTH + GAP))))
-  const colWidth = (containerWidth - (colCount - 1) * GAP) / colCount
-  const textWidth = colWidth - INFO_PADDING * 2
-
-  const colHeights = new Array(colCount).fill(0)
-
-  for (const pub of pubCards) {
-    // Find shortest column
-    let minCol = 0
-    for (let i = 1; i < colCount; i++) {
-      if (colHeights[i]! < colHeights[minCol]!) minCol = i
-    }
-
-    // Measure text heights with Pretext
-    const titleHeight = layout(pub.titlePrepared, textWidth, titleLineHeight).height
-    const authorsHeight = layout(pub.authorsPrepared, textWidth, authorsLineHeight).height
-    const linksHeight = pub.hasLinks ? LINKS_HEIGHT : 0
-    const linksGap = pub.hasLinks ? AUTHORS_LINKS_GAP : 0
-
-    const cardHeight =
-      THUMB_HEIGHT +
-      INFO_PADDING +
-      titleHeight +
-      TITLE_AUTHORS_GAP +
-      authorsHeight +
-      linksGap +
-      linksHeight +
-      INFO_PADDING
-
-    const x = minCol * (colWidth + GAP)
-    const y = colHeights[minCol]!
-
-    const el = pub.element
-    el.style.left = `${x}px`
-    el.style.top = `${y}px`
-    el.style.width = `${colWidth}px`
-
-    colHeights[minCol]! += cardHeight + GAP
+const newsPanel = document.querySelector<HTMLElement>('.news-panel')
+if (newsPanel) {
+  const updateFade = () => {
+    const atEnd = newsPanel.scrollTop + newsPanel.clientHeight >= newsPanel.scrollHeight - 4
+    newsPanel.classList.toggle('at-end', atEnd)
   }
-
-  // Set container height
-  let maxHeight = 0
-  for (const h of colHeights) {
-    if (h > maxHeight) maxHeight = h
-  }
-  pubContainer.style.height = `${maxHeight}px`
-}
-
-// ── Resize Handler ──
-
-let resizeRaf: number | null = null
-window.addEventListener('resize', () => {
-  if (resizeRaf != null) return
-  resizeRaf = requestAnimationFrame(() => {
-    resizeRaf = null
-    computeMasonry()
-  })
-})
-
-// ── Init ──
-
-document.fonts.ready.then(() => {
-  initMasonry()
-})
-
-// ── Card Spotlight Glow ──
-
-function initCardGlow(selector: string) {
-  document.querySelectorAll<HTMLElement>(selector).forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect()
-      card.style.setProperty('--glow-x', `${e.clientX - rect.left}px`)
-      card.style.setProperty('--glow-y', `${e.clientY - rect.top}px`)
-      card.style.setProperty('--glow-opacity', '1')
-    })
-    card.addEventListener('mouseleave', () => {
-      card.style.setProperty('--glow-opacity', '0')
-    })
-  })
-}
-
-initCardGlow('.pub-card')
-initCardGlow('.project-card')
-// Skip glow on news-frame — mousemove + backdrop-filter causes jank during scroll
-
-// ── News Timeline: pre-warm GPU layers + expand on scroll ──
-const newsWrapper = document.querySelector<HTMLElement>('.news-scroll-wrapper')
-const newsTimelineEl = document.querySelector<HTMLElement>('.news-timeline')
-if (newsWrapper && newsTimelineEl) {
-  // Pre-warm: silently animate to 520px and back at load time.
-  // This forces the browser to rasterize the backdrop-filter compositing
-  // layer at both sizes so the real expansion later is instant from cache.
-  const warmUp = newsWrapper.animate(
-    [{ height: '300px' }, { height: '520px' }, { height: '300px' }],
-    { duration: 1, fill: 'none' }
-  )
-  warmUp.finished.then(() => warmUp.cancel())
-
-  let expanded = false
-  newsTimelineEl.addEventListener('scroll', () => {
-    if (expanded || newsTimelineEl.scrollTop <= 30) return
-    expanded = true
-
-    const anim = newsWrapper.animate(
-      [{ height: '300px' }, { height: '520px' }],
-      { duration: 500, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
-    )
-    anim.finished.then(() => {
-      newsWrapper.classList.add('expanded')
-      anim.cancel()
-    })
+  newsPanel.addEventListener('scroll', () => {
+    if (newsPanel.scrollTop > 30) newsPanel.classList.add('is-expanded')
+    updateFade()
   }, { passive: true })
+  newsPanel.addEventListener('transitionend', updateFade)
+  window.addEventListener('resize', updateFade)
+  updateFade()
 }
 
-// ── Animated Gradient Border Angle ──
+// ── Link badge icons, chosen by the badge label ──
 
-let gradientAngle = 0
-function animateGradientAngles() {
-  gradientAngle = (gradientAngle + 0.3) % 360
-  document.querySelectorAll<HTMLElement>('.pub-card').forEach((card, i) => {
-    card.style.setProperty('--card-gradient-angle', `${(gradientAngle + i * 40) % 360}deg`)
-  })
-  requestAnimationFrame(animateGradientAngles)
+const STROKE_ICONS: Record<string, string> = {
+  paper: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+  database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>',
+  cube: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/>',
+  pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  play: '<polygon points="6 3 20 12 6 21 6 3"/>',
+  book: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
 }
-animateGradientAngles()
 
-// ── Staggered Pub Card Reveal ──
+const GITHUB_PATH = 'M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z'
 
-const pubCardObserver = new IntersectionObserver(
-  (entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible')
-        pubCardObserver.unobserve(entry.target)
-      }
-    }
-  },
-  { threshold: 0.05 }
-)
+const BADGE_ICONS: Record<string, string> = {
+  Paper: 'paper',
+  Project: 'globe',
+  Website: 'globe',
+  Code: 'github',
+  GitHub: 'github',
+  Dataset: 'database',
+  Model: 'cube',
+  Blog: 'pen',
+  Video: 'play',
+  Thesis: 'book',
+  HF: 'hf',
+}
 
-document.querySelectorAll('.pub-card').forEach((card) => {
-  card.classList.add('card-reveal')
-  pubCardObserver.observe(card)
+function badgeIcon(name: string): string {
+  if (name === 'hf') return '<span class="badge-emoji" aria-hidden="true">🤗</span>'
+  if (name === 'github') {
+    return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${GITHUB_PATH}"/></svg>`
+  }
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${STROKE_ICONS[name]}</svg>`
+}
+
+document.querySelectorAll<HTMLAnchorElement>('.pub-links a').forEach((a) => {
+  const name = BADGE_ICONS[a.textContent!.trim()]
+  if (name) a.insertAdjacentHTML('afterbegin', badgeIcon(name))
 })
 
-// ── Pixel Pet (walks along news frame edge, click to switch) ──
+// ── Publications: Selected / All ──
 
-const dogEl = document.getElementById('cyber-dog')
-const newsFrame = document.querySelector<HTMLElement>('.news-frame')
+const pubList = document.getElementById('pub-list')
+const pubTabs = document.querySelectorAll<HTMLButtonElement>('.pub-tabs [data-view]')
 
-if (dogEl && newsFrame) {
-  const allPets = [
-    { name: 'dog', map: [
-      '..#.....#.T', '.##.....##T', '.#########.',
-      '.#WW###WW#.', '.#WL###PW#.', '.##..N..##.',
-      '..##Q##Q##.', '..#######..', '..#######..',
-      '..##...##..', '.###...###.',
-    ]},
-    { name: 'cat', map: [
-      '.#.......#.', '.##.....##.', '.#########.',
-      '.#WW###WW#.', '.#WL###PW#.', '.##..N..##.',
-      '..#.Q#Q.#..', '..#######..', '..#######..',
-      '..##...##.T', '..##...##T.',
-    ]},
-    { name: 'bunny', map: [
-      '..##...##..', '..##...##..', '.#########.',
-      '.#WW###WW#.', '.#WL###PW#.', '.####N####.',
-      '..##Q#Q##..', '..#######..', '..#######..',
-      '..##...##..', '.###...###.',
-    ]},
-    { name: 'bird', map: [
-      '...#####...', '..#######..', '.#WW###WW#.',
-      '.#WL###PW#.', '.####N####.', '..##Q#Q##..',
-      '.#########.', '##.#####.##', '...#####...',
-      '...##.##...', '..##...##..',
-    ]},
-    { name: 'fox', map: [
-      '#.........#', '##.......##', '.#########.',
-      '.#WW###WW#.', '.#WL###PW#.', '.##..N..##.',
-      '..##Q#Q##..', '..#######..', '..######.TT',
-      '..##...#.TT', '.###...###.',
-    ]},
-    { name: 'owl', map: [
-      '..##...##..', '.####.####.', '.##WW#WW##.',
-      '.##WL#PW##.', '.###NNN###.', '..########.',
-      '..#.####.#.', '..#.Q##Q.#.', '..########.',
-      '...##..##..', '...##..##..',
-    ]},
-    { name: 'snake', map: [
-      '...........',  '.####......', '.#WL##.....',
-      '.#WPN#.....', '.##QN#.....', '..####.....',
-      '...######..', '....######.', '.....######',
-      '......####.', '.......##..',
-    ]},
-    { name: 'penguin', map: [
-      '...#####...', '..#######..', '.##WW#WW##.',
-      '.##WL#PW##.', '.###NNN###.', '.##.###.##.',
-      '.#..###..#.', '.#..Q#Q..#.', '.##.###.##.',
-      '..##...##..', '..###.###..',
-    ]},
-    { name: 'panda', map: [
-      '.##.....##.', '.##.....##.', '.#########.',
-      '.##WW#WW##.', '.##WL#PW##.', '.####N####.',
-      '..##Q#Q##..', '..#######..', '..#######..',
-      '..##...##..', '.###...###.',
-    ]},
-    { name: 'frog', map: [
-      '.WW.....WW.', '.WL.....PW.', '.#########.',
-      '.#########.', '.####N####.', '.#QQQQQQQ#.',
-      '..#######..', '..#######..', '..#######..',
-      '.##.....##.', '.##.....##.',
-    ]},
-    { name: 'octopus', map: [
-      '...#####...', '..#######..', '.#WW###WW#.',
-      '.#WL###PW#.', '.####N####.', '..##Q#Q##..',
-      '.#########.', '#.#.#.#.#.#', '#.#.#.#.#.#',
-      '.#.#.#.#.#.', '...........',
-    ]},
-    { name: 'robot', map: [
-      '.T##.####T.', '..########.', '.##WW#WW##.',
-      '.##WL#PW##.', '.##NNNNN##.', '.##Q###Q##.',
-      '..########.', '..########.', '..########.',
-      '..##...##..', '.###...###.',
-    ]},
-    { name: 'hamster', map: [
-      '.###...###.', '.###...###.', '.#########.',
-      '.#WW###WW#.', '.#WL###PW#.', '.##..N..##.',
-      '..#Q###Q#..', '..#######..', '...#####...',
-      '...##.##...', '..##...##..',
-    ]},
-    { name: 'dragon', map: [
-      'T.##...##..', 'T.##...##..', '..#########',
-      '..#WW###WW#', '..#WL###PW#', '..####N####',
-      '...##Q#Q##.', '...########', '...######..',
-      '...##..##..', '..###..###.',
-    ]},
-  ]
-
-  const P = 4
-  const ns = 'http://www.w3.org/2000/svg'
-  const bodyColor = 'var(--accent)'
-  const dark = '#1a1a2e'
-
-  let currentPetIdx = Math.floor(Math.random() * allPets.length)
-  let pL: SVGRectElement | null = null
-  let pR: SVGRectElement | null = null
-  let pLHome = { x: 0, y: 0 }
-  let pRHome = { x: 0, y: 0 }
-  let eyeEls: SVGRectElement[] = []
-  let blinkEls: SVGRectElement[] = []
-  let tongueEls: SVGRectElement[] = []
-
-  function buildPet(petData: typeof allPets[0]) {
-    dogEl.innerHTML = ''
-    pL = null; pR = null
-    eyeEls = []; blinkEls = []; tongueEls = []
-
-    const map = petData.map
-    const W = map[0]!.length
-    const H = map.length
-    const svg = document.createElementNS(ns, 'svg')
-    svg.setAttribute('viewBox', `0 0 ${W * P} ${H * P}`)
-    svg.setAttribute('width', `${W * P}`)
-    svg.setAttribute('height', `${H * P}`)
-
-    const tailG = document.createElementNS(ns, 'g')
-    tailG.setAttribute('class', 'dog-tail-group')
-    svg.appendChild(tailG)
-
-    function px(c: number, r: number, fill: string, parent: SVGElement, op = '0.85') {
-      const rect = document.createElementNS(ns, 'rect')
-      rect.setAttribute('x', `${c * P}`)
-      rect.setAttribute('y', `${r * P}`)
-      rect.setAttribute('width', `${P}`)
-      rect.setAttribute('height', `${P}`)
-      rect.setAttribute('fill', fill)
-      rect.setAttribute('opacity', op)
-      parent.appendChild(rect)
-      return rect
-    }
-
-    for (let r = 0; r < H; r++) {
-      for (let c = 0; c < W; c++) {
-        const ch = map[r]![c]
-        if (ch === '.') continue
-        if (ch === '#') { px(c, r, bodyColor, svg) }
-        else if (ch === 'N') { px(c, r, dark, svg, '1') }
-        else if (ch === 'T') { px(c, r, bodyColor, tailG, '0.75') }
-        else if (ch === 'Q') {
-          // Tongue pixel (hidden by default)
-          const t = px(c, r, '#f87171', svg, '0')
-          t.classList.add('dog-tongue-px')
-          tongueEls.push(t)
-        } else if (ch === 'W') {
-          const w = px(c, r, '#fff', svg, '1')
-          eyeEls.push(w)
-          const b = px(c, r, bodyColor, svg)
-          b.style.display = 'none'
-          blinkEls.push(b)
-        } else if (ch === 'L' || ch === 'P') {
-          const w = px(c, r, '#fff', svg, '1')
-          eyeEls.push(w)
-          const pupil = px(c, r, dark, svg, '1')
-          if (ch === 'L') { pL = pupil; pLHome = { x: c * P, y: r * P } }
-          else { pR = pupil; pRHome = { x: c * P, y: r * P } }
-          const b = px(c, r, bodyColor, svg)
-          b.style.display = 'none'
-          blinkEls.push(b)
-        }
-      }
-    }
-
-    dogEl.appendChild(svg)
-  }
-
-  buildPet(allPets[currentPetIdx]!)
-
-  // ── Click to switch pet ──
-  dogEl.addEventListener('click', () => {
-    currentPetIdx = (currentPetIdx + 1) % allPets.length
-    buildPet(allPets[currentPetIdx]!)
+pubTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    if (!pubList) return
+    pubList.dataset.view = tab.dataset.view
+    pubTabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)))
   })
-
-  // ── Eye tracking (paused while news is scrolling to avoid backdrop-filter jank) ──
-  let eyePaused = false
-  let eyePauseTimer: ReturnType<typeof setTimeout> | null = null
-  const newsEl = document.querySelector('.news-timeline')
-  if (newsEl) {
-    newsEl.addEventListener('scroll', () => {
-      eyePaused = true
-      if (eyePauseTimer) clearTimeout(eyePauseTimer)
-      eyePauseTimer = setTimeout(() => { eyePaused = false }, 200)
-    }, { passive: true })
-  }
-
-  let eyeRaf: number | null = null
-  document.addEventListener('mousemove', (e) => {
-    if (!pL || !pR || eyeRaf || eyePaused) return
-    eyeRaf = requestAnimationFrame(() => {
-      eyeRaf = null
-      if (eyePaused) return
-      const rect = dogEl.getBoundingClientRect()
-      const dx = e.clientX - (rect.left + rect.width / 2)
-      const dy = e.clientY - (rect.top + rect.height * 0.4)
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      let ox = 0, oy = 0
-      if (dist > 50) {
-        ox = Math.sign(dx) * P
-        oy = dy < 0 ? -P : 0
-      }
-      pL!.setAttribute('x', `${pLHome.x + ox}`)
-      pL!.setAttribute('y', `${pLHome.y + oy}`)
-      pR!.setAttribute('x', `${pRHome.x + ox}`)
-      pR!.setAttribute('y', `${pRHome.y + oy}`)
-    })
-  })
-
-  // ── Blink ──
-  setInterval(() => {
-    if (Math.random() > 0.35) return
-    blinkEls.forEach((b) => (b.style.display = ''))
-    eyeEls.forEach((w) => (w.style.display = 'none'))
-    if (pL) pL.style.display = 'none'
-    if (pR) pR.style.display = 'none'
-    setTimeout(() => {
-      blinkEls.forEach((b) => (b.style.display = 'none'))
-      eyeEls.forEach((w) => (w.style.display = ''))
-      if (pL) pL.style.display = ''
-      if (pR) pR.style.display = ''
-    }, 100)
-  }, 2800)
-
-  // ── Speech Bubble (bash-style typing) ──
-  const bubble = document.getElementById('pet-bubble')
-  const bubbleText = document.getElementById('pet-bubble-text')
-
-  function getStatusMessage(): string {
-    const h = new Date().getHours()
-    const day = new Date().getDay()
-    const isWeekend = day === 0 || day === 6
-
-    const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)]!
-
-    if (isWeekend) {
-      if (h < 8) return pick([
-        'Choiszt is probably sleeping in...',
-        'Choiszt is dreaming about AGI',
-        'zzZ... still weekend mode',
-      ])
-      if (h < 12) return pick([
-        'Choiszt might be reading papers in bed',
-        'Choiszt is scrolling arXiv casually',
-        'weekend vibes + morning coffee ☕',
-      ])
-      if (h < 14) return pick([
-        'Choiszt is probably having brunch',
-        'Choiszt might be cooking something',
-        'lunch break — recharging 🍜',
-      ])
-      if (h < 18) return pick([
-        'Choiszt might be exploring the city',
-        'Choiszt is probably at a café coding',
-        'weekend side project time',
-        'touching grass... briefly 🌿',
-      ])
-      if (h < 22) return pick([
-        'Choiszt is probably watching anime',
-        'Choiszt might be gaming',
-        'movie night mode 🎬',
-        'Choiszt is cooking dinner',
-      ])
-      return pick([
-        'Choiszt might be gaming late...',
-        'late night rabbit hole on YouTube',
-        'one more episode... 🌙',
-      ])
-    }
-
-    if (h < 7) return pick([
-      'Choiszt is sleeping... hopefully',
-      'zzZ... do not disturb',
-      'dreaming in latent space',
-      'Choiszt is recharging 🔋',
-    ])
-    if (h < 9) return pick([
-      'Choiszt is grabbing coffee ☕',
-      'morning standup + coffee',
-      'Choiszt is checking Slack messages',
-      'booting up... please wait',
-    ])
-    if (h < 12) return pick([
-      'Choiszt is deep in research papers',
-      'Choiszt might be writing a paper',
-      'reading arXiv submissions...',
-      'Choiszt is in a brainstorm session',
-      'focus mode: do not disturb 🎯',
-    ])
-    if (h < 13) return pick([
-      'Choiszt is probably having lunch',
-      'lunch break — back soon 🍱',
-      'Choiszt is grabbing boba 🧋',
-    ])
-    if (h < 17) return pick([
-      'Choiszt might be writing code',
-      'Choiszt is training a model 🏋️',
-      'debugging... as always',
-      'Choiszt is in a meeting',
-      'pushing commits to main 🚀',
-      'Choiszt is reviewing experiments',
-    ])
-    if (h < 19) return pick([
-      'Choiszt is reviewing PRs',
-      'Choiszt might be mentoring interns',
-      'wrapping up today\'s tasks',
-      'Choiszt is writing documentation',
-    ])
-    if (h < 21) return pick([
-      'Choiszt might be running experiments',
-      'Choiszt is monitoring GPU clusters',
-      'evening coding session 🌆',
-      'Choiszt is reading a new paper',
-    ])
-    if (h < 23) return pick([
-      'Choiszt is still coding... as usual',
-      'one more commit before bed',
-      'Choiszt is refactoring old code',
-      'late night productivity spike ⚡',
-    ])
-    return pick([
-      'Choiszt is debugging at midnight 🌙',
-      'still awake... send help',
-      'midnight oil burning bright 🕯️',
-      'Choiszt is in the zone',
-    ])
-  }
-
-  let typeTimer: ReturnType<typeof setTimeout> | null = null
-  let cycling = true
-
-  function typeMessage(msg: string) {
-    if (!bubble || !bubbleText) return
-    if (typeTimer) clearTimeout(typeTimer)
-    bubbleText.textContent = ''
-    bubble.classList.add('visible')
-
-    let i = 0
-    function typeChar() {
-      if (i < msg.length) {
-        bubbleText.textContent = msg.slice(0, i + 1)
-        i++
-        typeTimer = setTimeout(typeChar, 55 + Math.random() * 40)
-      } else {
-        // Stay 4s, then delete char by char, then re-show
-        typeTimer = setTimeout(() => deleteMessage(), 6000)
-      }
-    }
-    typeChar()
-  }
-
-  function deleteMessage() {
-    if (!bubble || !bubbleText) return
-    const text = bubbleText.textContent || ''
-    if (text.length > 0) {
-      bubbleText.textContent = text.slice(0, -1)
-      typeTimer = setTimeout(deleteMessage, 30)
-    } else {
-      bubble.classList.remove('visible')
-      if (cycling) {
-        typeTimer = setTimeout(() => typeMessage(getStatusMessage()), 4000)
-      }
-    }
-  }
-
-  // Start the loop after 1.5s
-  setTimeout(() => typeMessage(getStatusMessage()), 1500)
-
-  // ── Tongue ──
-  setInterval(() => {
-    if (Math.random() > 0.25 || tongueEls.length === 0) return
-    tongueEls.forEach((t) => t.setAttribute('opacity', '1'))
-    setTimeout(() => tongueEls.forEach((t) => t.setAttribute('opacity', '0')), 1200)
-  }, 4000)
-
-}
+})

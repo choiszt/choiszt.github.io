@@ -19,7 +19,8 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install scholarly
+        # scholarly still imports bibtexparser 1.x APIs (bibtexparser.bibdatabase), removed in 2.x
+        run: pip install scholarly "bibtexparser<2"
 
       - name: Fetch citation stats
         run: python scripts/update-scholar-stats.py

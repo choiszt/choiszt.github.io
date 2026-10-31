@@ -5,7 +5,7 @@ try:
     from scholarly import scholarly
 
     author = scholarly.search_author_id("W9190BQAAAAJ")
-    author = scholarly.fill(author, sections=["basics"])
+    author = scholarly.fill(author, sections=["basics", "indices"])
 
     data = {
         "citations": author.get("citedby", 0),
