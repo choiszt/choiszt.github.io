@@ -1,13 +1,13 @@
 """Read citation count and h-index from the public Google Scholar profile page.
 
-One plain request per attempt: scholarly made many requests per run and Google Scholar
-blocked it from GitHub runners ("Cannot Fetch from Google Scholar").
+Google Scholar answers most GitHub runner IPs with HTTP 403/429. Retrying from the same
+runner does not help, so a blocked run leaves the stats as they are and exits cleanly;
+the workflow runs often enough that some runner gets through each day.
 """
 
 import json
 import re
 import sys
-import time
 import urllib.error
 import urllib.request
 
@@ -17,34 +17,27 @@ USER_AGENT = (
     "(KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 )
 OUTPUT = "public/scholar-stats.json"
-ATTEMPTS = 3
 
 
-def fetch_stats() -> dict:
+def main() -> None:
     request = urllib.request.Request(
         PROFILE_URL,
         headers={"User-Agent": USER_AGENT, "Accept-Language": "en-US,en;q=0.9"},
     )
-    with urllib.request.urlopen(request, timeout=30) as response:
-        page = response.read().decode("utf-8", "replace")
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            page = response.read().decode("utf-8", "replace")
+    except urllib.error.HTTPError as e:
+        if e.code in (403, 429):
+            print(f"::warning::Google Scholar blocked this runner (HTTP {e.code}); stats unchanged")
+            return
+        raise
 
     # Stats table cells, in order: citations (all, since year), h-index (all, since year), i10 (...)
     cells = re.findall(r'class="gsc_rsb_std">(\d+)<', page)
     if len(cells) < 4:
-        raise RuntimeError("stats table not found (likely a CAPTCHA page)")
-    return {"citations": int(cells[0]), "h_index": int(cells[2])}
-
-
-def main() -> None:
-    for attempt in range(1, ATTEMPTS + 1):
-        try:
-            data = fetch_stats()
-            break
-        except (urllib.error.URLError, RuntimeError, TimeoutError) as e:
-            print(f"Attempt {attempt}/{ATTEMPTS} failed: {e}", file=sys.stderr)
-            if attempt == ATTEMPTS:
-                sys.exit(1)
-            time.sleep(60 * attempt)
+        sys.exit("Stats table not found on the profile page")
+    data = {"citations": int(cells[0]), "h_index": int(cells[2])}
 
     with open(OUTPUT, "w") as f:
         json.dump(data, f)

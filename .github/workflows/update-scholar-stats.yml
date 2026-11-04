@@ -2,8 +2,8 @@ name: Update Scholar Stats
 
 on:
   schedule:
-    # Several tries a day: Google Scholar sometimes blocks GitHub runners, so a single run can fail.
-    - cron: "17 */6 * * *"
+    # Hourly: Google Scholar blocks most runners, so only some runs get through.
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
