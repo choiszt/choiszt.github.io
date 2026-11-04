@@ -1,8 +1,7 @@
 """Read citation count and h-index from the public Google Scholar profile page.
 
-Google Scholar answers most GitHub runner IPs with HTTP 403/429. Retrying from the same
-runner does not help, so a blocked run leaves the stats as they are and exits cleanly;
-the workflow runs often enough that some runner gets through each day.
+Google Scholar answers most GitHub runner IPs with HTTP 403/429. A blocked run leaves the
+stats as they are and exits cleanly; running this locally (`npm run update-stats`) works.
 """
 
 import json

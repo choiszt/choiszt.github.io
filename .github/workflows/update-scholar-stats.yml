@@ -2,8 +2,7 @@ name: Update Scholar Stats
 
 on:
   schedule:
-    # Hourly: Google Scholar blocks most runners, so only some runs get through.
-    - cron: "17 * * * *"
+    - cron: "17 0 * * *" # every day at 00:17 UTC (08:17 Beijing)
   workflow_dispatch:
 
 permissions:

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-stats": "python3 scripts/update-scholar-stats.py"
   },
   "devDependencies": {
     "typescript": "^5.8.0",
