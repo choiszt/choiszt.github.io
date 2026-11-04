@@ -2,11 +2,13 @@ name: Update Scholar Stats
 
 on:
   schedule:
-    - cron: "0 0 * * *" # every day at 00:00 UTC (08:00 Beijing)
+    # Several tries a day: Google Scholar sometimes blocks GitHub runners, so a single run can fail.
+    - cron: "17 */6 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write # to start "Deploy site"
 
 jobs:
   update:
@@ -18,15 +20,19 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
-        # scholarly still imports bibtexparser 1.x APIs (bibtexparser.bibdatabase), removed in 2.x
-        run: pip install scholarly "bibtexparser<2"
-
       - name: Fetch citation stats
         run: python scripts/update-scholar-stats.py
 
       - name: Commit updated stats
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update scholar stats"
           file_pattern: public/scholar-stats.json
+
+      # Commits pushed with GITHUB_TOKEN do not fire `push`, but a workflow dispatch does start a run.
+      - name: Redeploy site
+        if: steps.commit.outputs.changes_detected == 'true'
+        run: gh workflow run deploy.yml --ref "${{ github.ref_name }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
